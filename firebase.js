@@ -4,7 +4,7 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.5/firebas
 
 const firebaseConfig = {
 
-  apiKey: "TA_CLE_API",
+  apiKey: "AIzaSyBuiAI5aaazwdS1JSYhownCz7VNTkq_Uqk",
 
   authDomain: "portesouvertes2026.firebaseapp.com",
 
