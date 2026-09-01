@@ -1,73 +1,78 @@
-const header = document.createElement("header");
+const headerTarget = document.getElementById("siteHeader");
 
-header.className = "site-header";
+if (headerTarget) {
 
-header.innerHTML = `
-  <div class="header-top">
+  headerTarget.innerHTML = `
+    <header class="site-header">
 
-    <a href="index.html" class="header-logo">
-      <img
-        src="assets/logo-suzini.png"
-        alt="Tennis Club de Suzini"
-      >
-    </a>
+      <div class="header-top">
 
-    <div class="header-event">
-      <span>PORTES OUVERTES</span>
-      <strong>Americano</strong>
-    </div>
+        <a href="index.html" class="header-logo">
+          <img
+            src="assets/logo-suzini.png"
+            alt="TC Suzini"
+          >
+        </a>
 
-    <a
-      href="https://julyanabt.fr"
-      class="header-logo header-logo-right"
-    >
-      <img
-        src="assets/logo-julyana.png"
-        alt="Jul'Yana Beach Tennis"
-      >
-    </a>
+        <div class="header-event">
+          <span>PORTES OUVERTES</span>
+          <strong>Americano</strong>
+        </div>
 
-  </div>
+        <a
+          href="https://julyanabt.fr"
+          class="header-logo header-logo-right"
+        >
+          <img
+            src="assets/logo-julyana.png"
+            alt="Jul'Yana Beach Tennis"
+          >
+        </a>
 
-  <nav class="mobile-nav">
+      </div>
 
-    <a href="index.html" data-nav="accueil">
-      <span class="nav-icon">⌂</span>
-      <span class="nav-label">Accueil</span>
-    </a>
 
-    <a href="participants.html" data-nav="participants">
-      <span class="nav-icon">👥</span>
-      <span class="nav-label">Joueurs</span>
-    </a>
+      <nav class="main-nav">
 
-    <a href="programmation.html" data-nav="programmation">
-      <span class="nav-icon">🎾</span>
-      <span class="nav-label">Matchs</span>
-    </a>
+        <a href="index.html" data-nav="accueil">
+          <span class="nav-icon">⌂</span>
+          <span class="nav-label">Accueil</span>
+        </a>
 
-    <a href="classement.html" data-nav="classement">
-      <span class="nav-icon">🏆</span>
-      <span class="nav-label">Classement</span>
-    </a>
+        <a href="participants.html" data-nav="participants">
+          <span class="nav-icon">👥</span>
+          <span class="nav-label">Joueurs</span>
+        </a>
 
-  </nav>
-`;
+        <a href="programmation.html" data-nav="programmation">
+          <span class="nav-icon">🎾</span>
+          <span class="nav-label">Matchs</span>
+        </a>
 
-const target = document.getElementById("siteHeader");
+        <a href="classement.html" data-nav="classement">
+          <span class="nav-icon">🏆</span>
+          <span class="nav-label">Classement</span>
+        </a>
 
-if (target) {
-  target.appendChild(header);
-}
+      </nav>
 
-const currentPage = document.body.dataset.page;
+    </header>
+  `;
 
-if (currentPage) {
-  const activeLink = document.querySelector(
-    `[data-nav="${currentPage}"]`
-  );
 
-  if (activeLink) {
-    activeLink.classList.add("active");
+  const currentPage = document.body.dataset.page;
+
+  if (currentPage) {
+
+    const activeLink =
+      document.querySelector(
+        '[data-nav="' + currentPage + '"]'
+      );
+
+    if (activeLink) {
+      activeLink.classList.add("active");
+    }
+
   }
+
 }
