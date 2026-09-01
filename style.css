@@ -1,32 +1,33 @@
 :root {
 
   --orange: #ff4b27;
-  --orange-dark: #df3718;
+  --orange-dark: #dc391b;
 
-  --black: #111111;
-  --dark: #262626;
+  --black: #101010;
+  --dark: #242424;
 
-  --blue: #23b2d7;
+  --blue: #24b5db;
+  --blue-light: #dff7fc;
 
-  --sand: #f5dfaf;
+  --sand: #f4dfb0;
   --sand-light: #fffaf0;
 
-  --grey: #6d7278;
-  --grey-light: #f0f1f2;
+  --grey: #6e7378;
+  --grey-light: #eff0f1;
 
   --white: #ffffff;
 
-  --radius: 20px;
+  --radius: 18px;
 
   --shadow:
-    0 10px 28px rgba(0, 0, 0, 0.08);
+    0 8px 22px rgba(0, 0, 0, .08);
 }
 
 
 
-/* ======================================
+/* ========================================
    RESET
-====================================== */
+======================================== */
 
 * {
   box-sizing: border-box;
@@ -57,8 +58,6 @@ body {
     Arial,
     sans-serif;
 
-  line-height: 1.45;
-
   -webkit-font-smoothing:
     antialiased;
 }
@@ -71,62 +70,67 @@ a {
 
 
 img {
-  display: block;
   max-width: 100%;
+  display: block;
 }
 
 
 
-/* ======================================
-   HEADER
-====================================== */
+/* ========================================
+   HEADER FIXE
+======================================== */
 
-.site-header {
+#siteHeader {
 
   position: sticky;
 
   top: 0;
 
-  z-index: 1000;
+  z-index: 9999;
+}
 
-  padding-top:
-    env(safe-area-inset-top);
+
+.site-header {
 
   background:
-    rgba(255, 255, 255, 0.97);
+    rgba(255, 255, 255, .97);
 
   backdrop-filter:
-    blur(15px);
+    blur(14px);
+
+  -webkit-backdrop-filter:
+    blur(14px);
 
   border-bottom:
     3px solid var(--orange);
+
+  box-shadow:
+    0 3px 14px rgba(0, 0, 0, .06);
 }
 
 
 .header-top {
 
-  width: 100%;
-
-  min-height: 66px;
+  height: 58px;
 
   padding:
-    7px 12px;
+    5px 12px;
 
   display: grid;
 
   grid-template-columns:
-    54px 1fr 54px;
-
-  gap: 8px;
+    48px 1fr 48px;
 
   align-items: center;
+
+  gap: 8px;
 }
 
 
 .header-logo {
 
-  width: 50px;
-  height: 50px;
+  width: 46px;
+  height: 46px;
 
   display: flex;
 
@@ -151,8 +155,6 @@ img {
 
 .header-event {
 
-  min-width: 0;
-
   text-align: center;
 
   line-height: 1;
@@ -163,16 +165,20 @@ img {
 
   display: block;
 
-  margin-bottom: 5px;
+  margin-bottom:
+    4px;
 
   color:
     var(--orange);
 
-  font-size: 9px;
+  font-size:
+    8px;
 
-  font-weight: 900;
+  font-weight:
+    900;
 
-  letter-spacing: 1.3px;
+  letter-spacing:
+    1.3px;
 }
 
 
@@ -180,319 +186,48 @@ img {
 
   display: block;
 
-  font-size: 18px;
+  font-size:
+    17px;
 
-  font-weight: 900;
+  font-weight:
+    950;
 }
 
 
 
-/* ======================================
+/* ========================================
    NAV
-====================================== */
+======================================== */
 
-.mobile-nav {
+.main-nav {
 
-  display: grid;
-
-  grid-template-columns:
-    repeat(4, minmax(0, 1fr));
-
-  border-top:
-    1px solid #eeeeee;
-
-  background:
-    white;
-}
-
-
-.mobile-nav a {
-
-  min-width: 0;
-
-  padding:
-    6px 2px 7px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 2px;
-
-  color:
-    #636363;
-
-  text-align: center;
-
-  font-size: 9px;
-
-  font-weight: 800;
-}
-
-
-.nav-icon {
-
-  font-size: 18px;
-
-  line-height: 1;
-}
-
-
-.nav-label {
-
-  overflow: hidden;
-
-  max-width: 100%;
-
-  text-overflow: ellipsis;
-
-  white-space: nowrap;
-}
-
-
-.mobile-nav a.active {
-
-  color:
-    var(--orange);
-}
-
-
-
-/* ======================================
-   PAGE
-====================================== */
-
-.container {
-
-  width:
-    calc(100% - 20px);
-
-  max-width:
-    720px;
-
-  margin:
-    0 auto;
-}
-
-
-.section {
-
-  margin:
-    12px 0;
-}
-
-
-
-/* ======================================
-   HERO
-====================================== */
-
-.hero {
-
-  overflow: hidden;
-
-  border-radius:
-    var(--radius);
-
-  background:
-
-    radial-gradient(
-      circle at 82% 12%,
-      rgba(255, 255, 255, 0.72),
-      transparent 27%
-    ),
-
-    linear-gradient(
-      180deg,
-      #38bee4 0%,
-      #cbedf7 48%,
-      #f5dfaf 49%,
-      #e8c780 100%
-    );
-
-  box-shadow:
-    var(--shadow);
-}
-
-
-.hero-inner {
-
-  padding:
-    25px 20px 30px;
-}
-
-
-.hero-pills {
-
-  display: flex;
-
-  flex-wrap: wrap;
-
-  gap: 6px;
-
-  margin-bottom: 22px;
-}
-
-
-.pill {
-
-  padding:
-    6px 9px;
-
-  border-radius:
-    999px;
-
-  background:
-    rgba(255, 255, 255, 0.9);
-
-  border:
-    2px solid rgba(0, 0, 0, 0.05);
-
-  font-size:
-    9px;
-
-  font-weight:
-    900;
-
-  letter-spacing:
-    0.6px;
-
-  text-transform:
-    uppercase;
-}
-
-
-.hero-kicker {
-
-  margin-bottom:
-    8px;
-
-  font-size:
-    13px;
-
-  font-weight:
-    900;
-
-  letter-spacing:
-    1.3px;
-
-  text-transform:
-    uppercase;
-}
-
-
-.hero-title {
-
-  margin:
-    0;
-
-  max-width:
-    100%;
-
-  font-size:
-    clamp(43px, 13vw, 66px);
-
-  line-height:
-    0.86;
-
-  font-weight:
-    1000;
-
-  letter-spacing:
-    -2.8px;
-
-  text-transform:
-    uppercase;
-
-  overflow-wrap:
-    anywhere;
-}
-
-
-.hero-highlight {
-
-  display:
-    block;
-
-  margin-top:
-    8px;
-
-  color:
-    var(--orange);
-
-  font-size:
-    clamp(34px, 10.5vw, 51px);
-
-  line-height:
-    0.95;
-
-  font-style:
-    italic;
-
-  letter-spacing:
-    -1.8px;
-
-  text-transform:
-    none;
-}
-
-
-.hero-slogan {
-
-  margin-top:
-    24px;
-
-  font-size:
-    20px;
-
-  line-height:
-    1.2;
-
-  font-weight:
-    800;
-}
-
-
-.hero-slogan strong {
-
-  color:
-    var(--orange);
-}
-
-
-.hero-actions {
-
-  margin-top:
-    22px;
+  height:
+    45px;
 
   display:
     grid;
 
   grid-template-columns:
-    1fr;
+    repeat(4, minmax(0, 1fr));
 
-  gap:
-    9px;
+  background:
+    white;
+
+  border-top:
+    1px solid #eeeeee;
 }
 
 
-.hero-btn {
+.main-nav a {
 
-  width:
-    100%;
-
-  padding:
-    15px 12px;
-
-  border-radius:
-    14px;
+  min-width:
+    0;
 
   display:
     flex;
+
+  flex-direction:
+    column;
 
   align-items:
     center;
@@ -500,235 +235,150 @@ img {
   justify-content:
     center;
 
+  gap:
+    1px;
+
+  color:
+    #666;
+
   font-size:
-    18px;
+    8px;
 
   font-weight:
-    900;
+    800;
 }
 
 
-.hero-btn-primary {
+.nav-icon {
 
-  background:
+  font-size:
+    16px;
+
+  line-height:
+    1;
+}
+
+
+.nav-label {
+
+  overflow:
+    hidden;
+
+  text-overflow:
+    ellipsis;
+
+  white-space:
+    nowrap;
+}
+
+
+.main-nav a.active {
+
+  color:
     var(--orange);
-
-  color:
-    white;
-}
-
-
-.hero-btn-secondary {
-
-  background:
-    var(--black);
-
-  color:
-    white;
 }
 
 
 
-/* ======================================
-   PANELS
-====================================== */
+/* ========================================
+   CONTAINER
+======================================== */
 
-.event-panel {
+.container {
+
+  width:
+    calc(100% - 16px);
+
+  max-width:
+    600px;
+
+  margin:
+    0 auto;
 
   padding:
-    20px 18px;
+    8px 0 18px;
+}
+
+
+
+/* ========================================
+   HERO COMPACT
+======================================== */
+
+.home-hero {
+
+  overflow:
+    hidden;
+
+  padding:
+    18px;
 
   border-radius:
     var(--radius);
 
   background:
-    white;
+
+    radial-gradient(
+      circle at 88% 10%,
+      rgba(255, 255, 255, .65),
+      transparent 25%
+    ),
+
+    linear-gradient(
+      180deg,
+      #42c0e2 0%,
+      #cceff8 47%,
+      #f4dcaa 48%,
+      #eccb83 100%
+    );
 
   box-shadow:
     var(--shadow);
 }
 
 
-.panel-head {
-
-  margin-bottom:
-    17px;
-}
-
-
-.panel-kicker {
-
-  margin-bottom:
-    5px;
-
-  color:
-    var(--orange);
-
-  font-size:
-    10px;
-
-  font-weight:
-    900;
-
-  letter-spacing:
-    1.3px;
-
-  text-transform:
-    uppercase;
-}
-
-
-.panel-title {
-
-  margin:
-    0;
-
-  font-size:
-    32px;
-
-  line-height:
-    1;
-
-  font-weight:
-    1000;
-
-  letter-spacing:
-    -1.2px;
-
-  text-transform:
-    uppercase;
-}
-
-
-.panel-text {
-
-  margin:
-    9px 0 0;
-
-  color:
-    var(--grey);
-
-  font-size:
-    14px;
-
-  line-height:
-    1.45;
-}
-
-
-
-/* ======================================
-   EVENT CARDS
-====================================== */
-
-.event-grid {
-
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
-
-  gap:
-    9px;
-}
-
-
-.event-card {
-
-  min-width:
-    0;
-
-  min-height:
-    158px;
-
-  padding:
-    15px;
-
-  border-radius:
-    16px;
+.hero-pills {
 
   display:
     flex;
 
-  flex-direction:
-    column;
-}
+  flex-wrap:
+    wrap;
 
-
-.event-card-orange {
-
-  color:
-    white;
-
-  background:
-    linear-gradient(
-      145deg,
-      #ff4927,
-      #ff7050
-    );
-}
-
-
-.event-card-blue {
-
-  color:
-    white;
-
-  background:
-    linear-gradient(
-      145deg,
-      #22abd0,
-      #52c7e4
-    );
-}
-
-
-.event-card-sand {
-
-  background:
-    linear-gradient(
-      145deg,
-      #f2daaa,
-      #ffedc8
-    );
-}
-
-
-.event-card-dark {
-
-  color:
-    white;
-
-  background:
-    linear-gradient(
-      145deg,
-      #181818,
-      #333333
-    );
-}
-
-
-.card-icon {
+  gap:
+    5px;
 
   margin-bottom:
     15px;
-
-  font-size:
-    25px;
 }
 
 
-.card-kicker {
+.hero-pills span {
 
-  margin-bottom:
-    4px;
+  padding:
+    5px 8px;
 
-  opacity:
-    0.78;
+  border-radius:
+    999px;
+
+  background:
+    rgba(255,255,255,.91);
 
   font-size:
     9px;
+
+  font-weight:
+    850;
+}
+
+
+.hero-label {
+
+  margin-bottom:
+    6px;
+
+  font-size:
+    10px;
 
   font-weight:
     900;
@@ -741,188 +391,83 @@ img {
 }
 
 
-.card-title {
+.home-hero h1 {
 
   margin:
-    0 0 7px;
+    0;
 
   font-size:
-    18px;
+    clamp(38px, 12vw, 58px);
 
   line-height:
-    1.05;
+    .84;
 
   font-weight:
-    900;
-}
-
-
-.card-text {
-
-  margin-top:
-    auto;
-
-  font-size:
-    12px;
-
-  line-height:
-    1.35;
-
-  opacity:
-    0.9;
-}
-
-
-
-/* ======================================
-   PRINCIPE
-====================================== */
-
-.concept-card {
-
-  position:
-    relative;
-
-  overflow:
-    hidden;
-
-  padding:
-    27px 20px;
-
-  border-radius:
-    var(--radius);
-
-  background:
-    linear-gradient(
-      135deg,
-      #111111,
-      #262626
-    );
-
-  color:
-    white;
-
-  box-shadow:
-    var(--shadow);
-}
-
-
-.concept-card::after {
-
-  content:
-    "🎾";
-
-  position:
-    absolute;
-
-  right:
-    -30px;
-
-  top:
-    35px;
-
-  opacity:
-    0.08;
-
-  font-size:
-    125px;
-
-  transform:
-    rotate(-15deg);
-}
-
-
-.concept-label {
-
-  position:
-    relative;
-
-  z-index:
-    2;
-
-  margin-bottom:
-    12px;
-
-  color:
-    var(--orange);
-
-  font-size:
-    10px;
-
-  font-weight:
-    900;
+    1000;
 
   letter-spacing:
-    1.8px;
+    -2.5px;
 
   text-transform:
     uppercase;
 }
 
 
-.concept-card h2 {
+.home-hero h1 span {
 
-  position:
-    relative;
+  display:
+    block;
 
-  z-index:
-    2;
+  margin-top:
+    7px;
 
-  margin:
-    0;
-
-  max-width:
-    95%;
+  color:
+    var(--orange);
 
   font-size:
-    clamp(36px, 11vw, 52px);
+    .72em;
 
   line-height:
-    0.95;
+    .9;
 
-  font-weight:
-    1000;
+  font-style:
+    italic;
 
   letter-spacing:
-    -1.8px;
+    -1.5px;
+
+  text-transform:
+    none;
 }
 
 
-.concept-card h2 span {
+.hero-message {
+
+  margin-top:
+    16px;
+
+  font-size:
+    17px;
+
+  line-height:
+    1.15;
+
+  font-weight:
+    800;
+}
+
+
+.hero-message strong {
 
   color:
     var(--orange);
 }
 
 
-.concept-card p {
+.hero-actions {
 
-  position:
-    relative;
-
-  z-index:
-    2;
-
-  margin:
-    18px 0 0;
-
-  color:
-    #d7d7d7;
-
-  font-size:
-    14px;
-
-  line-height:
-    1.5;
-}
-
-
-
-/* ======================================
-   QUICK LINKS
-====================================== */
-
-.quick-grid {
+  margin-top:
+    16px;
 
   display:
     grid;
@@ -931,23 +476,205 @@ img {
     repeat(2, minmax(0, 1fr));
 
   gap:
-    8px;
+    7px;
 }
 
 
-.quick-card {
+.btn {
 
   min-width:
     0;
 
   min-height:
-    100px;
+    48px;
 
   padding:
-    12px;
+    11px 8px;
 
   border-radius:
-    15px;
+    13px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  text-align:
+    center;
+
+  font-size:
+    14px;
+
+  font-weight:
+    900;
+}
+
+
+.btn-orange {
+
+  background:
+    var(--orange);
+
+  color:
+    white;
+}
+
+
+.btn-black {
+
+  background:
+    var(--black);
+
+  color:
+    white;
+}
+
+
+
+/* ========================================
+   INFOS ESSENTIELLES
+======================================== */
+
+.essential-grid {
+
+  margin-top:
+    8px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap:
+    7px;
+}
+
+
+.essential-card {
+
+  min-width:
+    0;
+
+  min-height:
+    66px;
+
+  padding:
+    10px;
+
+  border-radius:
+    14px;
+
+  background:
+    white;
+
+  box-shadow:
+    var(--shadow);
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+}
+
+
+.essential-icon {
+
+  flex:
+    0 0 auto;
+
+  font-size:
+    22px;
+}
+
+
+.essential-card div {
+
+  min-width:
+    0;
+}
+
+
+.essential-card small {
+
+  display:
+    block;
+
+  margin-bottom:
+    2px;
+
+  color:
+    var(--orange);
+
+  font-size:
+    8px;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    .8px;
+
+  text-transform:
+    uppercase;
+}
+
+
+.essential-card strong {
+
+  display:
+    block;
+
+  font-size:
+    12px;
+
+  line-height:
+    1.15;
+}
+
+
+
+/* ========================================
+   DASHBOARD
+======================================== */
+
+.dashboard {
+
+  margin-top:
+    8px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap:
+    7px;
+}
+
+
+.dashboard-card {
+
+  min-width:
+    0;
+
+  min-height:
+    74px;
+
+  padding:
+    11px;
+
+  border-radius:
+    14px;
 
   background:
     var(--grey-light);
@@ -960,19 +687,29 @@ img {
 
   gap:
     9px;
+
+  box-shadow:
+    0 3px 12px rgba(0,0,0,.04);
 }
 
 
-.quick-icon {
+.dashboard-live {
+
+  background:
+    var(--blue-light);
+}
+
+
+.dashboard-icon {
 
   width:
-    42px;
+    39px;
 
   height:
-    42px;
+    39px;
 
   flex:
-    0 0 42px;
+    0 0 39px;
 
   border-radius:
     11px;
@@ -990,24 +727,24 @@ img {
     center;
 
   font-size:
-    21px;
+    19px;
 }
 
 
-.quick-card div:last-child {
+.dashboard-card div {
 
   min-width:
     0;
 }
 
 
-.quick-card span {
+.dashboard-card small {
 
   display:
     block;
 
   margin-bottom:
-    3px;
+    2px;
 
   color:
     var(--orange);
@@ -1019,20 +756,20 @@ img {
     900;
 
   letter-spacing:
-    0.7px;
+    .7px;
 
   text-transform:
     uppercase;
 }
 
 
-.quick-card strong {
+.dashboard-card strong {
 
   display:
     block;
 
   font-size:
-    14px;
+    13px;
 
   line-height:
     1.1;
@@ -1040,101 +777,26 @@ img {
 
 
 
-/* ======================================
-   PRICE / FOOD
-====================================== */
+/* ========================================
+   GRILLADES
+======================================== */
 
-.bottom-info {
+.food-strip {
 
-  display:
-    grid;
-
-  grid-template-columns:
-    0.8fr 1.2fr;
-
-  gap:
+  margin-top:
     8px;
-}
-
-
-.price-box,
-.food-box {
 
   min-height:
-    140px;
+    66px;
 
   padding:
-    18px;
+    11px 14px;
 
   border-radius:
-    18px;
-
-  box-shadow:
-    var(--shadow);
-}
-
-
-.price-box {
+    14px;
 
   background:
-    var(--orange);
 
-  color:
-    white;
-
-  display:
-    flex;
-
-  flex-direction:
-    column;
-
-  justify-content:
-    center;
-}
-
-
-.price-box span {
-
-  font-size:
-    10px;
-
-  font-weight:
-    900;
-
-  letter-spacing:
-    1px;
-
-  text-transform:
-    uppercase;
-}
-
-
-.price-box strong {
-
-  margin:
-    3px 0;
-
-  font-size:
-    43px;
-
-  line-height:
-    1;
-
-  font-weight:
-    1000;
-}
-
-
-.price-box small {
-
-  font-size:
-    12px;
-}
-
-
-.food-box {
-
-  background:
     linear-gradient(
       135deg,
       #f5dfae,
@@ -1148,140 +810,91 @@ img {
     center;
 
   gap:
-    10px;
+    12px;
+
+  box-shadow:
+    var(--shadow);
 }
 
 
-.food-icon {
-
-  flex:
-    0 0 auto;
+.food-strip > span {
 
   font-size:
-    35px;
+    28px;
 }
 
 
-.food-box strong {
+.food-strip strong {
 
   display:
     block;
 
-  font-size:
-    17px;
-
-  line-height:
-    1.1;
-}
-
-
-.food-box p {
-
-  margin:
-    6px 0 0;
-
-  color:
-    #62533d;
-
-  font-size:
-    11px;
-
-  line-height:
-    1.35;
-}
-
-
-
-/* ======================================
-   FOOTER
-====================================== */
-
-.site-footer {
-
-  margin-top:
-    18px;
-
-  padding:
-    23px 12px
-    calc(
-      23px + env(safe-area-inset-bottom)
-    );
-
-  background:
-    var(--black);
-
-  color:
-    white;
-
-  text-align:
-    center;
-}
-
-
-.site-footer strong,
-.site-footer span {
-
-  display:
-    block;
-}
-
-
-.site-footer strong {
+  margin-bottom:
+    2px;
 
   font-size:
     14px;
 }
 
 
-.site-footer span {
+.food-strip small {
 
-  margin-top:
-    4px;
+  display:
+    block;
 
   color:
-    #bdbdbd;
+    #665640;
 
   font-size:
-    11px;
+    10px;
+
+  line-height:
+    1.25;
 }
 
 
 
-/* ======================================
-   PETITS MOBILES
-====================================== */
+/* ========================================
+   TOUCH
+======================================== */
 
-@media (max-width: 370px) {
+a {
 
-  .hero-title {
+  -webkit-tap-highlight-color:
+    transparent;
+}
 
+
+.btn:active,
+.dashboard-card:active,
+.main-nav a:active {
+
+  transform:
+    scale(.97);
+}
+
+
+
+/* ========================================
+   PETITS TELEPHONES
+======================================== */
+
+@media (max-width: 350px) {
+
+  .home-hero h1 {
     font-size:
-      40px;
+      36px;
   }
 
 
-  .hero-highlight {
-
-    font-size:
-      32px;
-  }
-
-
-  .event-grid {
+  .hero-actions {
 
     grid-template-columns:
       1fr;
   }
 
 
-  .quick-grid {
-
-    grid-template-columns:
-      1fr;
-  }
-
-
-  .bottom-info {
+  .essential-grid {
 
     grid-template-columns:
       1fr;
@@ -1291,50 +904,34 @@ img {
 
 
 
-/* ======================================
-   TABLETTES / DESKTOP
-====================================== */
+/* ========================================
+   TABLETTE / DESKTOP
+======================================== */
 
 @media (min-width: 701px) {
 
-  .header-top {
+  #siteHeader {
 
     width:
-      min(720px, calc(100% - 30px));
+      100%;
+  }
+
+
+  .header-top,
+  .main-nav {
+
+    max-width:
+      600px;
 
     margin:
       0 auto;
   }
 
 
-  .mobile-nav {
+  .container {
 
-    width:
-      min(720px, 100%);
-
-    margin:
-      0 auto;
-  }
-
-
-  .hero-inner {
-
-    padding:
-      38px 36px;
-  }
-
-
-  .event-panel {
-
-    padding:
-      28px;
-  }
-
-
-  .event-card {
-
-    min-height:
-      190px;
+    padding-top:
+      12px;
   }
 
 }
