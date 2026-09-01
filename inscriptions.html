@@ -1,0 +1,1659 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#ffffff"
+  >
+
+  <title>
+    Inscription | Americano TC Suzini
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+
+  <style>
+
+    /* ========================================
+       INSCRIPTION
+    ======================================== */
+
+    .signup-page {
+      padding-bottom: 18px;
+    }
+
+
+    /* MINI HERO */
+
+    .signup-hero {
+
+      margin-bottom: 8px;
+
+      padding: 16px 18px;
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ff4b27,
+          #ff714f
+        );
+
+      color: white;
+
+      box-shadow:
+        0 8px 22px rgba(0,0,0,.08);
+    }
+
+
+    .signup-hero-top {
+
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 12px;
+
+      margin-bottom: 8px;
+    }
+
+
+    .signup-kicker {
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      letter-spacing: 1.3px;
+
+      text-transform: uppercase;
+
+      opacity: .9;
+    }
+
+
+    .signup-badge {
+
+      flex: 0 0 auto;
+
+      padding: 5px 8px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,255,255,.18);
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      text-transform: uppercase;
+    }
+
+
+    .signup-hero h1 {
+
+      margin: 0;
+
+      font-size: 31px;
+
+      line-height: 1;
+
+      font-weight: 1000;
+
+      letter-spacing: -1.1px;
+
+      text-transform: uppercase;
+    }
+
+
+    .signup-hero p {
+
+      margin: 8px 0 0;
+
+      max-width: 440px;
+
+      font-size: 12px;
+
+      line-height: 1.35;
+
+      font-weight: 650;
+
+      opacity: .95;
+    }
+
+
+
+    /* FORM PANEL */
+
+    .signup-panel {
+
+      padding: 17px;
+
+      border-radius: 18px;
+
+      background: white;
+
+      box-shadow:
+        0 8px 22px rgba(0,0,0,.08);
+    }
+
+
+    .signup-panel-head {
+
+      margin-bottom: 14px;
+    }
+
+
+    .signup-panel-head small {
+
+      display: block;
+
+      margin-bottom: 3px;
+
+      color: #ff4b27;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      letter-spacing: 1.2px;
+
+      text-transform: uppercase;
+    }
+
+
+    .signup-panel-head h2 {
+
+      margin: 0;
+
+      font-size: 22px;
+
+      line-height: 1;
+
+      font-weight: 950;
+    }
+
+
+    .signup-panel-head p {
+
+      margin: 5px 0 0;
+
+      color: #70757a;
+
+      font-size: 11px;
+
+      line-height: 1.35;
+    }
+
+
+
+    /* FORM */
+
+    .form-box {
+
+      display: grid;
+
+      gap: 11px;
+    }
+
+
+    .name-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+      gap: 8px;
+    }
+
+
+    .field {
+
+      min-width: 0;
+
+      display: grid;
+
+      gap: 5px;
+    }
+
+
+    .field label {
+
+      color: #292929;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      letter-spacing: .8px;
+
+      text-transform: uppercase;
+    }
+
+
+    .field input {
+
+      width: 100%;
+
+      min-width: 0;
+
+      min-height: 46px;
+
+      padding: 11px 12px;
+
+      border:
+        2px solid #ededed;
+
+      border-radius: 13px;
+
+      outline: none;
+
+      background: #f7f7f7;
+
+      color: #111;
+
+      font: inherit;
+
+      font-size: 16px;
+
+      font-weight: 750;
+
+      transition:
+        border-color .15s ease,
+        background .15s ease;
+    }
+
+
+    .field input:focus {
+
+      border-color:
+        #ff4b27;
+
+      background:
+        white;
+    }
+
+
+    .field input:disabled {
+
+      opacity: .55;
+    }
+
+
+
+    /* NICKNAME */
+
+    .nickname-box {
+
+      padding: 11px 12px;
+
+      border-radius: 13px;
+
+      background:
+        #e4f7fc;
+
+      border:
+        1px solid #c4edf7;
+    }
+
+
+    .nickname-label {
+
+      display: block;
+
+      margin-bottom: 2px;
+
+      color:
+        #1483a2;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      letter-spacing: .9px;
+
+      text-transform: uppercase;
+    }
+
+
+    .nickname-value {
+
+      color:
+        #101010;
+
+      font-size: 17px;
+
+      line-height: 1.1;
+
+      font-weight: 950;
+    }
+
+
+    .hint {
+
+      color:
+        #777;
+
+      font-size: 10px;
+
+      line-height: 1.3;
+    }
+
+
+
+    /* BUTTON */
+
+    .btn-submit {
+
+      width: 100%;
+
+      min-height: 51px;
+
+      margin-top: 2px;
+
+      padding: 12px;
+
+      border: 0;
+
+      border-radius: 14px;
+
+      background:
+        #101010;
+
+      color: white;
+
+      font: inherit;
+
+      font-size: 15px;
+
+      font-weight: 950;
+
+      cursor: pointer;
+
+      -webkit-tap-highlight-color:
+        transparent;
+    }
+
+
+    .btn-submit:active {
+
+      transform:
+        scale(.985);
+    }
+
+
+    .btn-submit:disabled {
+
+      opacity: .45;
+    }
+
+
+
+    /* MESSAGE */
+
+    .message {
+
+      display: none;
+
+      padding: 11px 12px;
+
+      border-radius: 12px;
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      line-height: 1.35;
+    }
+
+
+    .message.ok {
+
+      display: block;
+
+      background:
+        #ddf7e7;
+
+      color:
+        #126a35;
+
+      border:
+        1px solid #a9e5c0;
+    }
+
+
+    .message.error {
+
+      display: block;
+
+      background:
+        #ffe6df;
+
+      color:
+        #b3290e;
+
+      border:
+        1px solid #ffc1b1;
+    }
+
+
+
+    /* SUCCESS */
+
+    .success-card {
+
+      display: none;
+
+      padding: 22px 18px;
+
+      border-radius: 16px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #111111,
+          #292929
+        );
+
+      color: white;
+
+      text-align: center;
+    }
+
+
+    .success-card.visible {
+      display: block;
+    }
+
+
+    .success-icon {
+
+      margin-bottom: 8px;
+
+      font-size: 38px;
+    }
+
+
+    .success-card h2 {
+
+      margin: 0;
+
+      font-size: 24px;
+
+      font-weight: 950;
+    }
+
+
+    .success-card p {
+
+      margin: 8px 0 0;
+
+      color: #d0d0d0;
+
+      font-size: 12px;
+
+      line-height: 1.4;
+    }
+
+
+    .success-nickname {
+
+      display: inline-block;
+
+      margin-top: 13px;
+
+      padding: 8px 13px;
+
+      border-radius: 999px;
+
+      background:
+        #ff4b27;
+
+      color: white;
+
+      font-size: 15px;
+
+      font-weight: 950;
+    }
+
+
+    .success-link {
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-height: 45px;
+
+      margin-top: 15px;
+
+      border-radius: 12px;
+
+      background: white;
+
+      color: #111;
+
+      font-size: 13px;
+
+      font-weight: 900;
+    }
+
+
+
+    @media (max-width: 350px) {
+
+      .name-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+
+<body data-page="inscription">
+
+
+<div id="siteHeader"></div>
+
+
+<main class="container signup-page">
+
+
+  <!-- MINI HERO -->
+
+  <section class="signup-hero">
+
+    <div class="signup-hero-top">
+
+      <span class="signup-kicker">
+        Portes ouvertes
+      </span>
+
+      <span class="signup-badge">
+        10 € / joueur
+      </span>
+
+    </div>
+
+
+    <h1>
+      Inscription
+    </h1>
+
+
+    <p>
+      Inscris-toi maintenant et rejoins les rotations
+      quand tu arrives à l'Arena.
+    </p>
+
+  </section>
+
+
+
+  <!-- FORMULAIRE -->
+
+  <section class="signup-panel">
+
+
+    <div id="formArea">
+
+
+      <div class="signup-panel-head">
+
+        <small>
+          Joueur
+        </small>
+
+        <h2>
+          Tes informations
+        </h2>
+
+        <p>
+          Ton surnom sera utilisé dans la programmation
+          et le classement.
+        </p>
+
+      </div>
+
+
+
+      <form
+        id="signupForm"
+        class="form-box"
+      >
+
+
+        <div class="name-grid">
+
+
+          <div class="field">
+
+            <label for="prenom">
+              Prénom *
+            </label>
+
+            <input
+              id="prenom"
+              name="prenom"
+              type="text"
+              required
+              autocomplete="given-name"
+              enterkeyhint="next"
+            >
+
+          </div>
+
+
+
+          <div class="field">
+
+            <label for="nom">
+              Nom *
+            </label>
+
+            <input
+              id="nom"
+              name="nom"
+              type="text"
+              required
+              autocomplete="family-name"
+              enterkeyhint="next"
+            >
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="nickname-box">
+
+          <span class="nickname-label">
+            Surnom proposé
+          </span>
+
+          <div
+            id="suggestedNickname"
+            class="nickname-value"
+          >
+            —
+          </div>
+
+        </div>
+
+
+
+        <div class="field">
+
+          <label for="surnom">
+            Autre surnom
+          </label>
+
+          <input
+            id="surnom"
+            name="surnom"
+            type="text"
+            autocomplete="nickname"
+            placeholder="Facultatif"
+            enterkeyhint="done"
+          >
+
+          <div class="hint">
+            Laisse vide pour garder automatiquement
+            le surnom proposé.
+          </div>
+
+        </div>
+
+
+
+        <button
+          id="submitBtn"
+          class="btn-submit"
+          type="submit"
+        >
+          ✍️ Valider mon inscription
+        </button>
+
+
+        <div
+          id="formMessage"
+          class="message"
+        ></div>
+
+
+      </form>
+
+
+    </div>
+
+
+
+    <!-- CONFIRMATION -->
+
+    <div
+      id="successCard"
+      class="success-card"
+    >
+
+      <div class="success-icon">
+        ✅
+      </div>
+
+      <h2>
+        Tu es inscrit !
+      </h2>
+
+      <p>
+        Ton nom est enregistré pour
+        l'Americano de samedi.
+      </p>
+
+      <div
+        id="successNickname"
+        class="success-nickname"
+      ></div>
+
+      <a
+        href="participants.html"
+        class="success-link"
+      >
+        👥 Voir les participants
+      </a>
+
+    </div>
+
+
+  </section>
+
+
+</main>
+
+
+
+<script src="header.js"></script>
+
+
+
+<script type="module">
+
+  import { db } from "./firebase.js";
+
+
+  import {
+
+    collection,
+    doc,
+    getDoc,
+    onSnapshot,
+    runTransaction,
+    serverTimestamp
+
+  } from
+  "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+
+
+  /*
+   * ========================================
+   * CONFIG TOURNOI
+   * ========================================
+   */
+
+  const EVENT_ID =
+    "portesouvertes2026";
+
+  const STEP_ID =
+    "americano";
+
+
+
+  /*
+   * ========================================
+   * FIREBASE REFERENCES
+   * ========================================
+   */
+
+  const stepRef =
+    doc(
+      db,
+      "events",
+      EVENT_ID,
+      "steps",
+      STEP_ID
+    );
+
+
+  const playersRef =
+    collection(
+      db,
+      "events",
+      EVENT_ID,
+      "steps",
+      STEP_ID,
+      "players"
+    );
+
+
+  /*
+   * Les surnoms sont uniques uniquement
+   * pour cet Americano.
+   */
+
+  const nicknamesRef =
+    collection(
+      db,
+      "events",
+      EVENT_ID,
+      "steps",
+      STEP_ID,
+      "nicknames"
+    );
+
+
+
+  /*
+   * ========================================
+   * DOM
+   * ========================================
+   */
+
+  const form =
+    document.getElementById(
+      "signupForm"
+    );
+
+
+  const formArea =
+    document.getElementById(
+      "formArea"
+    );
+
+
+  const prenomInput =
+    document.getElementById(
+      "prenom"
+    );
+
+
+  const nomInput =
+    document.getElementById(
+      "nom"
+    );
+
+
+  const surnomInput =
+    document.getElementById(
+      "surnom"
+    );
+
+
+  const suggestedNickname =
+    document.getElementById(
+      "suggestedNickname"
+    );
+
+
+  const submitBtn =
+    document.getElementById(
+      "submitBtn"
+    );
+
+
+  const message =
+    document.getElementById(
+      "formMessage"
+    );
+
+
+  const successCard =
+    document.getElementById(
+      "successCard"
+    );
+
+
+  const successNickname =
+    document.getElementById(
+      "successNickname"
+    );
+
+
+
+  /*
+   * ========================================
+   * STATE
+   * ========================================
+   */
+
+  let inscriptionsState =
+    "not_open";
+
+
+  let isSubmitting =
+    false;
+
+
+  let suggestionRequest =
+    0;
+
+
+
+  /*
+   * ========================================
+   * HELPERS
+   * ========================================
+   */
+
+  function clean(value) {
+
+    return String(value || "")
+      .trim()
+      .replace(/\s+/g, " ");
+
+  }
+
+
+
+  function normalizeKey(value) {
+
+    return String(value || "")
+      .trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(
+        /[\u0300-\u036f]/g,
+        ""
+      )
+      .replace(
+        /[^a-z0-9]+/g,
+        "-"
+      )
+      .replace(
+        /^-+|-+$/g,
+        ""
+      );
+
+  }
+
+
+
+  function capitalize(value) {
+
+    const text =
+      clean(value);
+
+    if (!text) {
+      return "";
+    }
+
+    return (
+      text.charAt(0).toUpperCase()
+      +
+      text.slice(1)
+    );
+
+  }
+
+
+
+  function makeBaseNickname(
+    prenom,
+    nom
+  ) {
+
+    const p =
+      capitalize(prenom);
+
+    const n =
+      clean(nom);
+
+    if (!p || !n) {
+      return "";
+    }
+
+    return (
+      `${p} ${n.charAt(0).toUpperCase()}`
+    );
+
+  }
+
+
+
+  /*
+   * ========================================
+   * NICKNAME
+   * ========================================
+   */
+
+  async function nicknameExists(
+    nickname
+  ) {
+
+    const key =
+      normalizeKey(nickname);
+
+    if (!key) {
+      return true;
+    }
+
+    const snap =
+      await getDoc(
+        doc(
+          nicknamesRef,
+          key
+        )
+      );
+
+    return snap.exists();
+
+  }
+
+
+
+  async function findAvailableNickname(
+    base
+  ) {
+
+    let candidate =
+      clean(base);
+
+    let counter =
+      2;
+
+
+    while (
+      await nicknameExists(
+        candidate
+      )
+    ) {
+
+      candidate =
+        `${base} ${counter}`;
+
+      counter++;
+
+    }
+
+
+    return candidate;
+
+  }
+
+
+
+  async function updateSuggestion() {
+
+    const requestId =
+      ++suggestionRequest;
+
+
+    const base =
+      makeBaseNickname(
+        prenomInput.value,
+        nomInput.value
+      );
+
+
+    if (!base) {
+
+      suggestedNickname.textContent =
+        "—";
+
+      return;
+
+    }
+
+
+    suggestedNickname.textContent =
+      "Recherche…";
+
+
+    try {
+
+      const nickname =
+        await findAvailableNickname(
+          base
+        );
+
+
+      /*
+       * Empêche une ancienne requête
+       * de remplacer une nouvelle suggestion.
+       */
+
+      if (
+        requestId !==
+        suggestionRequest
+      ) {
+        return;
+      }
+
+
+      suggestedNickname.textContent =
+        nickname;
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      if (
+        requestId ===
+        suggestionRequest
+      ) {
+
+        suggestedNickname.textContent =
+          base;
+
+      }
+
+    }
+
+  }
+
+
+
+  /*
+   * ========================================
+   * MESSAGES
+   * ========================================
+   */
+
+  function clearMessage() {
+
+    message.className =
+      "message";
+
+    message.textContent =
+      "";
+
+  }
+
+
+
+  function setMessage(
+    type,
+    text
+  ) {
+
+    message.className =
+      `message ${type}`;
+
+    message.textContent =
+      text;
+
+  }
+
+
+
+  /*
+   * ========================================
+   * FORM STATE
+   * ========================================
+   */
+
+  function setFormEnabled(
+    enabled
+  ) {
+
+    form
+      .querySelectorAll(
+        "input"
+      )
+      .forEach(
+        input => {
+
+          input.disabled =
+            !enabled;
+
+        }
+      );
+
+
+    submitBtn.disabled =
+      !enabled ||
+      isSubmitting;
+
+  }
+
+
+
+  function updateFormState() {
+
+    if (
+      inscriptionsState ===
+      "open"
+    ) {
+
+      setFormEnabled(true);
+
+      return;
+
+    }
+
+
+    setFormEnabled(false);
+
+
+    if (
+      inscriptionsState ===
+      "closed"
+    ) {
+
+      setMessage(
+        "error",
+        "Les inscriptions sont clôturées."
+      );
+
+    }
+
+    else if (
+      inscriptionsState ===
+      "paused"
+    ) {
+
+      setMessage(
+        "error",
+        "Les inscriptions sont temporairement suspendues."
+      );
+
+    }
+
+    else {
+
+      setMessage(
+        "error",
+        "Les inscriptions ne sont pas encore ouvertes."
+      );
+
+    }
+
+  }
+
+
+
+  /*
+   * ========================================
+   * INPUT EVENTS
+   * ========================================
+   */
+
+  prenomInput.addEventListener(
+    "input",
+    updateSuggestion
+  );
+
+
+  nomInput.addEventListener(
+    "input",
+    updateSuggestion
+  );
+
+
+
+  /*
+   * ========================================
+   * FIRESTORE STATE LISTENER
+   * ========================================
+   */
+
+  onSnapshot(
+
+    stepRef,
+
+    snapshot => {
+
+      const data =
+        snapshot.exists()
+          ? snapshot.data()
+          : {};
+
+
+      inscriptionsState =
+        data.inscriptionsState ||
+        "not_open";
+
+
+      updateFormState();
+
+    },
+
+    error => {
+
+      console.error(
+        "Erreur état inscriptions :",
+        error
+      );
+
+
+      inscriptionsState =
+        "not_open";
+
+
+      setFormEnabled(false);
+
+
+      setMessage(
+        "error",
+        "Impossible de vérifier l'état des inscriptions."
+      );
+
+    }
+
+  );
+
+
+
+  /*
+   * ========================================
+   * SUBMIT
+   * ========================================
+   */
+
+  form.addEventListener(
+
+    "submit",
+
+    async event => {
+
+      event.preventDefault();
+
+
+      clearMessage();
+
+
+      const prenom =
+        clean(
+          prenomInput.value
+        );
+
+
+      const nom =
+        clean(
+          nomInput.value
+        );
+
+
+      const customNickname =
+        clean(
+          surnomInput.value
+        );
+
+
+      if (
+        !prenom ||
+        !nom
+      ) {
+
+        setMessage(
+          "error",
+          "Le prénom et le nom sont obligatoires."
+        );
+
+        return;
+
+      }
+
+
+      if (
+        inscriptionsState !==
+        "open"
+      ) {
+
+        updateFormState();
+
+        return;
+
+      }
+
+
+      isSubmitting =
+        true;
+
+
+      submitBtn.disabled =
+        true;
+
+
+      submitBtn.textContent =
+        "Inscription…";
+
+
+      try {
+
+        const baseNickname =
+          makeBaseNickname(
+            prenom,
+            nom
+          );
+
+
+        const finalNickname =
+          customNickname
+            ? customNickname
+            : await findAvailableNickname(
+                baseNickname
+              );
+
+
+        const nicknameKey =
+          normalizeKey(
+            finalNickname
+          );
+
+
+        if (!nicknameKey) {
+
+          throw new Error(
+            "Le surnom choisi n'est pas valide."
+          );
+
+        }
+
+
+        /*
+         * Nouveau joueur Firestore
+         */
+
+        const playerRef =
+          doc(playersRef);
+
+
+        /*
+         * Réservation du surnom
+         */
+
+        const nicknameRef =
+          doc(
+            nicknamesRef,
+            nicknameKey
+          );
+
+
+
+        await runTransaction(
+
+          db,
+
+          async transaction => {
+
+
+            const nicknameSnap =
+              await transaction.get(
+                nicknameRef
+              );
+
+
+            if (
+              nicknameSnap.exists()
+            ) {
+
+              throw new Error(
+                "Ce surnom vient d'être pris. Choisis-en un autre."
+              );
+
+            }
+
+
+
+            transaction.set(
+
+              playerRef,
+
+              {
+
+                eventId:
+                  EVENT_ID,
+
+                stepId:
+                  STEP_ID,
+
+                prenom,
+
+                nom,
+
+                surnom:
+                  finalNickname,
+
+                nicknameKey,
+
+                status:
+                  "registered",
+
+                active:
+                  false,
+
+                type:
+                  "americano",
+
+                createdAt:
+                  serverTimestamp(),
+
+                updatedAt:
+                  serverTimestamp(),
+
+                source:
+                  "public-form"
+
+              }
+
+            );
+
+
+
+            transaction.set(
+
+              nicknameRef,
+
+              {
+
+                nickname:
+                  finalNickname,
+
+                nicknameKey,
+
+                playerId:
+                  playerRef.id,
+
+                createdAt:
+                  serverTimestamp()
+
+              }
+
+            );
+
+          }
+
+        );
+
+
+        /*
+         * CONFIRMATION
+         */
+
+        successNickname.textContent =
+          finalNickname;
+
+
+        formArea.style.display =
+          "none";
+
+
+        successCard.classList.add(
+          "visible"
+        );
+
+
+      }
+
+      catch (error) {
+
+        console.error(error);
+
+
+        setMessage(
+
+          "error",
+
+          error?.message ||
+          "Impossible d'enregistrer l'inscription."
+
+        );
+
+      }
+
+      finally {
+
+        isSubmitting =
+          false;
+
+
+        submitBtn.textContent =
+          "✍️ Valider mon inscription";
+
+
+        if (
+          inscriptionsState ===
+          "open"
+        ) {
+
+          submitBtn.disabled =
+            false;
+
+        }
+
+      }
+
+    }
+
+  );
+
+</script>
+
+
+</body>
+
+</html>
