@@ -35,7 +35,7 @@ if (headerTarget) {
       "admin/joueurs.html",
 
     programmation:
-      "admin/matchs.html",
+      "admin/programmation.html",
 
     classement:
       "admin/classement.html"
