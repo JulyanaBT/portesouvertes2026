@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#ffffff"
+  >
+
+  <title>
+    Programmation | Americano TC Suzini
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+  <style>
+
+    /* ========================================
+       PAGE PROGRAMMATION
+    ======================================== */
+
+    .program-page {
+
+      padding-bottom: 20px;
+
+    }
+
+
+    /* ========================================
+       HERO
+    ======================================== */
+
+    .program-head {
+
+      margin-bottom: 8px;
+
+      padding: 16px 17px;
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #111111,
+          #2a2a2a
+        );
+
+      color: white;
+
+      box-shadow:
+        0 8px 22px rgba(0,0,0,.08);
+
+    }
+
+
+    .program-head-top {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content:
+        space-between;
+
+      gap: 10px;
+
+    }
+
+
+    .program-kicker {
+
+      color: #ff4b27;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      letter-spacing: 1.3px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .program-live {
+
+      flex: 0 0 auto;
+
+      padding: 5px 8px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(37,184,100,.16);
+
+      color: #8ff0b5;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+    }
+
+
+    .program-head h1 {
+
+      margin: 6px 0 0;
+
+      font-size: 30px;
+
+      line-height: 1;
+
+      font-weight: 1000;
+
+      letter-spacing: -1.1px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .program-head p {
+
+      margin: 7px 0 0;
+
+      color: #d5d5d5;
+
+      font-size: 11px;
+
+      line-height: 1.35;
+
+    }
+
+
+    /* ========================================
+       COMPTEURS
+    ======================================== */
+
+    .program-summary {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 7px;
+
+      margin-bottom: 8px;
+
+    }
+
+
+    .summary-box {
+
+      min-width: 0;
+
+      padding: 11px 5px;
+
+      border-radius: 14px;
+
+      background: white;
+
+      box-shadow:
+        0 6px 16px rgba(0,0,0,.06);
+
+      text-align: center;
+
+    }
+
+
+    .summary-box strong {
+
+      display: block;
+
+      color: #111;
+
+      font-size: 22px;
+
+      line-height: 1;
+
+      font-weight: 1000;
+
+    }
+
+
+    .summary-box span {
+
+      display: block;
+
+      margin-top: 4px;
+
+      color: #777;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      letter-spacing: .6px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    /* ========================================
+       SECTIONS
+    ======================================== */
+
+    .program-section {
+
+      margin-top: 8px;
+
+      padding: 14px;
+
+      border-radius: 17px;
+
+      background: white;
+
+      box-shadow:
+        0 8px 22px rgba(0,0,0,.07);
+
+    }
+
+
+    .program-section h2 {
+
+      margin: 0 0 10px;
+
+      color: #111;
+
+      font-size: 18px;
+
+      line-height: 1;
+
+      font-weight: 950;
+
+    }
+
+
+    .rounds-list {
+
+      display: grid;
+
+      gap: 8px;
+
+    }
+
+
+    /* ========================================
+       TOUR
+    ======================================== */
+
+    .round-card {
+
+      padding: 10px;
+
+      border-radius: 15px;
+
+      background: #f7f7f7;
+
+      border:
+        1px solid #ededed;
+
+    }
+
+
+    .round-head {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content:
+        space-between;
+
+      gap: 10px;
+
+      margin-bottom: 8px;
+
+    }
+
+
+    .round-title {
+
+      color: #111;
+
+      font-size: 16px;
+
+      font-weight: 1000;
+
+    }
+
+
+    .round-state {
+
+      padding: 4px 7px;
+
+      border-radius: 999px;
+
+      background: #fff2c7;
+
+      color: #8a6400;
+
+      font-size: 8px;
+
+      font-weight: 950;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .round-state.done {
+
+      background: #ddf7e7;
+
+      color: #16723c;
+
+    }
+
+
+    /* ========================================
+       MATCH
+    ======================================== */
+
+    .match-card {
+
+      margin-top: 7px;
+
+      padding: 9px;
+
+      border-radius: 13px;
+
+      background: white;
+
+      border:
+        1px solid #e7e7e7;
+
+    }
+
+
+    .match-card:first-of-type {
+
+      margin-top: 0;
+
+    }
+
+
+    .match-head {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content:
+        space-between;
+
+      gap: 8px;
+
+      margin-bottom: 7px;
+
+    }
+
+
+    .court-name {
+
+      min-width: 0;
+
+      color: #ff4b27;
+
+      font-size: 10px;
+
+      font-weight: 950;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+    }
+
+
+    .match-status {
+
+      flex: 0 0 auto;
+
+      padding: 4px 7px;
+
+      border-radius: 999px;
+
+      background: #fff2c7;
+
+      color: #8a6400;
+
+      font-size: 8px;
+
+      font-weight: 950;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .match-status.done {
+
+      background: #ddf7e7;
+
+      color: #16723c;
+
+    }
+
+
+    .team-row {
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr) 44px;
+
+      gap: 6px;
+
+      align-items: center;
+
+      margin-top: 5px;
+
+    }
+
+
+    .team-name {
+
+      min-width: 0;
+
+      min-height: 32px;
+
+      padding: 7px 9px;
+
+      border-radius: 11px;
+
+      background: #f7f7f7;
+
+      color: #111;
+
+      display: flex;
+
+      align-items: center;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      line-height: 1.1;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+      white-space: nowrap;
+
+    }
+
+
+    .score-box {
+
+      min-height: 32px;
+
+      padding: 6px;
+
+      border-radius: 11px;
+
+      background: #111;
+
+      color: white;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 15px;
+
+      font-weight: 1000;
+
+    }
+
+
+    /* ========================================
+       BANC
+    ======================================== */
+
+    .bench-block {
+
+      margin-top: 7px;
+
+      padding: 9px;
+
+      border-radius: 13px;
+
+      background: #eaf7ef;
+
+      border:
+        1px solid #ccebd7;
+
+    }
+
+
+    .bench-title {
+
+      color: #16723c;
+
+      font-size: 9px;
+
+      font-weight: 950;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .bench-list {
+
+      margin-top: 5px;
+
+      color: #145d33;
+
+      font-size: 11px;
+
+      font-weight: 850;
+
+      line-height: 1.3;
+
+    }
+
+
+    /* ========================================
+       VIDE
+    ======================================== */
+
+    .empty {
+
+      padding: 13px;
+
+      border-radius: 12px;
+
+      background: #f5f5f5;
+
+      color: #808080;
+
+      text-align: center;
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+    }
+
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+
+    @media (min-width: 650px) {
+
+      .rounds-list {
+
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body data-page="programmation">
+
+
+<div id="siteHeader"></div>
+
+
+<main class="container program-page">
+
+
+  <!-- ======================================
+       HEADER
+  ======================================= -->
+
+  <section class="program-head">
+
+    <div class="program-head-top">
+
+      <span class="program-kicker">
+        Americano
+      </span>
+
+      <span class="program-live">
+        ● LIVE
+      </span>
+
+    </div>
+
+
+    <h1>
+      Matchs
+    </h1>
+
+
+    <p>
+      Programmation et résultats mis à jour
+      en direct pendant la soirée.
+    </p>
+
+  </section>
+
+
+  <!-- ======================================
+       COMPTEURS
+  ======================================= -->
+
+  <section class="program-summary">
+
+    <div class="summary-box">
+
+      <strong id="countRounds">
+        0
+      </strong>
+
+      <span>
+        Tours
+      </span>
+
+    </div>
+
+
+    <div class="summary-box">
+
+      <strong id="countPending">
+        0
+      </strong>
+
+      <span>
+        À jouer
+      </span>
+
+    </div>
+
+
+    <div class="summary-box">
+
+      <strong id="countDone">
+        0
+      </strong>
+
+      <span>
+        Terminés
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================
+       EN COURS / A VENIR
+  ======================================= -->
+
+  <section class="program-section">
+
+    <h2>
+      🔥 En cours / à venir
+    </h2>
+
+
+    <div
+      id="currentList"
+      class="rounds-list"
+    >
+
+      <div class="empty">
+        Chargement…
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================
+       TERMINES
+  ======================================= -->
+
+  <section class="program-section">
+
+    <h2>
+      ✅ Terminés
+    </h2>
+
+
+    <div
+      id="doneList"
+      class="rounds-list"
+    >
+
+      <div class="empty">
+        Chargement…
+      </div>
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+<script
+  type="module"
+  src="header.js"
+></script>
+
+
+<script
+  type="module"
+  src="js/programmation.js"
+></script>
+
+
+</body>
+
+</html>
