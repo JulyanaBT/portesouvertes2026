@@ -16,73 +16,43 @@ if (headerTarget) {
     "accueil";
 
 
-  const isAdminPage =
-    document.body.dataset.admin ===
-    "true";
-
-
   const adminConnected =
     isAdminConnected();
 
 
   /*
-   * Correspondance PUBLIC / ADMIN
+   * ========================================
+   * CORRESPONDANCE PUBLIC → ADMIN
+   * ========================================
    */
-
-  const publicPages = {
-
-    accueil:
-      "index.html",
-
-    participants:
-      "participants.html",
-
-    programmation:
-      "programmation.html",
-
-    classement:
-      "classement.html"
-
-  };
-
 
   const adminPages = {
 
     accueil:
-      "admin.html",
+      "admin/index.html",
 
     participants:
-      "admin-participants.html",
+      "admin/joueurs.html",
 
     programmation:
-      "admin-programmation.html",
+      "admin/matchs.html",
 
     classement:
-      "admin-classement.html"
+      "admin/classement.html"
 
   };
 
 
-  let julyanaTarget =
-    null;
+  const adminTarget =
+    adminPages[currentPage] ||
+    "admin/index.html";
 
 
-  if (adminConnected) {
-
-    julyanaTarget =
-      isAdminPage
-        ? (
-            publicPages[currentPage] ||
-            "index.html"
-          )
-        : (
-            adminPages[currentPage] ||
-            "admin.html"
-          );
-
-  }
-
-
+  /*
+   * ========================================
+   * HEADER
+   * ========================================
+   */
 
   headerTarget.innerHTML = `
 
@@ -90,6 +60,8 @@ if (headerTarget) {
 
       <div class="header-top">
 
+
+        <!-- LOGO SUZINI -->
 
         <a
           href="index.html"
@@ -105,14 +77,12 @@ if (headerTarget) {
         </a>
 
 
+        <!-- TITRE -->
+
         <div class="header-event">
 
           <span>
-            ${
-              isAdminPage
-                ? "MODE ORGANISATEUR"
-                : "PORTES OUVERTES"
-            }
+            PORTES OUVERTES
           </span>
 
           <strong>
@@ -122,19 +92,17 @@ if (headerTarget) {
         </div>
 
 
+        <!-- LOGO JUL'YANA -->
+
         ${
-          julyanaTarget
+          adminConnected
 
           ? `
 
             <a
-              href="${julyanaTarget}"
+              href="${adminTarget}"
               class="header-logo header-logo-right admin-switch"
-              aria-label="${
-                isAdminPage
-                  ? "Passer au site public"
-                  : "Passer en administration"
-              }"
+              aria-label="Passer en administration"
             >
 
               <img
@@ -166,20 +134,18 @@ if (headerTarget) {
       </div>
 
 
+      <!-- NAVIGATION -->
+
       <nav class="main-nav">
 
 
         <a
-          href="${
-            isAdminPage
-              ? "admin.html"
-              : "index.html"
-          }"
+          href="index.html"
           data-nav="accueil"
         >
 
           <span class="nav-icon">
-            ⌂
+            🏠
           </span>
 
           <span class="nav-label">
@@ -190,11 +156,7 @@ if (headerTarget) {
 
 
         <a
-          href="${
-            isAdminPage
-              ? "admin-participants.html"
-              : "participants.html"
-          }"
+          href="participants.html"
           data-nav="participants"
         >
 
@@ -210,11 +172,7 @@ if (headerTarget) {
 
 
         <a
-          href="${
-            isAdminPage
-              ? "admin-programmation.html"
-              : "programmation.html"
-          }"
+          href="programmation.html"
           data-nav="programmation"
         >
 
@@ -230,11 +188,7 @@ if (headerTarget) {
 
 
         <a
-          href="${
-            isAdminPage
-              ? "admin-classement.html"
-              : "classement.html"
-          }"
+          href="classement.html"
           data-nav="classement"
         >
 
@@ -256,6 +210,11 @@ if (headerTarget) {
   `;
 
 
+  /*
+   * ========================================
+   * ONGLET ACTIF
+   * ========================================
+   */
 
   const activeLink =
     headerTarget.querySelector(
