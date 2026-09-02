@@ -34,6 +34,10 @@ const countWaiting =
   );
 
 
+/* ========================================
+   FIRESTORE
+======================================== */
+
 const playersRef =
   collection(
     db,
@@ -50,6 +54,10 @@ const playersQuery =
     )
   );
 
+
+/* ========================================
+   HELPERS
+======================================== */
 
 function getNickname(data) {
 
@@ -68,13 +76,20 @@ function sortByNickname(a, b) {
     b.nickname,
     "fr",
     {
-      sensitivity: "base",
-      numeric: true
+      sensitivity:
+        "base",
+
+      numeric:
+        true
     }
   );
 
 }
 
+
+/* ========================================
+   ELEMENTS
+======================================== */
 
 function createChip(
   nickname,
@@ -124,6 +139,10 @@ function createEmpty(text) {
 }
 
 
+/* ========================================
+   AFFICHAGE
+======================================== */
+
 function renderPlayers(
   activePlayers,
   waitingPlayers
@@ -144,6 +163,8 @@ function renderPlayers(
     sortByNickname
   );
 
+
+  /* ACTIFS */
 
   if (
     activePlayers.length === 0
@@ -179,6 +200,8 @@ function renderPlayers(
   }
 
 
+  /* EN ATTENTE */
+
   if (
     waitingPlayers.length === 0
   ) {
@@ -213,6 +236,8 @@ function renderPlayers(
   }
 
 
+  /* COMPTEURS */
+
   countActive.textContent =
     String(
       activePlayers.length
@@ -233,6 +258,10 @@ function renderPlayers(
 
 }
 
+
+/* ========================================
+   TEMPS REEL
+======================================== */
 
 onSnapshot(
 
@@ -261,7 +290,9 @@ onSnapshot(
             documentSnapshot.id,
 
           nickname:
-            getNickname(data)
+            getNickname(
+              data
+            )
 
         };
 
@@ -299,7 +330,7 @@ onSnapshot(
   error => {
 
     console.error(
-      "Erreur chargement participants :",
+      "Erreur chargement joueurs :",
       error
     );
 
@@ -314,7 +345,7 @@ onSnapshot(
     activeList.appendChild(
 
       createEmpty(
-        "Impossible de charger les participants."
+        "Impossible de charger les joueurs."
       )
 
     );
@@ -323,7 +354,7 @@ onSnapshot(
     waitingList.appendChild(
 
       createEmpty(
-        "Impossible de charger les participants."
+        "Impossible de charger les joueurs."
       )
 
     );
