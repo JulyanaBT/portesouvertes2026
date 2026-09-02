@@ -136,90 +136,130 @@ if (headerTarget) {
 
       <!-- NAVIGATION -->
 
-      <nav class="main-nav">
+      <div class="main-nav-shell">
 
-
-        <a
-          href="index.html"
-          data-nav="accueil"
+        <button
+          type="button"
+          class="nav-scroll-arrow nav-scroll-left"
+          aria-label="Faire défiler le menu vers la gauche"
+          hidden
         >
-
-          <span class="nav-icon">
-            🏠
-          </span>
-
-          <span class="nav-label">
-            Accueil
-          </span>
-
-        </a>
+          ‹
+        </button>
 
 
-        <a
-          href="joueurs.html"
-          data-nav="joueurs"
+        <nav class="main-nav">
+
+
+          <a
+            href="index.html"
+            data-nav="accueil"
+          >
+
+            <span class="nav-icon">
+              🏠
+            </span>
+
+            <span class="nav-label">
+              Accueil
+            </span>
+
+          </a>
+
+
+          <a
+            href="joueurs.html"
+            data-nav="joueurs"
+          >
+
+            <span class="nav-icon">
+              👥
+            </span>
+
+            <span class="nav-label">
+              Joueurs
+            </span>
+
+          </a>
+
+
+          <a
+            href="programmation.html"
+            data-nav="programmation"
+          >
+
+            <span class="nav-icon">
+              🎾
+            </span>
+
+            <span class="nav-label">
+              Matchs
+            </span>
+
+          </a>
+
+
+          <a
+            href="classement.html"
+            data-nav="classement"
+          >
+
+            <span class="nav-icon">
+              🏆
+            </span>
+
+            <span class="nav-label">
+              Classement
+            </span>
+
+          </a>
+
+
+          <a
+            href="statistiques.html"
+            data-nav="statistiques"
+          >
+
+            <span class="nav-icon">
+              📊
+            </span>
+
+            <span class="nav-label">
+              Stats
+            </span>
+
+          </a>
+
+
+          <a
+            href="infos.html"
+            data-nav="infos"
+          >
+
+            <span class="nav-icon">
+              ℹ️
+            </span>
+
+            <span class="nav-label">
+              Infos
+            </span>
+
+          </a>
+
+
+        </nav>
+
+
+        <button
+          type="button"
+          class="nav-scroll-arrow nav-scroll-right"
+          aria-label="Faire défiler le menu vers la droite"
+          hidden
         >
+          ›
+        </button>
 
-          <span class="nav-icon">
-            👥
-          </span>
-
-          <span class="nav-label">
-            Joueurs
-          </span>
-
-        </a>
-
-
-        <a
-          href="programmation.html"
-          data-nav="programmation"
-        >
-
-          <span class="nav-icon">
-            🎾
-          </span>
-
-          <span class="nav-label">
-            Matchs
-          </span>
-
-        </a>
-
-
-        <a
-          href="classement.html"
-          data-nav="classement"
-        >
-
-          <span class="nav-icon">
-            🏆
-          </span>
-
-          <span class="nav-label">
-            Classement
-          </span>
-
-        </a>
-
-
-        <a
-          href="statistiques.html"
-          data-nav="statistiques"
-        >
-
-          <span class="nav-icon">
-            📊
-          </span>
-
-          <span class="nav-label">
-            Stats
-          </span>
-
-        </a>
-
-
-      </nav>
+      </div>
 
     </header>
 
@@ -245,5 +285,209 @@ if (headerTarget) {
     );
 
   }
+
+
+  /*
+   * ========================================
+   * NAVIGATION HORIZONTALE
+   * ========================================
+   */
+
+  const nav =
+    headerTarget.querySelector(
+      ".main-nav"
+    );
+
+
+  const leftArrow =
+    headerTarget.querySelector(
+      ".nav-scroll-left"
+    );
+
+
+  const rightArrow =
+    headerTarget.querySelector(
+      ".nav-scroll-right"
+    );
+
+
+  /*
+   * Affiche ou masque les flèches
+   * suivant la position du scroll.
+   */
+
+  function updateNavArrows() {
+
+    if (
+      !nav ||
+      !leftArrow ||
+      !rightArrow
+    ) {
+      return;
+    }
+
+
+    const maxScroll =
+      nav.scrollWidth -
+      nav.clientWidth;
+
+
+    const tolerance =
+      3;
+
+
+    leftArrow.hidden =
+      nav.scrollLeft <=
+      tolerance;
+
+
+    rightArrow.hidden =
+      nav.scrollLeft >=
+      maxScroll -
+      tolerance;
+
+  }
+
+
+  /*
+   * Centre l'onglet actif.
+   */
+
+  function centerActiveLink() {
+
+    if (
+      !nav ||
+      !activeLink
+    ) {
+      return;
+    }
+
+
+    const targetLeft =
+      activeLink.offsetLeft -
+      (
+        nav.clientWidth -
+        activeLink.offsetWidth
+      ) / 2;
+
+
+    const maxScroll =
+      Math.max(
+        0,
+        nav.scrollWidth -
+        nav.clientWidth
+      );
+
+
+    const finalLeft =
+      Math.max(
+        0,
+        Math.min(
+          targetLeft,
+          maxScroll
+        )
+      );
+
+
+    nav.scrollTo({
+      left: finalLeft,
+      behavior: "auto"
+    });
+
+
+    requestAnimationFrame(
+      updateNavArrows
+    );
+
+  }
+
+
+  /*
+   * Flèche gauche
+   */
+
+  leftArrow?.addEventListener(
+    "click",
+    () => {
+
+      nav.scrollBy({
+        left:
+          -Math.max(
+            140,
+            nav.clientWidth * 0.7
+          ),
+
+        behavior:
+          "smooth"
+      });
+
+    }
+  );
+
+
+  /*
+   * Flèche droite
+   */
+
+  rightArrow?.addEventListener(
+    "click",
+    () => {
+
+      nav.scrollBy({
+        left:
+          Math.max(
+            140,
+            nav.clientWidth * 0.7
+          ),
+
+        behavior:
+          "smooth"
+      });
+
+    }
+  );
+
+
+  /*
+   * Mise à jour pendant
+   * un scroll tactile.
+   */
+
+  nav?.addEventListener(
+    "scroll",
+    updateNavArrows,
+    {
+      passive: true
+    }
+  );
+
+
+  /*
+   * Recalcul si rotation écran
+   * ou changement de largeur.
+   */
+
+  window.addEventListener(
+    "resize",
+    () => {
+
+      centerActiveLink();
+
+    }
+  );
+
+
+  /*
+   * Premier affichage.
+   */
+
+  requestAnimationFrame(
+    () => {
+
+      centerActiveLink();
+      updateNavArrows();
+
+    }
+  );
 
 }
