@@ -4,13 +4,17 @@ import {
 
 
 const headerTarget =
-  document.getElementById("siteHeader");
+  document.getElementById(
+    "siteHeader"
+  );
 
 
 if (!headerTarget) {
+
   throw new Error(
     "Élément #siteHeader introuvable."
   );
+
 }
 
 
@@ -131,8 +135,8 @@ headerTarget.innerHTML = `
 
 
       <a
-        href="matchs.html"
-        data-nav="matchs"
+        href="programmation.html"
+        data-nav="programmation"
       >
 
         <span class="nav-icon">
@@ -183,6 +187,7 @@ if (currentPage) {
     headerTarget.querySelector(
       `[data-nav="${currentPage}"]`
     );
+
 
   if (activeLink) {
 
