@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#101010"
+  >
+
+  <title>
+    Administration | Americano TC Suzini
+  </title>
+
+  <!-- CSS public commun -->
+  <link
+    rel="stylesheet"
+    href="../style.css"
+  >
+
+  <!-- CSS spécifique admin -->
+  <link
+    rel="stylesheet"
+    href="admin.css"
+  >
+
+</head>
+
+
+<body
+  data-page="accueil"
+  data-admin="true"
+>
+
+
+<div id="siteHeader"></div>
+
+
+<main class="container admin-page">
+
+
+  <!-- ==============================
+       CONNEXION
+  =============================== -->
+
+  <section
+    id="loginArea"
+    class="admin-login"
+  >
+
+    <div class="admin-login-kicker">
+      Organisation
+    </div>
+
+    <h1>
+      Accès admin
+    </h1>
+
+    <p>
+      Une fois connecté, cet appareil restera
+      identifié pour les prochaines utilisations.
+    </p>
+
+
+    <form id="adminLoginForm">
+
+      <input
+        id="adminPassword"
+        class="admin-password"
+        type="password"
+        placeholder="Mot de passe"
+        autocomplete="current-password"
+        required
+      >
+
+
+      <button
+        class="admin-login-btn"
+        type="submit"
+      >
+        Se connecter
+      </button>
+
+
+      <div
+        id="adminError"
+        class="admin-error"
+      >
+        Mot de passe incorrect.
+      </div>
+
+    </form>
+
+  </section>
+
+
+
+  <!-- ==============================
+       TABLEAU DE BORD
+  =============================== -->
+
+  <section
+    id="dashboardArea"
+    class="admin-dashboard"
+  >
+
+
+    <div class="admin-dashboard-title">
+
+      <div class="admin-dashboard-kicker">
+        Mode organisateur
+      </div>
+
+      <h1>
+        Americano
+      </h1>
+
+      <p>
+        Gestion de la soirée en direct.
+      </p>
+
+    </div>
+
+
+
+    <div class="admin-grid">
+
+
+      <a
+        href="joueurs.html"
+        class="admin-card"
+      >
+
+        <span class="admin-card-icon">
+          👥
+        </span>
+
+        <div>
+
+          <small>
+            Participants
+          </small>
+
+          <strong>
+            Joueurs
+          </strong>
+
+          <p>
+            Activer, désactiver ou ajouter un joueur.
+          </p>
+
+        </div>
+
+      </a>
+
+
+
+      <a
+        href="matchs.html"
+        class="admin-card admin-card-primary"
+      >
+
+        <span class="admin-card-icon">
+          🎾
+        </span>
+
+        <div>
+
+          <small>
+            Tournoi
+          </small>
+
+          <strong>
+            Matchs
+          </strong>
+
+          <p>
+            Générer les rotations et saisir les scores.
+          </p>
+
+        </div>
+
+      </a>
+
+
+
+      <a
+        href="classement.html"
+        class="admin-card"
+      >
+
+        <span class="admin-card-icon">
+          🏆
+        </span>
+
+        <div>
+
+          <small>
+            Résultats
+          </small>
+
+          <strong>
+            Classement
+          </strong>
+
+          <p>
+            Suivre le classement individuel.
+          </p>
+
+        </div>
+
+      </a>
+
+
+
+      <a
+        href="../index.html"
+        class="admin-card"
+      >
+
+        <span class="admin-card-icon">
+          👁️
+        </span>
+
+        <div>
+
+          <small>
+            Interface
+          </small>
+
+          <strong>
+            Site public
+          </strong>
+
+          <p>
+            Voir exactement ce que voient les joueurs.
+          </p>
+
+        </div>
+
+      </a>
+
+
+    </div>
+
+
+
+    <button
+      id="logoutBtn"
+      class="logout-btn"
+      type="button"
+    >
+      Déconnecter cet appareil
+    </button>
+
+
+  </section>
+
+
+</main>
+
+
+
+<!-- HEADER ADMIN -->
+<script
+  type="module"
+  src="admin-header.js"
+></script>
+
+
+
+<!-- SESSION ADMIN -->
+<script type="module">
+
+  import {
+    isAdminConnected,
+    loginAdmin,
+    logoutAdmin
+  } from "../admin-session.js";
+
+
+  const loginArea =
+    document.getElementById("loginArea");
+
+  const dashboardArea =
+    document.getElementById("dashboardArea");
+
+  const loginForm =
+    document.getElementById("adminLoginForm");
+
+  const passwordInput =
+    document.getElementById("adminPassword");
+
+  const errorBox =
+    document.getElementById("adminError");
+
+  const logoutBtn =
+    document.getElementById("logoutBtn");
+
+
+
+  function refreshPageState() {
+
+    const connected =
+      isAdminConnected();
+
+
+    if (connected) {
+
+      loginArea.style.display =
+        "none";
+
+      dashboardArea.classList.add(
+        "visible"
+      );
+
+    }
+
+    else {
+
+      loginArea.style.display =
+        "block";
+
+      dashboardArea.classList.remove(
+        "visible"
+      );
+
+    }
+
+  }
+
+
+
+  loginForm.addEventListener(
+    "submit",
+    event => {
+
+      event.preventDefault();
+
+
+      const success =
+        loginAdmin(
+          passwordInput.value
+        );
+
+
+      if (success) {
+
+        errorBox.classList.remove(
+          "visible"
+        );
+
+        /*
+         * Recharge pour que le header
+         * reconnaisse immédiatement
+         * la session administrateur.
+         */
+
+        window.location.reload();
+
+      }
+
+      else {
+
+        errorBox.classList.add(
+          "visible"
+        );
+
+        passwordInput.select();
+
+      }
+
+    }
+  );
+
+
+
+  logoutBtn.addEventListener(
+    "click",
+    () => {
+
+      logoutAdmin();
+
+      window.location.href =
+        "../index.html";
+
+    }
+  );
+
+
+
+  refreshPageState();
+
+</script>
+
+
+</body>
+
+</html>
