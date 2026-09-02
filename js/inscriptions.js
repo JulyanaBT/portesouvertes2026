@@ -9,90 +9,170 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 
-const form = document.getElementById("signupForm");
+const form =
+  document.getElementById(
+    "signupForm"
+  );
 
-const formArea = document.getElementById("formArea");
+const formArea =
+  document.getElementById(
+    "formArea"
+  );
 
-const prenomInput = document.getElementById("prenom");
-const nomInput = document.getElementById("nom");
-const surnomInput = document.getElementById("surnom");
+const prenomInput =
+  document.getElementById(
+    "prenom"
+  );
+
+const nomInput =
+  document.getElementById(
+    "nom"
+  );
+
+const surnomInput =
+  document.getElementById(
+    "surnom"
+  );
 
 const suggestedNickname =
-  document.getElementById("suggestedNickname");
+  document.getElementById(
+    "suggestedNickname"
+  );
 
 const submitBtn =
-  document.getElementById("submitBtn");
+  document.getElementById(
+    "submitBtn"
+  );
 
 const message =
-  document.getElementById("formMessage");
+  document.getElementById(
+    "formMessage"
+  );
 
 const successCard =
-  document.getElementById("successCard");
+  document.getElementById(
+    "successCard"
+  );
 
 const successNickname =
-  document.getElementById("successNickname");
+  document.getElementById(
+    "successNickname"
+  );
 
+
+/* ========================================
+   FIRESTORE
+======================================== */
 
 const playersRef =
-  collection(db, "players");
+  collection(
+    db,
+    "players"
+  );
 
 const nicknamesRef =
-  collection(db, "nicknames");
+  collection(
+    db,
+    "nicknames"
+  );
 
+
+/* ========================================
+   STATE
+======================================== */
 
 let suggestionRequest = 0;
+
 let isSubmitting = false;
 
 
+/* ========================================
+   HELPERS
+======================================== */
+
 function clean(value) {
+
   return String(value || "")
     .trim()
     .replace(/\s+/g, " ");
+
 }
 
 
 function normalizeKey(value) {
+
   return String(value || "")
     .trim()
     .toLowerCase()
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .replace(
+      /[\u0300-\u036f]/g,
+      ""
+    )
+    .replace(
+      /[^a-z0-9]+/g,
+      "-"
+    )
+    .replace(
+      /^-+|-+$/g,
+      ""
+    );
+
 }
 
 
 function capitalize(value) {
 
-  const text = clean(value);
+  const text =
+    clean(value);
 
   if (!text) {
     return "";
   }
 
   return (
-    text.charAt(0).toUpperCase() +
+    text.charAt(0).toUpperCase()
+    +
     text.slice(1)
   );
+
 }
 
 
-function makeBaseNickname(prenom, nom) {
+function makeBaseNickname(
+  prenom,
+  nom
+) {
 
-  const p = capitalize(prenom);
-  const n = clean(nom);
+  const p =
+    capitalize(prenom);
+
+  const n =
+    clean(nom);
 
   if (!p || !n) {
     return "";
   }
 
-  return `${p} ${n.charAt(0).toUpperCase()}`;
+  return (
+    `${p} ${n.charAt(0).toUpperCase()}`
+  );
+
 }
 
 
-async function nicknameExists(nickname) {
+/* ========================================
+   NICKNAME
+======================================== */
 
-  const key = normalizeKey(nickname);
+async function nicknameExists(
+  nickname
+) {
+
+  const key =
+    normalizeKey(
+      nickname
+    );
 
   if (!key) {
     return true;
@@ -100,30 +180,42 @@ async function nicknameExists(nickname) {
 
   const snapshot =
     await getDoc(
-      doc(nicknamesRef, key)
+      doc(
+        nicknamesRef,
+        key
+      )
     );
 
   return snapshot.exists();
+
 }
 
 
-async function findAvailableNickname(base) {
+async function findAvailableNickname(
+  base
+) {
 
-  let candidate = clean(base);
+  let candidate =
+    clean(base);
 
-  let counter = 2;
+  let counter =
+    2;
 
   while (
-    await nicknameExists(candidate)
+    await nicknameExists(
+      candidate
+    )
   ) {
 
     candidate =
       `${base} ${counter}`;
 
     counter++;
+
   }
 
   return candidate;
+
 }
 
 
@@ -144,6 +236,7 @@ async function updateSuggestion() {
       "—";
 
     return;
+
   }
 
   suggestedNickname.textContent =
@@ -152,7 +245,9 @@ async function updateSuggestion() {
   try {
 
     const nickname =
-      await findAvailableNickname(base);
+      await findAvailableNickname(
+        base
+      );
 
     if (
       requestId !==
@@ -164,23 +259,45 @@ async function updateSuggestion() {
     suggestedNickname.textContent =
       nickname;
 
-  } catch (error) {
-
-    console.error(error);
-
-    suggestedNickname.textContent =
-      base;
   }
+
+  catch (error) {
+
+    console.error(
+      "Erreur suggestion surnom :",
+      error
+    );
+
+    if (
+      requestId ===
+      suggestionRequest
+    ) {
+
+      suggestedNickname.textContent =
+        base;
+
+    }
+
+  }
+
 }
 
 
-function setMessage(type, text) {
+/* ========================================
+   MESSAGES
+======================================== */
+
+function setMessage(
+  type,
+  text
+) {
 
   message.className =
     `message ${type}`;
 
   message.textContent =
     text;
+
 }
 
 
@@ -191,8 +308,13 @@ function clearMessage() {
 
   message.textContent =
     "";
+
 }
 
+
+/* ========================================
+   EVENTS
+======================================== */
 
 prenomInput.addEventListener(
   "input",
@@ -205,6 +327,10 @@ nomInput.addEventListener(
   updateSuggestion
 );
 
+
+/* ========================================
+   SUBMIT
+======================================== */
 
 form.addEventListener(
   "submit",
@@ -219,17 +345,27 @@ form.addEventListener(
 
     clearMessage();
 
+
     const prenom =
-      clean(prenomInput.value);
+      clean(
+        prenomInput.value
+      );
 
     const nom =
-      clean(nomInput.value);
+      clean(
+        nomInput.value
+      );
 
     const customNickname =
-      clean(surnomInput.value);
+      clean(
+        surnomInput.value
+      );
 
 
-    if (!prenom || !nom) {
+    if (
+      !prenom ||
+      !nom
+    ) {
 
       setMessage(
         "error",
@@ -237,12 +373,15 @@ form.addEventListener(
       );
 
       return;
+
     }
 
 
-    isSubmitting = true;
+    isSubmitting =
+      true;
 
-    submitBtn.disabled = true;
+    submitBtn.disabled =
+      true;
 
     submitBtn.textContent =
       "Inscription…";
@@ -251,7 +390,10 @@ form.addEventListener(
     try {
 
       const baseNickname =
-        makeBaseNickname(prenom, nom);
+        makeBaseNickname(
+          prenom,
+          nom
+        );
 
 
       const finalNickname =
@@ -263,7 +405,9 @@ form.addEventListener(
 
 
       const nicknameKey =
-        normalizeKey(finalNickname);
+        normalizeKey(
+          finalNickname
+        );
 
 
       if (!nicknameKey) {
@@ -271,11 +415,14 @@ form.addEventListener(
         throw new Error(
           "Le surnom choisi n'est pas valide."
         );
+
       }
 
 
       const playerRef =
-        doc(playersRef);
+        doc(
+          playersRef
+        );
 
 
       const nicknameRef =
@@ -286,11 +433,9 @@ form.addEventListener(
 
 
       await runTransaction(
-
         db,
 
         async transaction => {
-
 
           const nicknameSnapshot =
             await transaction.get(
@@ -305,16 +450,20 @@ form.addEventListener(
             throw new Error(
               "Ce surnom vient d'être pris."
             );
+
           }
 
 
+          /*
+           * JOUEUR
+           */
+
           transaction.set(
-
             playerRef,
-
             {
 
               prenom,
+
               nom,
 
               surnom:
@@ -328,6 +477,12 @@ form.addEventListener(
               status:
                 "registered",
 
+              arrivalAt:
+                null,
+
+              departureAt:
+                null,
+
               createdAt:
                 serverTimestamp(),
 
@@ -335,14 +490,15 @@ form.addEventListener(
                 serverTimestamp()
 
             }
-
           );
 
 
+          /*
+           * RESERVATION DU SURNOM
+           */
+
           transaction.set(
-
             nicknameRef,
-
             {
 
               nickname:
@@ -355,13 +511,15 @@ form.addEventListener(
                 serverTimestamp()
 
             }
-
           );
 
         }
-
       );
 
+
+      /*
+       * CONFIRMATION
+       */
 
       successNickname.textContent =
         finalNickname;
@@ -375,12 +533,15 @@ form.addEventListener(
         "visible"
       );
 
-
     }
 
     catch (error) {
 
-      console.error(error);
+      console.error(
+        "Erreur inscription :",
+        error
+      );
+
 
       setMessage(
         "error",
@@ -392,9 +553,13 @@ form.addEventListener(
 
     finally {
 
-      isSubmitting = false;
+      isSubmitting =
+        false;
 
-      submitBtn.disabled = false;
+
+      submitBtn.disabled =
+        false;
+
 
       submitBtn.textContent =
         "✍️ Valider mon inscription";
