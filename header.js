@@ -203,6 +203,22 @@ if (headerTarget) {
         </a>
 
 
+        <a
+          href="statistiques.html"
+          data-nav="statistiques"
+        >
+
+          <span class="nav-icon">
+            📊
+          </span>
+
+          <span class="nav-label">
+            Stats
+          </span>
+
+        </a>
+
+
       </nav>
 
     </header>
