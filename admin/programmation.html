@@ -1,0 +1,1183 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#111111"
+  >
+
+  <title>
+    Programmation | Administration Americano
+  </title>
+
+
+  <link
+    rel="stylesheet"
+    href="../style.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="admin.css"
+  >
+
+
+  <style>
+
+    /* ========================================
+       PAGE PROGRAMMATION ADMIN
+    ======================================== */
+
+    .program-admin-page {
+      padding-bottom: 24px;
+    }
+
+
+    /* ========================================
+       HERO
+    ======================================== */
+
+    .program-admin-head {
+
+      padding: 15px;
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #1a1a1a,
+          #272727
+        );
+
+      border:
+        1px solid #323232;
+
+    }
+
+
+    .program-admin-head-top {
+
+      display: flex;
+
+      align-items: flex-start;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+    }
+
+
+    .program-admin-kicker {
+
+      color: #ff4b27;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      letter-spacing: 1.1px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .program-admin-head h1 {
+
+      margin: 4px 0 0;
+
+      color: white;
+
+      font-size: 27px;
+
+      line-height: 1;
+
+      font-weight: 1000;
+
+      letter-spacing: -1px;
+
+    }
+
+
+    .program-admin-head p {
+
+      margin: 7px 0 0;
+
+      color: #aaa;
+
+      font-size: 10px;
+
+      line-height: 1.35;
+
+    }
+
+
+    .live-badge {
+
+      flex: 0 0 auto;
+
+      padding: 5px 8px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(37,184,100,.16);
+
+      color: #75e9a4;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+    }
+
+
+    /* ========================================
+       COMPTEURS
+    ======================================== */
+
+    .program-summary {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      gap: 7px;
+
+      margin-top: 8px;
+
+    }
+
+
+    .summary-box {
+
+      min-width: 0;
+
+      padding: 11px 4px;
+
+      border-radius: 14px;
+
+      background: #1d1d1d;
+
+      border:
+        1px solid #323232;
+
+      text-align: center;
+
+    }
+
+
+    .summary-box strong {
+
+      display: block;
+
+      color: white;
+
+      font-size: 21px;
+
+      line-height: 1;
+
+      font-weight: 1000;
+
+    }
+
+
+    .summary-box span {
+
+      display: block;
+
+      margin-top: 4px;
+
+      color: #888;
+
+      font-size: 7px;
+
+      font-weight: 900;
+
+      letter-spacing: .5px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .summary-box.active strong {
+      color: #75e9a4;
+    }
+
+
+    .summary-box.pending strong {
+      color: #ffd36f;
+    }
+
+
+    /* ========================================
+       COMMANDES
+    ======================================== */
+
+    .program-controls {
+
+      margin-top: 8px;
+    }
+
+
+    .program-actions {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 7px;
+
+    }
+
+
+    .program-actions .admin-btn {
+
+      width: 100%;
+
+      min-width: 0;
+
+    }
+
+
+    .program-actions .full {
+
+      grid-column:
+        1 / -1;
+
+    }
+
+
+    .program-status {
+
+      margin-top: 8px;
+
+      padding: 10px 12px;
+
+      border-radius: 12px;
+
+      background: #171717;
+
+      border:
+        1px solid #303030;
+
+      color: #aaa;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      line-height: 1.35;
+
+    }
+
+
+    /* ========================================
+       SECTIONS
+    ======================================== */
+
+    .program-panel {
+
+      margin-top: 8px;
+    }
+
+
+    .program-panel-title {
+
+      margin: 0 0 10px;
+
+      color: white;
+
+      font-size: 17px;
+
+      font-weight: 950;
+
+    }
+
+
+    .rounds-list {
+
+      display: grid;
+
+      gap: 8px;
+
+    }
+
+
+    /* ========================================
+       TOUR
+    ======================================== */
+
+    .round-card {
+
+      padding: 11px;
+
+      border-radius: 15px;
+
+      background: #1d1d1d;
+
+      border:
+        1px solid #323232;
+
+    }
+
+
+    .round-head {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 8px;
+
+      margin-bottom: 8px;
+
+    }
+
+
+    .round-title {
+
+      color: white;
+
+      font-size: 17px;
+
+      font-weight: 1000;
+
+    }
+
+
+    .round-status {
+
+      padding: 4px 7px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(240,180,41,.16);
+
+      color: #ffd36f;
+
+      font-size: 8px;
+
+      font-weight: 950;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .round-status.done {
+
+      background:
+        rgba(37,184,100,.16);
+
+      color: #75e9a4;
+
+    }
+
+
+    /* ========================================
+       MATCH
+    ======================================== */
+
+    .match-admin-card {
+
+      margin-top: 7px;
+
+      padding: 9px;
+
+      border-radius: 13px;
+
+      background: #151515;
+
+      border:
+        1px solid #303030;
+
+    }
+
+
+    .match-head {
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr) auto auto;
+
+      gap: 6px;
+
+      align-items: center;
+
+      margin-bottom: 7px;
+
+    }
+
+
+    .court-name {
+
+      min-width: 0;
+
+      color: #ff7a59;
+
+      font-size: 10px;
+
+      font-weight: 950;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+    }
+
+
+    .match-status {
+
+      padding: 4px 7px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(240,180,41,.15);
+
+      color: #ffd36f;
+
+      font-size: 7px;
+
+      font-weight: 950;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .match-status.playing {
+
+      background:
+        rgba(37,184,100,.16);
+
+      color: #75e9a4;
+
+    }
+
+
+    .match-status.done {
+
+      background:
+        rgba(117,233,164,.12);
+
+      color: #75e9a4;
+
+    }
+
+
+    .match-edit-btn {
+
+      width: 27px;
+
+      height: 27px;
+
+      border: 0;
+
+      border-radius: 999px;
+
+      background: #292929;
+
+      color: white;
+
+      cursor: pointer;
+
+      font-family: inherit;
+
+    }
+
+
+    /* ========================================
+       EQUIPES / SCORES
+    ======================================== */
+
+    .team-row {
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr) 48px;
+
+      gap: 6px;
+
+      align-items: center;
+
+      margin-top: 5px;
+
+    }
+
+
+    .team-name {
+
+      min-width: 0;
+
+      min-height: 34px;
+
+      padding: 8px 9px;
+
+      border-radius: 11px;
+
+      background: #242424;
+
+      color: white;
+
+      display: flex;
+
+      align-items: center;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      line-height: 1.1;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+    }
+
+
+    .score-input {
+
+      width: 100%;
+
+      min-height: 34px;
+
+      box-sizing: border-box;
+
+      border:
+        1px solid #3b3b3b;
+
+      border-radius: 11px;
+
+      padding: 5px;
+
+      background: #111;
+
+      color: white;
+
+      font-size: 16px;
+
+      font-weight: 1000;
+
+      text-align: center;
+
+      font-family: inherit;
+
+    }
+
+
+    .score-input:disabled {
+
+      opacity: .65;
+
+    }
+
+
+    /* ========================================
+       ACTIONS MATCH
+    ======================================== */
+
+    .match-actions {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 6px;
+
+      margin-top: 7px;
+
+    }
+
+
+    .match-actions .admin-btn {
+
+      width: 100%;
+    }
+
+
+    /* ========================================
+       BANC
+    ======================================== */
+
+    .bench-admin {
+
+      margin-top: 7px;
+
+      padding: 9px;
+
+      border-radius: 12px;
+
+      background:
+        rgba(37,184,100,.08);
+
+      border:
+        1px solid rgba(37,184,100,.18);
+
+    }
+
+
+    .bench-admin strong {
+
+      display: block;
+
+      color: #75e9a4;
+
+      font-size: 8px;
+
+      font-weight: 950;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .bench-admin div {
+
+      margin-top: 4px;
+
+      color: #c8c8c8;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      line-height: 1.3;
+
+    }
+
+
+    /* ========================================
+       VIDE
+    ======================================== */
+
+    .program-empty {
+
+      padding: 16px 12px;
+
+      border-radius: 12px;
+
+      background: #171717;
+
+      color: #888;
+
+      text-align: center;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+    }
+
+
+    /* ========================================
+       MODALE
+    ======================================== */
+
+    .edit-modal-backdrop {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 9999;
+
+      display: none;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 18px;
+
+      background:
+        rgba(0,0,0,.75);
+
+    }
+
+
+    .edit-modal-backdrop.visible {
+
+      display: flex;
+
+    }
+
+
+    .edit-modal {
+
+      width:
+        min(470px, 100%);
+
+      max-height:
+        calc(100vh - 36px);
+
+      overflow-y: auto;
+
+      padding: 16px;
+
+      border-radius: 20px;
+
+      background: #1c1c1c;
+
+      border:
+        1px solid #343434;
+
+      box-shadow:
+        0 24px 60px rgba(0,0,0,.5);
+
+    }
+
+
+    .edit-modal h2 {
+
+      margin: 0;
+
+      color: white;
+
+      font-size: 21px;
+
+      font-weight: 1000;
+
+    }
+
+
+    .edit-modal p {
+
+      margin: 6px 0 12px;
+
+      color: #999;
+
+      font-size: 10px;
+
+      line-height: 1.35;
+
+    }
+
+
+    .edit-fields {
+
+      display: grid;
+
+      gap: 8px;
+
+    }
+
+
+    .edit-field {
+
+      display: grid;
+
+      gap: 4px;
+
+    }
+
+
+    .edit-field label {
+
+      color: #999;
+
+      font-size: 8px;
+
+      font-weight: 950;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .edit-field select {
+
+      width: 100%;
+
+      min-height: 40px;
+
+      padding: 7px 9px;
+
+      border:
+        1px solid #3b3b3b;
+
+      border-radius: 11px;
+
+      background: #111;
+
+      color: white;
+
+      font-size: 13px;
+
+      font-weight: 850;
+
+    }
+
+
+    .edit-modal-actions {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 7px;
+
+      margin-top: 12px;
+
+    }
+
+
+    /* ========================================
+       TABLETTE
+    ======================================== */
+
+    @media (min-width: 700px) {
+
+      .program-actions {
+
+        grid-template-columns:
+          repeat(3, 1fr);
+
+      }
+
+
+      .program-actions .full {
+
+        grid-column: auto;
+
+      }
+
+
+      .rounds-list {
+
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body
+  data-page="programmation"
+  data-admin="true"
+>
+
+
+<div id="siteHeader"></div>
+
+
+<main class="container admin-page program-admin-page">
+
+
+  <!-- ======================================
+       HERO
+  ======================================= -->
+
+  <section class="program-admin-head">
+
+    <div class="program-admin-head-top">
+
+      <div>
+
+        <div class="program-admin-kicker">
+          Organisation
+        </div>
+
+        <h1>
+          Programmation
+        </h1>
+
+        <p>
+          Génère les rotations, saisis les scores
+          et ajuste les matchs pendant la soirée.
+        </p>
+
+      </div>
+
+
+      <div class="live-badge">
+        ● LIVE
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================
+       COMPTEURS
+  ======================================= -->
+
+  <section class="program-summary">
+
+    <div class="summary-box active">
+
+      <strong id="countActive">
+        0
+      </strong>
+
+      <span>
+        Actifs
+      </span>
+
+    </div>
+
+
+    <div class="summary-box">
+
+      <strong id="countRounds">
+        0
+      </strong>
+
+      <span>
+        Tours
+      </span>
+
+    </div>
+
+
+    <div class="summary-box pending">
+
+      <strong id="countPending">
+        0
+      </strong>
+
+      <span>
+        À jouer
+      </span>
+
+    </div>
+
+
+    <div class="summary-box">
+
+      <strong id="countDone">
+        0
+      </strong>
+
+      <span>
+        Terminés
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================
+       COMMANDES
+  ======================================= -->
+
+  <section class="admin-panel program-controls">
+
+    <div class="admin-panel-head">
+
+      <div>
+
+        <div class="admin-panel-kicker">
+          Rotations
+        </div>
+
+        <h2 class="admin-panel-title">
+          Génération des tours
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="program-actions">
+
+      <button
+        id="btnInitial"
+        class="admin-btn admin-btn-primary"
+        type="button"
+      >
+        🚀 2 premiers tours
+      </button>
+
+
+      <button
+        id="btnNext"
+        class="admin-btn"
+        type="button"
+      >
+        ➕ Nouveau tour
+      </button>
+
+
+      <button
+        id="btnReset"
+        class="admin-btn admin-btn-danger full"
+        type="button"
+      >
+        ♻️ Réinitialiser
+      </button>
+
+    </div>
+
+
+    <div
+      id="statusMsg"
+      class="program-status"
+    >
+      Chargement…
+    </div>
+
+  </section>
+
+
+  <!-- ======================================
+       MATCHS A JOUER
+  ======================================= -->
+
+  <section class="admin-panel program-panel">
+
+    <h2 class="program-panel-title">
+      🔥 En cours / à venir
+    </h2>
+
+
+    <div
+      id="currentList"
+      class="rounds-list"
+    >
+
+      <div class="program-empty">
+        Chargement…
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================
+       TERMINES
+  ======================================= -->
+
+  <section class="admin-panel program-panel">
+
+    <h2 class="program-panel-title">
+      ✅ Terminés
+    </h2>
+
+
+    <div
+      id="doneList"
+      class="rounds-list"
+    >
+
+      <div class="program-empty">
+        Chargement…
+      </div>
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+<!-- ======================================
+     MODALE MODIFICATION MATCH
+======================================= -->
+
+<div
+  id="editModal"
+  class="edit-modal-backdrop"
+>
+
+
+  <div class="edit-modal">
+
+
+    <h2>
+      Modifier le match
+    </h2>
+
+
+    <p>
+      Tu peux remplacer un joueur du match
+      par un autre joueur actif.
+    </p>
+
+
+    <div
+      id="editFields"
+      class="edit-fields"
+    ></div>
+
+
+    <div class="edit-modal-actions">
+
+      <button
+        id="btnCancelEdit"
+        class="admin-btn"
+        type="button"
+      >
+        Annuler
+      </button>
+
+
+      <button
+        id="btnSaveEdit"
+        class="admin-btn admin-btn-primary"
+        type="button"
+      >
+        Enregistrer
+      </button>
+
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+<script
+  type="module"
+  src="admin-header.js"
+></script>
+
+
+<script
+  type="module"
+  src="js/programmation.js"
+></script>
+
+
+</body>
+
+</html>
