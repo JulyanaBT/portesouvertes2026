@@ -31,7 +31,7 @@ if (headerTarget) {
     accueil:
       "admin/index.html",
 
-    participants:
+    joueurs:
       "admin/joueurs.html",
 
     programmation:
@@ -156,8 +156,8 @@ if (headerTarget) {
 
 
         <a
-          href="participants.html"
-          data-nav="participants"
+          href="joueurs.html"
+          data-nav="joueurs"
         >
 
           <span class="nav-icon">
