@@ -1,27 +1,50 @@
-const ADMIN_STORAGE_KEY = "suziniAmericanoAdmin";
-const ADMIN_PASSWORD = "Mel@nie.28";
+const ADMIN_STORAGE_KEY =
+  "suziniAmericanoAdmin";
 
+const ADMIN_PASSWORD =
+  "Mel@nie.28";
+
+
+/* ========================================
+   ETAT DE LA SESSION
+======================================== */
 
 export function isAdminConnected() {
-  return localStorage.getItem(ADMIN_STORAGE_KEY) === "true";
+
+  return (
+    localStorage.getItem(
+      ADMIN_STORAGE_KEY
+    ) === "true"
+  );
+
 }
 
+
+/* ========================================
+   CONNEXION
+======================================== */
 
 export function loginAdmin(password) {
 
-  if (password === ADMIN_PASSWORD) {
+  if (password !== ADMIN_PASSWORD) {
 
-    localStorage.setItem(
-      ADMIN_STORAGE_KEY,
-      "true"
-    );
+    return false;
 
-    return true;
   }
 
-  return false;
+  localStorage.setItem(
+    ADMIN_STORAGE_KEY,
+    "true"
+  );
+
+  return true;
+
 }
 
+
+/* ========================================
+   DECONNEXION
+======================================== */
 
 export function logoutAdmin() {
 
@@ -32,15 +55,32 @@ export function logoutAdmin() {
 }
 
 
+/* ========================================
+   PROTECTION DES PAGES ADMIN
+======================================== */
+
 export function requireAdmin() {
 
-  if (!isAdminConnected()) {
+  if (isAdminConnected()) {
 
-    window.location.href =
-      "admin.html";
+    return true;
 
-    return false;
   }
 
-  return true;
+  window.location.href =
+    "index.html";
+
+  return false;
+
+}
+
+
+/* ========================================
+   BOUTONS RESERVES ADMIN
+======================================== */
+
+export function canAccessAdmin() {
+
+  return isAdminConnected();
+
 }
