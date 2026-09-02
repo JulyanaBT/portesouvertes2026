@@ -1,142 +1,194 @@
-const headerTarget = document.getElementById("siteHeader");
+import {
+  isAdminConnected
+} from "../admin-session.js";
 
-if (headerTarget) {
 
-  headerTarget.innerHTML = `
+const headerTarget =
+  document.getElementById("siteHeader");
 
-    <header class="site-header admin-header">
 
-      <div class="header-top">
+if (!headerTarget) {
+  throw new Error(
+    "Élément #siteHeader introuvable."
+  );
+}
 
-        <a
-          href="index.html"
-          class="header-logo"
-          aria-label="Accueil admin"
+
+/*
+ * Sécurité interface minimale :
+ * si l'appareil n'est pas connecté en admin,
+ * on renvoie vers la page de connexion admin.
+ */
+
+const currentPath =
+  window.location.pathname;
+
+
+const isAdminHome =
+  currentPath.endsWith("/admin/") ||
+  currentPath.endsWith("/admin/index.html");
+
+
+if (
+  !isAdminConnected() &&
+  !isAdminHome
+) {
+
+  window.location.href =
+    "index.html";
+
+}
+
+
+/*
+ * HEADER ADMIN
+ */
+
+headerTarget.innerHTML = `
+
+  <header class="site-header admin-header">
+
+    <div class="header-top">
+
+
+      <a
+        href="index.html"
+        class="header-logo"
+        aria-label="Accueil administration"
+      >
+
+        <img
+          src="../assets/logo-suzini.png"
+          alt="TC Suzini"
         >
 
-          <img
-            src="../assets/logo-suzini.png"
-            alt="TC Suzini"
-          >
-
-        </a>
+      </a>
 
 
-        <div class="header-event">
+      <div class="header-event">
 
-          <span>
-            MODE ORGANISATEUR
-          </span>
+        <span>
+          MODE ORGANISATEUR
+        </span>
 
-          <strong>
-            Americano
-          </strong>
-
-        </div>
-
-
-        <a
-          href="../index.html"
-          class="header-logo header-logo-right"
-          aria-label="Version publique"
-        >
-
-          <img
-            src="../assets/logo-julyana.png"
-            alt="Jul'Yana Beach Tennis"
-          >
-
-        </a>
+        <strong>
+          Americano
+        </strong>
 
       </div>
 
 
+      <a
+        href="../index.html"
+        class="header-logo header-logo-right admin-public-switch"
+        aria-label="Passer au site public"
+      >
 
-      <nav class="main-nav">
-
-        <a
-          href="index.html"
-          data-nav="accueil"
+        <img
+          src="../assets/logo-julyana.png"
+          alt="Jul'Yana Beach Tennis"
         >
 
-          <span class="nav-icon">
-            🏠
-          </span>
-
-          <span class="nav-label">
-            Accueil
-          </span>
-
-        </a>
+      </a>
 
 
-        <a
-          href="joueurs.html"
-          data-nav="joueurs"
-        >
-
-          <span class="nav-icon">
-            👥
-          </span>
-
-          <span class="nav-label">
-            Joueurs
-          </span>
-
-        </a>
+    </div>
 
 
-        <a
-          href="matchs.html"
-          data-nav="matchs"
-        >
-
-          <span class="nav-icon">
-            🎾
-          </span>
-
-          <span class="nav-label">
-            Matchs
-          </span>
-
-        </a>
+    <nav class="main-nav">
 
 
-        <a
-          href="classement.html"
-          data-nav="classement"
-        >
+      <a
+        href="index.html"
+        data-nav="accueil"
+      >
 
-          <span class="nav-icon">
-            🏆
-          </span>
+        <span class="nav-icon">
+          🏠
+        </span>
 
-          <span class="nav-label">
-            Classement
-          </span>
+        <span class="nav-label">
+          Accueil
+        </span>
 
-        </a>
-
-      </nav>
-
-    </header>
-
-  `;
+      </a>
 
 
-  const currentPage =
-    document.body.dataset.page;
+      <a
+        href="joueurs.html"
+        data-nav="joueurs"
+      >
 
-  if (currentPage) {
+        <span class="nav-icon">
+          👥
+        </span>
 
-    const activeLink =
-      document.querySelector(
-        `[data-nav="${currentPage}"]`
-      );
+        <span class="nav-label">
+          Joueurs
+        </span>
 
-    if (activeLink) {
-      activeLink.classList.add("active");
-    }
+      </a>
+
+
+      <a
+        href="matchs.html"
+        data-nav="matchs"
+      >
+
+        <span class="nav-icon">
+          🎾
+        </span>
+
+        <span class="nav-label">
+          Matchs
+        </span>
+
+      </a>
+
+
+      <a
+        href="classement.html"
+        data-nav="classement"
+      >
+
+        <span class="nav-icon">
+          🏆
+        </span>
+
+        <span class="nav-label">
+          Classement
+        </span>
+
+      </a>
+
+
+    </nav>
+
+  </header>
+
+`;
+
+
+/*
+ * ONGLET ACTIF
+ */
+
+const currentPage =
+  document.body.dataset.page;
+
+
+if (currentPage) {
+
+  const activeLink =
+    headerTarget.querySelector(
+      `[data-nav="${currentPage}"]`
+    );
+
+  if (activeLink) {
+
+    activeLink.classList.add(
+      "active"
+    );
 
   }
 
