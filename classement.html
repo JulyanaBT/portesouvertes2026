@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#ffffff"
+  >
+
+  <title>
+    Classement | Americano TC Suzini
+  </title>
+
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+
+  <style>
+
+    /* ========================================
+       PAGE CLASSEMENT
+    ======================================== */
+
+    .ranking-page {
+
+      padding-bottom: 24px;
+
+    }
+
+
+    /* ========================================
+       HERO
+    ======================================== */
+
+    .ranking-head {
+
+      padding: 16px 17px;
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #111111,
+          #292929
+        );
+
+      color: white;
+
+      box-shadow:
+        0 8px 22px rgba(0,0,0,.08);
+
+    }
+
+
+    .ranking-head-top {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+    }
+
+
+    .ranking-kicker {
+
+      color: #ff4b27;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      letter-spacing: 1.3px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .ranking-pill {
+
+      padding: 5px 8px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,75,39,.14);
+
+      color: #ff9b84;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+    }
+
+
+    .ranking-head h1 {
+
+      margin: 6px 0 0;
+
+      font-size: 30px;
+
+      line-height: 1;
+
+      font-weight: 1000;
+
+      letter-spacing: -1.1px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .ranking-head p {
+
+      margin: 7px 0 0;
+
+      color: #d5d5d5;
+
+      font-size: 11px;
+
+      line-height: 1.35;
+
+    }
+
+
+    /* ========================================
+       REGLES
+    ======================================== */
+
+    .ranking-info {
+
+      margin-top: 8px;
+
+      padding: 12px;
+
+      border-radius: 16px;
+
+      background: white;
+
+      color: #222;
+
+      box-shadow:
+        0 8px 22px rgba(0,0,0,.07);
+
+    }
+
+
+    .ranking-info strong {
+
+      color: #e34422;
+
+    }
+
+
+    .ranking-info-text {
+
+      margin: 0;
+
+      font-size: 11px;
+
+      font-weight: 850;
+
+      line-height: 1.45;
+
+    }
+
+
+    /* ========================================
+       LISTE
+    ======================================== */
+
+    .ranking-panel {
+
+      margin-top: 8px;
+
+      padding: 9px;
+
+      border-radius: 17px;
+
+      background: white;
+
+      box-shadow:
+        0 8px 22px rgba(0,0,0,.07);
+
+    }
+
+
+    .ranking-list {
+
+      display: grid;
+
+      gap: 7px;
+
+    }
+
+
+    /* ========================================
+       CARTE JOUEUR
+    ======================================== */
+
+    .rank-card {
+
+      display: grid;
+
+      gap: 8px;
+
+      padding: 10px;
+
+      border-radius: 15px;
+
+      border:
+        1px solid #ececec;
+
+      background: #fafafa;
+
+    }
+
+
+    .rank-card.top1 {
+
+      background:
+        linear-gradient(
+          135deg,
+          #fff4c7,
+          #fffdf4
+        );
+
+      border-color:
+        rgba(226,166,0,.38);
+
+    }
+
+
+    .rank-card.top2 {
+
+      background:
+        linear-gradient(
+          135deg,
+          #f1f3f5,
+          #ffffff
+        );
+
+    }
+
+
+    .rank-card.top3 {
+
+      background:
+        linear-gradient(
+          135deg,
+          #f7e5d7,
+          #ffffff
+        );
+
+    }
+
+
+    /* ========================================
+       LIGNE PRINCIPALE
+    ======================================== */
+
+    .rank-main {
+
+      display: grid;
+
+      grid-template-columns:
+        38px minmax(0, 1fr) auto;
+
+      gap: 8px;
+
+      align-items: center;
+
+    }
+
+
+    .rank-pos {
+
+      width: 38px;
+
+      height: 38px;
+
+      border-radius: 13px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      background: #111;
+
+      color: white;
+
+      font-size: 16px;
+
+      font-weight: 1000;
+
+    }
+
+
+    .rank-card.top1 .rank-pos {
+
+      background:
+        linear-gradient(
+          180deg,
+          #ffd84d,
+          #d89c00
+        );
+
+      color: #111;
+
+    }
+
+
+    .rank-card.top2 .rank-pos {
+
+      background:
+        linear-gradient(
+          180deg,
+          #d9dde2,
+          #9ba2aa
+        );
+
+      color: #111;
+
+    }
+
+
+    .rank-card.top3 .rank-pos {
+
+      background:
+        linear-gradient(
+          180deg,
+          #d99b6a,
+          #a86539
+        );
+
+      color: white;
+
+    }
+
+
+    .rank-name {
+
+      min-width: 0;
+
+      color: #111;
+
+      font-size: 17px;
+
+      font-weight: 1000;
+
+      line-height: 1.05;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+    }
+
+
+    .rank-sub {
+
+      margin-top: 3px;
+
+      color: #777;
+
+      font-size: 9px;
+
+      font-weight: 850;
+
+      line-height: 1.3;
+
+    }
+
+
+    .rank-points {
+
+      text-align: right;
+
+      color: #111;
+
+      line-height: 1;
+
+    }
+
+
+    .rank-points strong {
+
+      display: block;
+
+      color: #e34422;
+
+      font-size: 23px;
+
+      font-weight: 1000;
+
+    }
+
+
+    .rank-points span {
+
+      display: block;
+
+      margin-top: 3px;
+
+      color: #888;
+
+      font-size: 7px;
+
+      font-weight: 900;
+
+      letter-spacing: .4px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    /* ========================================
+       MINI STATS
+    ======================================== */
+
+    .rank-stats {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+      gap: 4px;
+
+    }
+
+
+    .mini-stat {
+
+      min-width: 0;
+
+      padding: 6px 2px;
+
+      border-radius: 10px;
+
+      background: #f0f0f0;
+
+      text-align: center;
+
+    }
+
+
+    .mini-stat strong {
+
+      display: block;
+
+      color: #111;
+
+      font-size: 13px;
+
+      font-weight: 1000;
+
+      line-height: 1;
+
+    }
+
+
+    .mini-stat span {
+
+      display: block;
+
+      margin-top: 3px;
+
+      color: #888;
+
+      font-size: 7px;
+
+      font-weight: 950;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .mini-stat.bonus {
+
+      background: #fff2cf;
+
+    }
+
+
+    .mini-stat.bonus strong {
+
+      color: #a66d00;
+
+    }
+
+
+    .mini-stat.diff-positive strong {
+
+      color: #16723c;
+
+    }
+
+
+    .mini-stat.diff-negative strong {
+
+      color: #c93434;
+
+    }
+
+
+    /* ========================================
+       VIDE
+    ======================================== */
+
+    .ranking-empty {
+
+      padding: 14px;
+
+      border-radius: 13px;
+
+      background: #f5f5f5;
+
+      color: #888;
+
+      font-size: 11px;
+
+      font-weight: 850;
+
+      text-align: center;
+
+    }
+
+
+    /* ========================================
+       TABLETTE
+    ======================================== */
+
+    @media (min-width: 760px) {
+
+      .ranking-list {
+
+        grid-template-columns:
+          1fr 1fr;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body data-page="classement">
+
+
+<div id="siteHeader"></div>
+
+
+<main class="container ranking-page">
+
+
+  <!-- ======================================
+       HERO
+  ======================================= -->
+
+  <section class="ranking-head">
+
+    <div class="ranking-head-top">
+
+      <span class="ranking-kicker">
+        Americano
+      </span>
+
+      <span class="ranking-pill">
+        🏆 LIVE
+      </span>
+
+    </div>
+
+
+    <h1>
+      Classement
+    </h1>
+
+
+    <p>
+      Classement individuel actualisé automatiquement
+      après chaque match validé.
+    </p>
+
+  </section>
+
+
+  <!-- ======================================
+       REGLES
+  ======================================= -->
+
+  <section class="ranking-info">
+
+    <p class="ranking-info-text">
+
+      <strong>Victoire : 2 pts</strong>
+      • Défaite : 1 pt
+      • Bonus : +2 points de jeu par tour actif
+      • Classement calculé sur les
+      <strong>10 meilleurs résultats</strong>.
+
+    </p>
+
+  </section>
+
+
+  <!-- ======================================
+       CLASSEMENT
+  ======================================= -->
+
+  <section class="ranking-panel">
+
+    <div
+      id="rankingList"
+      class="ranking-list"
+    >
+
+      <div class="ranking-empty">
+        Chargement du classement…
+      </div>
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+<script
+  type="module"
+  src="header.js"
+></script>
+
+
+<script
+  type="module"
+  src="js/classement.js"
+></script>
+
+
+</body>
+
+</html>
