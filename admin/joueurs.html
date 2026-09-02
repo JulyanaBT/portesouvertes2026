@@ -1,0 +1,1114 @@
+<!doctype html>
+
+<html lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#111111"
+  >
+
+  <title>
+    Joueurs | Administration Americano
+  </title>
+
+
+  <link
+    rel="stylesheet"
+    href="../style.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="admin.css"
+  >
+
+
+  <style>
+
+    /* ========================================
+       PAGE JOUEURS ADMIN
+    ======================================== */
+
+    .players-admin-page {
+
+      padding-bottom:
+        24px;
+
+    }
+
+
+    /* ========================================
+       INTRO
+    ======================================== */
+
+    .players-admin-head {
+
+      padding:
+        15px;
+
+      border-radius:
+        17px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #1a1a1a,
+          #272727
+        );
+
+      border:
+        1px solid #323232;
+
+    }
+
+
+    .players-admin-head-top {
+
+      display:
+        flex;
+
+      align-items:
+        flex-start;
+
+      justify-content:
+        space-between;
+
+      gap:
+        10px;
+
+    }
+
+
+    .players-admin-kicker {
+
+      color:
+        #ff4b27;
+
+      font-size:
+        8px;
+
+      font-weight:
+        900;
+
+      letter-spacing:
+        1.1px;
+
+      text-transform:
+        uppercase;
+
+    }
+
+
+    .players-admin-head h1 {
+
+      margin:
+        4px 0 0;
+
+      color:
+        white;
+
+      font-size:
+        27px;
+
+      line-height:
+        1;
+
+      font-weight:
+        1000;
+
+      letter-spacing:
+        -1px;
+
+    }
+
+
+    .players-admin-head p {
+
+      margin:
+        7px 0 0;
+
+      color:
+        #aaa;
+
+      font-size:
+        10px;
+
+      line-height:
+        1.35;
+
+    }
+
+
+    .live-badge {
+
+      flex:
+        0 0 auto;
+
+      padding:
+        5px 8px;
+
+      border-radius:
+        999px;
+
+      background:
+        rgba(37, 184, 100, .16);
+
+      color:
+        #75e9a4;
+
+      font-size:
+        9px;
+
+      font-weight:
+        900;
+
+    }
+
+
+    /* ========================================
+       COMPTEURS
+    ======================================== */
+
+    .players-summary {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap:
+        7px;
+
+      margin-top:
+        8px;
+
+    }
+
+
+    .summary-box {
+
+      min-width:
+        0;
+
+      padding:
+        11px 6px;
+
+      border-radius:
+        14px;
+
+      background:
+        #1d1d1d;
+
+      border:
+        1px solid #323232;
+
+      text-align:
+        center;
+
+    }
+
+
+    .summary-box strong {
+
+      display:
+        block;
+
+      color:
+        white;
+
+      font-size:
+        23px;
+
+      line-height:
+        1;
+
+      font-weight:
+        1000;
+
+    }
+
+
+    .summary-box span {
+
+      display:
+        block;
+
+      margin-top:
+        4px;
+
+      color:
+        #888;
+
+      font-size:
+        8px;
+
+      font-weight:
+        900;
+
+      letter-spacing:
+        .7px;
+
+      text-transform:
+        uppercase;
+
+    }
+
+
+    .summary-box.active strong {
+
+      color:
+        #75e9a4;
+
+    }
+
+
+    .summary-box.waiting strong {
+
+      color:
+        #ffd36f;
+
+    }
+
+
+    /* ========================================
+       ACTION PRINCIPALE
+    ======================================== */
+
+    .players-actions {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:
+        7px;
+
+      margin-top:
+        8px;
+
+    }
+
+
+    .players-actions .admin-btn {
+
+      width:
+        100%;
+
+    }
+
+
+    /* ========================================
+       AJOUT JOUEUR
+    ======================================== */
+
+    .add-player-panel {
+
+      display:
+        none;
+
+      margin-top:
+        8px;
+
+    }
+
+
+    .add-player-panel.visible {
+
+      display:
+        block;
+
+    }
+
+
+    .add-player-grid {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap:
+        8px;
+
+    }
+
+
+    .add-player-grid .full {
+
+      grid-column:
+        1 / -1;
+
+    }
+
+
+    .add-player-actions {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:
+        7px;
+
+      margin-top:
+        10px;
+
+    }
+
+
+    /* ========================================
+       MESSAGES
+    ======================================== */
+
+    .admin-message {
+
+      display:
+        none;
+
+      margin-top:
+        8px;
+
+      padding:
+        10px 12px;
+
+      border-radius:
+        12px;
+
+      font-size:
+        10px;
+
+      font-weight:
+        850;
+
+      line-height:
+        1.35;
+
+    }
+
+
+    .admin-message.visible {
+
+      display:
+        block;
+
+    }
+
+
+    .admin-message.ok {
+
+      background:
+        rgba(37, 184, 100, .15);
+
+      border:
+        1px solid rgba(37, 184, 100, .35);
+
+      color:
+        #75e9a4;
+
+    }
+
+
+    .admin-message.error {
+
+      background:
+        rgba(232, 74, 60, .15);
+
+      border:
+        1px solid rgba(232, 74, 60, .35);
+
+      color:
+        #ff958b;
+
+    }
+
+
+    /* ========================================
+       LISTE
+    ======================================== */
+
+    .players-list-panel {
+
+      margin-top:
+        8px;
+
+    }
+
+
+    .players-list-head {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        10px;
+
+      margin-bottom:
+        10px;
+
+    }
+
+
+    .players-list-head h2 {
+
+      margin:
+        0;
+
+      color:
+        white;
+
+      font-size:
+        18px;
+
+      font-weight:
+        950;
+
+    }
+
+
+    .players-list-head span {
+
+      color:
+        #888;
+
+      font-size:
+        9px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .players-list {
+
+      display:
+        grid;
+
+      gap:
+        7px;
+
+    }
+
+
+    /* ========================================
+       CARTE JOUEUR
+    ======================================== */
+
+    .player-admin-card {
+
+      padding:
+        12px;
+
+      border-radius:
+        15px;
+
+      background:
+        #1d1d1d;
+
+      border:
+        1px solid #323232;
+
+    }
+
+
+    .player-admin-card.active {
+
+      border-left:
+        4px solid #25b864;
+
+    }
+
+
+    .player-admin-card.waiting {
+
+      border-left:
+        4px solid #f0b429;
+
+    }
+
+
+    .player-card-head {
+
+      display:
+        flex;
+
+      align-items:
+        flex-start;
+
+      justify-content:
+        space-between;
+
+      gap:
+        9px;
+
+    }
+
+
+    .player-main {
+
+      min-width:
+        0;
+
+    }
+
+
+    .player-nickname {
+
+      color:
+        white;
+
+      font-size:
+        18px;
+
+      line-height:
+        1.05;
+
+      font-weight:
+        1000;
+
+      word-break:
+        break-word;
+
+    }
+
+
+    .player-name {
+
+      margin-top:
+        4px;
+
+      color:
+        #999;
+
+      font-size:
+        10px;
+
+      font-weight:
+        750;
+
+    }
+
+
+    .player-status {
+
+      flex:
+        0 0 auto;
+
+      padding:
+        5px 8px;
+
+      border-radius:
+        999px;
+
+      font-size:
+        8px;
+
+      font-weight:
+        950;
+
+      text-transform:
+        uppercase;
+
+    }
+
+
+    .player-status.active {
+
+      background:
+        rgba(37, 184, 100, .16);
+
+      color:
+        #75e9a4;
+
+    }
+
+
+    .player-status.waiting {
+
+      background:
+        rgba(240, 180, 41, .16);
+
+      color:
+        #ffd36f;
+
+    }
+
+
+    /* ========================================
+       ACTIONS JOUEUR
+    ======================================== */
+
+    .player-quick-actions {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr auto;
+
+      gap:
+        7px;
+
+      margin-top:
+        10px;
+
+    }
+
+
+    .player-quick-actions .admin-btn {
+
+      width:
+        100%;
+
+    }
+
+
+    .player-more {
+
+      margin-top:
+        8px;
+
+      padding-top:
+        8px;
+
+      border-top:
+        1px solid #303030;
+
+    }
+
+
+    .player-more summary {
+
+      cursor:
+        pointer;
+
+      list-style:
+        none;
+
+      color:
+        #999;
+
+      font-size:
+        9px;
+
+      font-weight:
+        900;
+
+      user-select:
+        none;
+
+    }
+
+
+    .player-more summary::-webkit-details-marker {
+
+      display:
+        none;
+
+    }
+
+
+    .player-secondary-actions {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:
+        7px;
+
+      margin-top:
+        8px;
+
+    }
+
+
+    /* ========================================
+       VIDE / CHARGEMENT
+    ======================================== */
+
+    .players-empty {
+
+      padding:
+        18px 12px;
+
+      border-radius:
+        13px;
+
+      background:
+        #171717;
+
+      color:
+        #888;
+
+      text-align:
+        center;
+
+      font-size:
+        10px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    /* ========================================
+       PETITS MOBILES
+    ======================================== */
+
+    @media (max-width: 350px) {
+
+      .add-player-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .add-player-grid .full {
+
+        grid-column:
+          auto;
+
+      }
+
+    }
+
+
+    /* ========================================
+       TABLETTE
+    ======================================== */
+
+    @media (min-width: 700px) {
+
+      .players-list {
+
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body
+  data-page="joueurs"
+  data-admin="true"
+>
+
+
+<div id="siteHeader"></div>
+
+
+<main class="container admin-page players-admin-page">
+
+
+  <!-- ======================================
+       TITRE
+  ======================================= -->
+
+  <section class="players-admin-head">
+
+    <div class="players-admin-head-top">
+
+      <div>
+
+        <div class="players-admin-kicker">
+          Gestion en direct
+        </div>
+
+        <h1>
+          Joueurs
+        </h1>
+
+        <p>
+          Active les joueurs à leur arrivée
+          et retire-les lorsqu'ils quittent la soirée.
+        </p>
+
+      </div>
+
+
+      <div class="live-badge">
+        ● LIVE
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================
+       COMPTEURS
+  ======================================= -->
+
+  <section class="players-summary">
+
+    <div class="summary-box">
+
+      <strong id="countTotal">
+        0
+      </strong>
+
+      <span>
+        Total
+      </span>
+
+    </div>
+
+
+    <div class="summary-box active">
+
+      <strong id="countActive">
+        0
+      </strong>
+
+      <span>
+        Actifs
+      </span>
+
+    </div>
+
+
+    <div class="summary-box waiting">
+
+      <strong id="countWaiting">
+        0
+      </strong>
+
+      <span>
+        Attente
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================
+       ACTIONS
+  ======================================= -->
+
+  <section class="players-actions">
+
+    <button
+      id="addPlayerBtn"
+      class="admin-btn admin-btn-primary"
+      type="button"
+    >
+      ➕ Ajouter
+    </button>
+
+
+    <a
+      href="../joueurs.html"
+      class="admin-btn"
+    >
+      👁 Vue publique
+    </a>
+
+  </section>
+
+
+  <!-- ======================================
+       AJOUT JOUEUR
+  ======================================= -->
+
+  <section
+    id="addPlayerPanel"
+    class="admin-panel add-player-panel"
+  >
+
+    <div class="admin-panel-head">
+
+      <div>
+
+        <div class="admin-panel-kicker">
+          Inscription sur place
+        </div>
+
+        <h2 class="admin-panel-title">
+          Ajouter un joueur
+        </h2>
+
+        <p class="admin-panel-text">
+          Le joueur pourra être activé immédiatement.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <form id="addPlayerForm">
+
+
+      <div class="add-player-grid">
+
+
+        <div class="admin-field">
+
+          <label for="addPrenom">
+            Prénom
+          </label>
+
+          <input
+            id="addPrenom"
+            type="text"
+            autocomplete="off"
+            required
+          >
+
+        </div>
+
+
+        <div class="admin-field">
+
+          <label for="addNom">
+            Nom
+          </label>
+
+          <input
+            id="addNom"
+            type="text"
+            autocomplete="off"
+            required
+          >
+
+        </div>
+
+
+        <div class="admin-field full">
+
+          <label for="addSurnom">
+            Surnom
+          </label>
+
+          <input
+            id="addSurnom"
+            type="text"
+            autocomplete="off"
+            required
+          >
+
+        </div>
+
+
+      </div>
+
+
+      <div class="add-player-actions">
+
+        <button
+          id="cancelAddPlayerBtn"
+          class="admin-btn"
+          type="button"
+        >
+          Annuler
+        </button>
+
+
+        <button
+          id="savePlayerBtn"
+          class="admin-btn admin-btn-primary"
+          type="submit"
+        >
+          Ajouter
+        </button>
+
+      </div>
+
+
+      <div
+        id="addPlayerMessage"
+        class="admin-message"
+      ></div>
+
+
+    </form>
+
+  </section>
+
+
+  <!-- ======================================
+       LISTE JOUEURS
+  ======================================= -->
+
+  <section class="admin-panel players-list-panel">
+
+
+    <div class="players-list-head">
+
+      <h2>
+        Tous les joueurs
+      </h2>
+
+      <span id="listStatus">
+        Chargement…
+      </span>
+
+    </div>
+
+
+    <div
+      id="playersList"
+      class="players-list"
+    >
+
+      <div class="players-empty">
+        Chargement des joueurs…
+      </div>
+
+    </div>
+
+
+  </section>
+
+
+</main>
+
+
+<script
+  type="module"
+  src="admin-header.js"
+></script>
+
+
+<script
+  type="module"
+  src="js/joueurs.js"
+></script>
+
+
+</body>
+
+</html>
