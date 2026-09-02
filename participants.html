@@ -16,7 +16,7 @@
   >
 
   <title>
-    Participants | Americano TC Suzini
+    Joueurs | Americano TC Suzini
   </title>
 
   <link
@@ -27,17 +27,21 @@
   <style>
 
     /* ========================================
-       PAGE PARTICIPANTS
+       PAGE JOUEURS
     ======================================== */
 
-    .participants-page {
+    .players-page {
+
       padding-bottom: 18px;
+
     }
 
 
-    /* HEADER PAGE */
+    /* ========================================
+       HEADER PAGE
+    ======================================== */
 
-    .participants-head {
+    .players-head {
 
       margin-bottom: 8px;
 
@@ -56,21 +60,25 @@
 
       box-shadow:
         0 8px 22px rgba(0,0,0,.08);
+
     }
 
 
-    .participants-head-top {
+    .players-head-top {
 
       display: flex;
 
       align-items: center;
-      justify-content: space-between;
+
+      justify-content:
+        space-between;
 
       gap: 10px;
+
     }
 
 
-    .participants-kicker {
+    .players-kicker {
 
       color: #ff4b27;
 
@@ -81,10 +89,11 @@
       letter-spacing: 1.3px;
 
       text-transform: uppercase;
+
     }
 
 
-    .participants-total {
+    .players-total {
 
       flex: 0 0 auto;
 
@@ -100,10 +109,11 @@
       font-size: 10px;
 
       font-weight: 900;
+
     }
 
 
-    .participants-head h1 {
+    .players-head h1 {
 
       margin: 6px 0 0;
 
@@ -116,10 +126,11 @@
       letter-spacing: -1.1px;
 
       text-transform: uppercase;
+
     }
 
 
-    .participants-head p {
+    .players-head p {
 
       margin: 7px 0 0;
 
@@ -128,24 +139,29 @@
       font-size: 11px;
 
       line-height: 1.35;
+
     }
 
 
+    /* ========================================
+       GRID
+    ======================================== */
 
-    /* GRID */
-
-    .participants-grid {
+    .players-grid {
 
       display: grid;
 
-      grid-template-columns: 1fr;
+      grid-template-columns:
+        1fr;
 
       gap: 8px;
+
     }
 
 
-
-    /* BLOCK */
+    /* ========================================
+       BLOCKS
+    ======================================== */
 
     .players-block {
 
@@ -157,6 +173,7 @@
 
       box-shadow:
         0 8px 22px rgba(0,0,0,.07);
+
     }
 
 
@@ -164,6 +181,7 @@
 
       border-top:
         4px solid #22a85a;
+
     }
 
 
@@ -171,28 +189,34 @@
 
       border-top:
         4px solid #f0b429;
+
     }
 
 
-
-    /* BLOCK HEADER */
+    /* ========================================
+       BLOCK HEADER
+    ======================================== */
 
     .list-head {
 
       display: flex;
 
       align-items: center;
-      justify-content: space-between;
+
+      justify-content:
+        space-between;
 
       gap: 10px;
 
       margin-bottom: 10px;
+
     }
 
 
     .list-head-left {
 
       min-width: 0;
+
     }
 
 
@@ -205,6 +229,7 @@
       line-height: 1;
 
       font-weight: 950;
+
     }
 
 
@@ -217,6 +242,7 @@
       font-size: 10px;
 
       line-height: 1.3;
+
     }
 
 
@@ -235,6 +261,7 @@
       font-size: 12px;
 
       font-weight: 950;
+
     }
 
 
@@ -243,6 +270,7 @@
       background: #ddf7e7;
 
       color: #16723c;
+
     }
 
 
@@ -251,11 +279,13 @@
       background: #fff2c7;
 
       color: #8a6400;
+
     }
 
 
-
-    /* PLAYERS */
+    /* ========================================
+       PLAYERS
+    ======================================== */
 
     .players-list {
 
@@ -265,6 +295,7 @@
         repeat(2, minmax(0,1fr));
 
       gap: 7px;
+
     }
 
 
@@ -286,7 +317,8 @@
 
       align-items: center;
 
-      justify-content: flex-start;
+      justify-content:
+        flex-start;
 
       font-size: 13px;
 
@@ -295,6 +327,7 @@
       line-height: 1.1;
 
       word-break: break-word;
+
     }
 
 
@@ -303,15 +336,18 @@
       background: #fff8dd;
 
       color: #5f4a0c;
+
     }
 
 
-
-    /* EMPTY */
+    /* ========================================
+       EMPTY
+    ======================================== */
 
     .empty {
 
-      grid-column: 1 / -1;
+      grid-column:
+        1 / -1;
 
       padding: 11px;
 
@@ -326,13 +362,15 @@
       font-size: 11px;
 
       font-weight: 800;
+
     }
 
 
+    /* ========================================
+       NOTE
+    ======================================== */
 
-    /* FOOT NOTE */
-
-    .participants-note {
+    .players-note {
 
       margin-top: 8px;
 
@@ -349,16 +387,21 @@
       line-height: 1.4;
 
       font-weight: 700;
+
     }
 
 
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
 
     @media (min-width: 560px) {
 
-      .participants-grid {
+      .players-grid {
 
         grid-template-columns:
           1fr 1fr;
+
       }
 
     }
@@ -370,6 +413,7 @@
 
         grid-template-columns:
           1fr;
+
       }
 
     }
@@ -379,45 +423,53 @@
 </head>
 
 
-<body data-page="participants">
+<body data-page="joueurs">
 
 
 <div id="siteHeader"></div>
 
 
-<main class="container participants-page">
+<main class="container players-page">
 
 
-  <section class="participants-head">
+  <!-- ======================================
+       HEADER
+  ======================================= -->
 
-    <div class="participants-head-top">
+  <section class="players-head">
 
-      <span class="participants-kicker">
+    <div class="players-head-top">
+
+      <span class="players-kicker">
         Americano
       </span>
 
-      <span class="participants-total">
-        <span id="countTotal">0</span> joueurs
+      <span class="players-total">
+        <span id="countTotal">0</span>
+        joueurs
       </span>
 
     </div>
 
 
     <h1>
-      Participants
+      Joueurs
     </h1>
 
 
     <p>
-      Les joueurs actifs sont immédiatement pris en compte
-      dans les rotations.
+      Les joueurs actifs sont immédiatement
+      pris en compte dans les rotations.
     </p>
 
   </section>
 
 
+  <!-- ======================================
+       LISTES
+  ======================================= -->
 
-  <section class="participants-grid">
+  <section class="players-grid">
 
 
     <!-- ACTIFS -->
@@ -440,7 +492,11 @@
 
 
         <div class="count-badge">
-          <span id="countActive">0</span>
+
+          <span id="countActive">
+            0
+          </span>
+
         </div>
 
       </div>
@@ -458,7 +514,6 @@
       </div>
 
     </div>
-
 
 
     <!-- EN ATTENTE -->
@@ -481,7 +536,11 @@
 
 
         <div class="count-badge">
-          <span id="countWaiting">0</span>
+
+          <span id="countWaiting">
+            0
+          </span>
+
         </div>
 
       </div>
@@ -504,8 +563,11 @@
   </section>
 
 
+  <!-- ======================================
+       NOTE
+  ======================================= -->
 
-  <section class="participants-note">
+  <section class="players-note">
 
     Un joueur peut être inscrit sans être actif.
     Il sera activé à son arrivée et retiré des rotations
@@ -517,11 +579,14 @@
 </main>
 
 
-<script src="header.js"></script>
+<script
+  type="module"
+  src="header.js"
+></script>
 
 <script
   type="module"
-  src="js/participants.js"
+  src="js/joueurs.js"
 ></script>
 
 
