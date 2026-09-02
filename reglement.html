@@ -1,0 +1,1511 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#ffffff"
+  >
+
+  <title>
+    Règlement | Americano TC Suzini
+  </title>
+
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+
+  <style>
+
+    /* ========================================
+       PAGE
+    ======================================== */
+
+    .rules-page {
+      padding-bottom: 24px;
+    }
+
+
+    /* ========================================
+       HERO
+    ======================================== */
+
+    .rules-head {
+
+      padding: 16px 17px;
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #111111,
+          #292929
+        );
+
+      color: white;
+
+      box-shadow:
+        0 8px 22px rgba(0,0,0,.08);
+
+    }
+
+
+    .rules-head-top {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+    }
+
+
+    .rules-kicker {
+
+      color: #ff4b27;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      letter-spacing: 1.3px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .rules-pill {
+
+      padding: 5px 8px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,75,39,.14);
+
+      color: #ff9b84;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+    }
+
+
+    .rules-head h1 {
+
+      margin: 6px 0 0;
+
+      font-size: 30px;
+
+      line-height: 1;
+
+      font-weight: 1000;
+
+      letter-spacing: -1.1px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .rules-head p {
+
+      margin: 7px 0 0;
+
+      color: #d5d5d5;
+
+      font-size: 11px;
+
+      line-height: 1.35;
+
+    }
+
+
+    /* ========================================
+       CONTROLES
+    ======================================== */
+
+    .rule-controls {
+
+      display: grid;
+
+      gap: 8px;
+
+      margin-top: 8px;
+
+      padding: 11px;
+
+      border-radius: 16px;
+
+      background: white;
+
+      box-shadow:
+        0 8px 22px rgba(0,0,0,.07);
+
+    }
+
+
+    .rule-toggle {
+
+      display: flex;
+
+      gap: 7px;
+
+      overflow-x: auto;
+
+      scrollbar-width: none;
+
+    }
+
+
+    .rule-toggle::-webkit-scrollbar {
+      display: none;
+    }
+
+
+    .rule-btn {
+
+      flex: 0 0 auto;
+
+      min-height: 38px;
+
+      padding: 7px 12px;
+
+      border: 0;
+
+      border-radius: 999px;
+
+      background: #ededed;
+
+      color: #333;
+
+      font-family: inherit;
+
+      font-size: 11px;
+
+      font-weight: 950;
+
+      cursor: pointer;
+
+      white-space: nowrap;
+
+    }
+
+
+    .rule-btn[aria-selected="true"] {
+
+      background: #111;
+
+      color: white;
+
+    }
+
+
+    .rule-toggle:first-child
+    .rule-btn[aria-selected="true"] {
+
+      background: #ff4b27;
+
+      color: white;
+
+    }
+
+
+    /* ========================================
+       CONTENU
+    ======================================== */
+
+    .rule-content {
+
+      display: grid;
+
+      gap: 8px;
+
+      margin-top: 8px;
+
+    }
+
+
+    .rule-card {
+
+      padding: 14px;
+
+      border-radius: 17px;
+
+      background: white;
+
+      color: #111;
+
+      box-shadow:
+        0 8px 22px rgba(0,0,0,.07);
+
+    }
+
+
+    .rule-card h2 {
+
+      margin: 0 0 8px;
+
+      color: #111;
+
+      font-size: 17px;
+
+      font-weight: 1000;
+
+      line-height: 1.1;
+
+    }
+
+
+    .rule-card ul {
+
+      margin: 0;
+
+      padding-left: 19px;
+
+      color: #555;
+
+      font-size: 11px;
+
+      font-weight: 750;
+
+      line-height: 1.5;
+
+    }
+
+
+    .rule-card li {
+      margin: 5px 0;
+    }
+
+
+    .rule-card strong {
+      color: #111;
+    }
+
+
+    /* ========================================
+       CARTE IMPORTANTE
+    ======================================== */
+
+    .rule-card-highlight {
+
+      background:
+        linear-gradient(
+          135deg,
+          #fff0ec,
+          #ffffff
+        );
+
+      border:
+        1px solid rgba(255,75,39,.20);
+
+    }
+
+
+    .rule-card-highlight h2 {
+      color: #e34422;
+    }
+
+
+    /* ========================================
+       CACHE
+    ======================================== */
+
+    .hidden {
+      display: none !important;
+    }
+
+
+    /* ========================================
+       RETOUR INFOS
+    ======================================== */
+
+    .rules-back {
+
+      display: inline-flex;
+
+      margin-top: 10px;
+
+      color: #555;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      text-decoration: none;
+
+    }
+
+  </style>
+
+</head>
+
+
+<body data-page="infos">
+
+
+<div id="siteHeader"></div>
+
+
+<main class="container rules-page">
+
+
+  <!-- ======================================
+       HERO
+  ======================================= -->
+
+  <section class="rules-head">
+
+    <div class="rules-head-top">
+
+      <span class="rules-kicker">
+        Infos pratiques
+      </span>
+
+      <span class="rules-pill">
+        📜 RÈGLEMENT
+      </span>
+
+    </div>
+
+
+    <h1>
+      Règlement
+    </h1>
+
+
+    <p>
+      Règlement de l’Americano de la rentrée
+      au Tennis Club de Suzini.
+    </p>
+
+  </section>
+
+
+  <!-- ======================================
+       CONTROLES
+  ======================================= -->
+
+  <section class="rule-controls">
+
+
+    <!-- LANGUE -->
+
+    <div class="rule-toggle">
+
+      <button
+        class="rule-btn"
+        id="btnFr"
+        type="button"
+        aria-selected="true"
+      >
+        🇫🇷 Français
+      </button>
+
+
+      <button
+        class="rule-btn"
+        id="btnPt"
+        type="button"
+        aria-selected="false"
+      >
+        🇧🇷 Português
+      </button>
+
+    </div>
+
+
+    <!-- TYPE -->
+
+    <div class="rule-toggle">
+
+      <button
+        class="rule-btn"
+        id="btnGeneral"
+        type="button"
+        aria-selected="true"
+      >
+        📘 Général
+      </button>
+
+
+      <button
+        class="rule-btn"
+        id="btnAmericano"
+        type="button"
+        aria-selected="false"
+      >
+        🎾 Americano
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================
+       FRANCAIS GENERAL
+  ======================================= -->
+
+  <div
+    id="contentFrGeneral"
+    class="rule-content"
+  >
+
+
+    <section class="rule-card">
+
+      <h2>
+        🎾 Organisation
+      </h2>
+
+      <ul>
+
+        <li>
+          L’Americano de la rentrée est organisé
+          au Tennis Club de Suzini.
+        </li>
+
+        <li>
+          Il se déroule le
+          <strong>samedi 5 septembre 2026</strong>.
+        </li>
+
+        <li>
+          Les rencontres débutent à partir de
+          <strong>18h00</strong>.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        👥 Participation
+      </h2>
+
+      <ul>
+
+        <li>
+          L’événement est
+          <strong>ouvert à tous</strong>,
+          licenciés FFT ou non licenciés.
+        </li>
+
+        <li>
+          L’inscription est individuelle.
+        </li>
+
+        <li>
+          Les participants doivent être aptes
+          à la pratique du beach tennis.
+        </li>
+
+        <li>
+          Les mineurs restent sous la responsabilité
+          de leur représentant légal.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        📝 Inscription
+      </h2>
+
+      <ul>
+
+        <li>
+          Le tarif est fixé à
+          <strong>10 € par joueur</strong>.
+        </li>
+
+        <li>
+          La pré-inscription peut être effectuée
+          via le mini-site de l’événement.
+        </li>
+
+        <li>
+          Sous réserve des possibilités d’organisation,
+          un joueur peut également rejoindre
+          l’Americano en cours de soirée.
+        </li>
+
+        <li>
+          Chaque joueur choisit un surnom utilisé
+          pour l’affichage public de la programmation,
+          du classement et des statistiques.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        ⏱️ Arrivée et départ
+      </h2>
+
+      <ul>
+
+        <li>
+          Le principe de la soirée est :
+          <strong>arrive et repars quand tu veux</strong>.
+        </li>
+
+        <li>
+          À son arrivée, le joueur doit signaler
+          sa présence à l’organisation afin d’être
+          activé dans les rotations.
+        </li>
+
+        <li>
+          Avant son départ, le joueur doit prévenir
+          l’organisation afin d’être retiré
+          des prochaines rotations.
+        </li>
+
+        <li>
+          Une rotation déjà programmée peut être
+          maintenue ou adaptée par l’organisation
+          selon les circonstances.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        ⚖️ Organisation sportive
+      </h2>
+
+      <ul>
+
+        <li>
+          L’organisation assure la gestion
+          des joueurs, des terrains et des rotations.
+        </li>
+
+        <li>
+          Les affectations peuvent être adaptées
+          afin de tenir compte des arrivées,
+          départs et contraintes de la soirée.
+        </li>
+
+        <li>
+          Les décisions nécessaires au bon déroulement
+          de l’événement sont prises par l’organisation.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        🤝 Comportement
+      </h2>
+
+      <ul>
+
+        <li>
+          Le respect des partenaires, adversaires,
+          bénévoles et autres participants est obligatoire.
+        </li>
+
+        <li>
+          Le fair-play reste prioritaire
+          pendant toute la soirée.
+        </li>
+
+        <li>
+          Tout comportement inadapté peut conduire
+          l’organisation à retirer un joueur
+          de l’événement.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        ⚠️ Responsabilité
+      </h2>
+
+      <ul>
+
+        <li>
+          Chaque participant prend part à l’événement
+          sous sa propre responsabilité.
+        </li>
+
+        <li>
+          L’organisation ne peut être tenue responsable
+          de la perte, du vol ou de la détérioration
+          des effets personnels.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        📷 Images
+      </h2>
+
+      <ul>
+
+        <li>
+          Des photos ou vidéos peuvent être réalisées
+          durant la soirée pour la communication
+          du Tennis Club de Suzini et de Jul’Yana
+          Beach Tennis.
+        </li>
+
+        <li>
+          Toute personne ne souhaitant pas apparaître
+          sur ces supports est invitée à le signaler
+          à l’organisation.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+  </div>
+
+
+  <!-- ======================================
+       FRANCAIS AMERICANO
+  ======================================= -->
+
+  <div
+    id="contentFrAmericano"
+    class="rule-content hidden"
+  >
+
+
+    <section
+      class="
+        rule-card
+        rule-card-highlight
+      "
+    >
+
+      <h2>
+        🏆 Principe
+      </h2>
+
+      <ul>
+
+        <li>
+          L’Americano est une
+          <strong>compétition individuelle</strong>.
+        </li>
+
+        <li>
+          Les joueurs changent régulièrement
+          de partenaire et d’adversaires.
+        </li>
+
+        <li>
+          Les équipes sont générées automatiquement
+          avant chaque nouvelle rotation.
+        </li>
+
+        <li>
+          Le système cherche notamment à limiter
+          la répétition des mêmes partenaires
+          et adversaires.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        🔄 Rotations
+      </h2>
+
+      <ul>
+
+        <li>
+          Seuls les joueurs indiqués comme actifs
+          au moment de la génération d’un tour
+          participent à cette rotation.
+        </li>
+
+        <li>
+          Jusqu’à deux matchs peuvent être programmés
+          simultanément selon le nombre de joueurs actifs.
+        </li>
+
+        <li>
+          Lorsque tous les joueurs ne peuvent pas jouer,
+          certains sont placés au banc pour le tour.
+        </li>
+
+        <li>
+          Le système tient compte des rotations précédentes
+          afin de répartir au mieux le temps de jeu.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        🎾 Format des matchs
+      </h2>
+
+      <ul>
+
+        <li>
+          Les rencontres se jouent sur
+          <strong>un set unique de 12 points</strong>.
+        </li>
+
+        <li>
+          Un match doit désigner un vainqueur :
+          aucun score nul n’est enregistré.
+        </li>
+
+        <li>
+          Le résultat est validé par l’organisation
+          à la fin de la rencontre.
+        </li>
+
+        <li>
+          Toute erreur de score doit être signalée
+          rapidement à l’organisation.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section
+      class="
+        rule-card
+        rule-card-highlight
+      "
+    >
+
+      <h2>
+        🏆 Classement
+      </h2>
+
+      <ul>
+
+        <li>
+          Une victoire rapporte
+          <strong>2 points match</strong>.
+        </li>
+
+        <li>
+          Une défaite rapporte
+          <strong>1 point match</strong>.
+        </li>
+
+        <li>
+          Chaque tour actif rapporte également
+          un bonus de
+          <strong>+2 points de jeu</strong>.
+        </li>
+
+        <li>
+          Un joueur placé au banc par l’organisation
+          reste considéré comme actif pour ce tour
+          et bénéficie donc du bonus.
+        </li>
+
+        <li>
+          Le classement final est établi sur les
+          <strong>10 meilleurs résultats</strong>
+          de chaque joueur.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        📊 Départage
+      </h2>
+
+      <ul>
+
+        <li>
+          Le classement est d’abord établi selon
+          le nombre de points match obtenus
+          sur les résultats retenus.
+        </li>
+
+        <li>
+          En cas d’égalité, la
+          <strong>différence de jeux</strong>
+          départage les joueurs.
+        </li>
+
+        <li>
+          En cas de nouvelle égalité,
+          le nombre de
+          <strong>jeux marqués</strong>
+          est pris en compte.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        📱 Programmation et résultats
+      </h2>
+
+      <ul>
+
+        <li>
+          Les rotations sont publiées
+          sur le mini-site.
+        </li>
+
+        <li>
+          Le classement et les statistiques
+          sont actualisés automatiquement
+          au fil de la soirée.
+        </li>
+
+        <li>
+          Les joueurs sont invités à consulter
+          régulièrement la programmation
+          pour connaître leur prochain match.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+  </div>
+
+
+  <!-- ======================================
+       PORTUGAIS GENERAL
+  ======================================= -->
+
+  <div
+    id="contentPtGeneral"
+    class="rule-content hidden"
+  >
+
+
+    <section class="rule-card">
+
+      <h2>
+        🎾 Organização
+      </h2>
+
+      <ul>
+
+        <li>
+          O Americano de rentrée é organizado
+          no Tennis Club de Suzini.
+        </li>
+
+        <li>
+          O evento acontece no
+          <strong>sábado, 5 de setembro de 2026</strong>.
+        </li>
+
+        <li>
+          Os jogos começam a partir das
+          <strong>18h00</strong>.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        👥 Participação
+      </h2>
+
+      <ul>
+
+        <li>
+          O evento é
+          <strong>aberto a todos</strong>,
+          federados ou não federados.
+        </li>
+
+        <li>
+          A inscrição é individual.
+        </li>
+
+        <li>
+          Os participantes devem estar aptos
+          à prática do beach tennis.
+        </li>
+
+        <li>
+          Menores permanecem sob responsabilidade
+          de seu representante legal.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        📝 Inscrição
+      </h2>
+
+      <ul>
+
+        <li>
+          O valor da inscrição é de
+          <strong>10 € por jogador</strong>.
+        </li>
+
+        <li>
+          A pré-inscrição pode ser feita
+          através do mini-site do evento.
+        </li>
+
+        <li>
+          De acordo com as possibilidades
+          da organização, um jogador também pode
+          entrar no Americano durante a noite.
+        </li>
+
+        <li>
+          Cada jogador escolhe um apelido
+          utilizado na programação pública,
+          classificação e estatísticas.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        ⏱️ Chegada e saída
+      </h2>
+
+      <ul>
+
+        <li>
+          O princípio da noite é:
+          <strong>chegue e vá embora quando quiser</strong>.
+        </li>
+
+        <li>
+          Na chegada, o jogador deve informar
+          a organização para ser ativado
+          nas rotações.
+        </li>
+
+        <li>
+          Antes de sair, o jogador deve avisar
+          a organização para ser retirado
+          das próximas rotações.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        🤝 Comportamento
+      </h2>
+
+      <ul>
+
+        <li>
+          O respeito aos parceiros, adversários,
+          voluntários e demais participantes
+          é obrigatório.
+        </li>
+
+        <li>
+          O fair-play é prioritário
+          durante toda a noite.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+  </div>
+
+
+  <!-- ======================================
+       PORTUGAIS AMERICANO
+  ======================================= -->
+
+  <div
+    id="contentPtAmericano"
+    class="rule-content hidden"
+  >
+
+
+    <section
+      class="
+        rule-card
+        rule-card-highlight
+      "
+    >
+
+      <h2>
+        🏆 Princípio
+      </h2>
+
+      <ul>
+
+        <li>
+          O Americano é uma
+          <strong>competição individual</strong>.
+        </li>
+
+        <li>
+          Os jogadores mudam regularmente
+          de parceiro e adversários.
+        </li>
+
+        <li>
+          As equipes são geradas
+          antes de cada nova rotação.
+        </li>
+
+        <li>
+          O sistema procura limitar a repetição
+          dos mesmos parceiros e adversários.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        🔄 Rotações
+      </h2>
+
+      <ul>
+
+        <li>
+          Somente os jogadores ativos
+          no momento da geração participam
+          da nova rotação.
+        </li>
+
+        <li>
+          Até dois jogos podem ser disputados
+          simultaneamente, dependendo
+          do número de jogadores ativos.
+        </li>
+
+        <li>
+          Quando nem todos podem jogar,
+          alguns jogadores ficam no banco.
+        </li>
+
+        <li>
+          O sistema considera as rotações anteriores
+          para distribuir melhor o tempo de jogo.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        🎾 Formato
+      </h2>
+
+      <ul>
+
+        <li>
+          Os jogos são disputados em
+          <strong>um set único de 12 pontos</strong>.
+        </li>
+
+        <li>
+          Não é registrado empate.
+        </li>
+
+        <li>
+          O resultado é validado pela organização
+          ao final da partida.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section
+      class="
+        rule-card
+        rule-card-highlight
+      "
+    >
+
+      <h2>
+        🏆 Classificação
+      </h2>
+
+      <ul>
+
+        <li>
+          Uma vitória vale
+          <strong>2 pontos de partida</strong>.
+        </li>
+
+        <li>
+          Uma derrota vale
+          <strong>1 ponto de partida</strong>.
+        </li>
+
+        <li>
+          Cada rotação ativa também concede
+          um bônus de
+          <strong>+2 pontos de jogo</strong>.
+        </li>
+
+        <li>
+          O jogador colocado no banco
+          pela organização continua ativo
+          para esta rotação e recebe o bônus.
+        </li>
+
+        <li>
+          A classificação é calculada
+          sobre os
+          <strong>10 melhores resultados</strong>
+          de cada jogador.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <section class="rule-card">
+
+      <h2>
+        📊 Desempate
+      </h2>
+
+      <ul>
+
+        <li>
+          Primeiro são considerados
+          os pontos de partida.
+        </li>
+
+        <li>
+          Em caso de empate,
+          vale a diferença de jogos.
+        </li>
+
+        <li>
+          Se o empate continuar,
+          vale o número de jogos marcados.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+  </div>
+
+
+  <a
+    href="infos.html"
+    class="rules-back"
+  >
+    ← Retour aux infos
+  </a>
+
+
+</main>
+
+
+<script
+  type="module"
+  src="header.js"
+></script>
+
+
+<script>
+
+  /* ========================================
+     ELEMENTS
+  ======================================== */
+
+  const btnFr =
+    document.getElementById(
+      "btnFr"
+    );
+
+  const btnPt =
+    document.getElementById(
+      "btnPt"
+    );
+
+  const btnGeneral =
+    document.getElementById(
+      "btnGeneral"
+    );
+
+  const btnAmericano =
+    document.getElementById(
+      "btnAmericano"
+    );
+
+
+  /* ========================================
+     STATE
+  ======================================== */
+
+  let lang =
+    "fr";
+
+  let tab =
+    "general";
+
+
+  /* ========================================
+     AFFICHAGE
+  ======================================== */
+
+  function refreshRules() {
+
+    btnFr.setAttribute(
+      "aria-selected",
+      lang === "fr"
+    );
+
+    btnPt.setAttribute(
+      "aria-selected",
+      lang === "pt"
+    );
+
+
+    btnGeneral.setAttribute(
+      "aria-selected",
+      tab === "general"
+    );
+
+    btnAmericano.setAttribute(
+      "aria-selected",
+      tab === "americano"
+    );
+
+
+    document
+      .querySelectorAll(
+        ".rule-content"
+      )
+      .forEach(
+        element => {
+
+          element.classList.add(
+            "hidden"
+          );
+
+        }
+      );
+
+
+    let contentId;
+
+
+    if (
+      lang === "fr" &&
+      tab === "general"
+    ) {
+
+      contentId =
+        "contentFrGeneral";
+
+    }
+
+
+    else if (
+      lang === "fr" &&
+      tab === "americano"
+    ) {
+
+      contentId =
+        "contentFrAmericano";
+
+    }
+
+
+    else if (
+      lang === "pt" &&
+      tab === "general"
+    ) {
+
+      contentId =
+        "contentPtGeneral";
+
+    }
+
+
+    else {
+
+      contentId =
+        "contentPtAmericano";
+
+    }
+
+
+    document
+      .getElementById(
+        contentId
+      )
+      .classList.remove(
+        "hidden"
+      );
+
+  }
+
+
+  /* ========================================
+     EVENTS
+  ======================================== */
+
+  btnFr.addEventListener(
+    "click",
+    () => {
+
+      lang =
+        "fr";
+
+      refreshRules();
+
+    }
+  );
+
+
+  btnPt.addEventListener(
+    "click",
+    () => {
+
+      lang =
+        "pt";
+
+      refreshRules();
+
+    }
+  );
+
+
+  btnGeneral.addEventListener(
+    "click",
+    () => {
+
+      tab =
+        "general";
+
+      refreshRules();
+
+    }
+  );
+
+
+  btnAmericano.addEventListener(
+    "click",
+    () => {
+
+      tab =
+        "americano";
+
+      refreshRules();
+
+    }
+  );
+
+
+  refreshRules();
+
+</script>
+
+
+</body>
+
+</html>
