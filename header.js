@@ -34,11 +34,22 @@ if (headerTarget) {
     joueurs:
       "admin/joueurs.html",
 
-    programmation:
-      "admin/programmation.html",
+    /*
+     * La page publique utilise actuellement
+     * data-page="inscription".
+     *
+     * On accepte également "inscriptions"
+     * au cas où on harmonise le nom plus tard.
+     */
 
-    classement:
-      "admin/classement.html"
+    inscription:
+      "admin/inscriptions.html",
+
+    inscriptions:
+      "admin/inscriptions.html",
+
+    programmation:
+      "admin/programmation.html"
 
   };
 
@@ -52,6 +63,13 @@ if (headerTarget) {
    * ========================================
    * CIBLE LOGO JUL'YANA
    * ========================================
+   *
+   * Si l'admin est déjà connecté :
+   * on ouvre la page admin équivalente.
+   *
+   * Sinon :
+   * on passe d'abord par l'accueil admin
+   * pour demander le mot de passe.
    */
 
   const julyanaTarget =
@@ -64,10 +82,6 @@ if (headerTarget) {
    * ========================================
    * STYLES NAVIGATION
    * ========================================
-   *
-   * On les place ici pour éviter que
-   * d'anciennes règles de style.css
-   * cassent la navigation horizontale.
    */
 
   const navStyle =
@@ -368,8 +382,6 @@ if (headerTarget) {
       <div class="main-nav-shell">
 
 
-        <!-- FLECHE GAUCHE -->
-
         <button
           type="button"
           class="
@@ -382,8 +394,6 @@ if (headerTarget) {
           ‹
         </button>
 
-
-        <!-- ONGLETS -->
 
         <nav class="main-nav">
 
@@ -487,8 +497,6 @@ if (headerTarget) {
         </nav>
 
 
-        <!-- FLECHE DROITE -->
-
         <button
           type="button"
           class="
@@ -579,10 +587,6 @@ if (headerTarget) {
       nav.clientWidth;
 
 
-    /*
-     * Pas de scroll nécessaire.
-     */
-
     if (
       maxScroll <= 2
     ) {
@@ -627,22 +631,12 @@ if (headerTarget) {
     }
 
 
-    /*
-     * Position du centre de l'onglet
-     * dans la zone scrollable.
-     */
-
     const linkCenter =
       activeLink.offsetLeft +
       (
         activeLink.offsetWidth / 2
       );
 
-
-    /*
-     * Position désirée :
-     * centre de l'écran.
-     */
 
     const targetScroll =
       linkCenter -
@@ -765,10 +759,6 @@ if (headerTarget) {
    * ========================================
    * INITIALISATION
    * ========================================
-   *
-   * Double requestAnimationFrame :
-   * on attend que le navigateur ait calculé
-   * les vraies largeurs du header.
    */
 
   requestAnimationFrame(
