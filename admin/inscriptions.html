@@ -1,0 +1,549 @@
+<!doctype html>
+
+<html lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#111111"
+  >
+
+  <title>
+    Inscriptions | Administration
+  </title>
+
+
+  <link
+    rel="stylesheet"
+    href="../style.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="admin.css"
+  >
+
+
+  <style>
+
+    /* ========================================
+       PAGE
+    ======================================== */
+
+    .payments-page {
+      padding-bottom: 24px;
+    }
+
+
+    /* ========================================
+       HERO
+    ======================================== */
+
+    .payments-head {
+
+      padding: 15px 16px;
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #111,
+          #292929
+        );
+
+      color: white;
+
+    }
+
+
+    .payments-head-top {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+    }
+
+
+    .payments-kicker {
+
+      color: #ff4b27;
+
+      font-size: 9px;
+
+      font-weight: 950;
+
+      letter-spacing: 1.2px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .payments-head h1 {
+
+      margin: 5px 0 0;
+
+      font-size: 28px;
+
+      line-height: 1;
+
+      font-weight: 1000;
+
+    }
+
+
+    .payments-head p {
+
+      margin: 6px 0 0;
+
+      color: #ccc;
+
+      font-size: 11px;
+
+      line-height: 1.35;
+
+    }
+
+
+    /* ========================================
+       COMPTEURS
+    ======================================== */
+
+    .payment-summary {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 6px;
+
+      margin-top: 8px;
+
+    }
+
+
+    .payment-summary-card {
+
+      padding: 10px 6px;
+
+      border-radius: 14px;
+
+      background: white;
+
+      text-align: center;
+
+      box-shadow:
+        0 6px 18px rgba(0,0,0,.06);
+
+    }
+
+
+    .payment-summary-card strong {
+
+      display: block;
+
+      color: #111;
+
+      font-size: 21px;
+
+      line-height: 1;
+
+      font-weight: 1000;
+
+    }
+
+
+    .payment-summary-card span {
+
+      display: block;
+
+      margin-top: 4px;
+
+      color: #777;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      letter-spacing: .4px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    /* ========================================
+       LISTE
+    ======================================== */
+
+    .payment-list {
+
+      display: grid;
+
+      gap: 7px;
+
+      margin-top: 8px;
+
+    }
+
+
+    .payment-row {
+
+      padding: 10px;
+
+      border-radius: 15px;
+
+      background: white;
+
+      box-shadow:
+        0 6px 18px rgba(0,0,0,.06);
+
+    }
+
+
+    .payment-player {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 8px;
+
+      margin-bottom: 8px;
+
+    }
+
+
+    .payment-nickname {
+
+      min-width: 0;
+
+      overflow: hidden;
+
+      color: #111;
+
+      font-size: 15px;
+
+      font-weight: 1000;
+
+      text-overflow: ellipsis;
+
+      white-space: nowrap;
+
+    }
+
+
+    .payment-state {
+
+      flex: 0 0 auto;
+
+      padding: 4px 7px;
+
+      border-radius: 999px;
+
+      background: #eee;
+
+      color: #666;
+
+      font-size: 8px;
+
+      font-weight: 950;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .payment-row[data-payment="online"]
+    .payment-state {
+
+      background: #ddf7e7;
+
+      color: #126a35;
+
+    }
+
+
+    .payment-row[data-payment="cb"]
+    .payment-state {
+
+      background: #e4f7fc;
+
+      color: #147d99;
+
+    }
+
+
+    /* ========================================
+       3 BOUTONS
+    ======================================== */
+
+    .payment-actions {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 5px;
+
+    }
+
+
+    .payment-action {
+
+      min-width: 0;
+
+      min-height: 39px;
+
+      padding: 6px 4px;
+
+      border:
+        2px solid transparent;
+
+      border-radius: 10px;
+
+      background: #f1f1f1;
+
+      color: #555;
+
+      font: inherit;
+
+      font-size: 10px;
+
+      font-weight: 950;
+
+      cursor: pointer;
+
+      white-space: nowrap;
+
+      -webkit-tap-highlight-color:
+        transparent;
+
+    }
+
+
+    .payment-action:active {
+
+      transform:
+        scale(.98);
+
+    }
+
+
+    .payment-action.active-unpaid {
+
+      border-color: #ff4b27;
+
+      background: #fff0ec;
+
+      color: #c83417;
+
+    }
+
+
+    .payment-action.active-online {
+
+      border-color: #26a65b;
+
+      background: #ddf7e7;
+
+      color: #126a35;
+
+    }
+
+
+    .payment-action.active-cb {
+
+      border-color: #2fa7c7;
+
+      background: #e4f7fc;
+
+      color: #147d99;
+
+    }
+
+
+    .payment-action:disabled {
+
+      opacity: .45;
+
+    }
+
+
+    /* ========================================
+       VIDE
+    ======================================== */
+
+    .payment-empty {
+
+      margin-top: 8px;
+
+      padding: 25px 15px;
+
+      border-radius: 16px;
+
+      background: white;
+
+      color: #777;
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      text-align: center;
+
+    }
+
+  </style>
+
+</head>
+
+
+<body
+  data-page="inscriptions"
+  data-admin="true"
+>
+
+
+<div id="siteHeader"></div>
+
+
+<main class="container payments-page">
+
+
+  <!-- ======================================
+       HERO
+  ======================================= -->
+
+  <section class="payments-head">
+
+    <div class="payments-head-top">
+
+      <span class="payments-kicker">
+        Administration
+      </span>
+
+      <span>
+        💳
+      </span>
+
+    </div>
+
+
+    <h1>
+      Inscriptions
+    </h1>
+
+
+    <p>
+      Suivi rapide des paiements des joueurs.
+    </p>
+
+  </section>
+
+
+  <!-- ======================================
+       COMPTEURS
+  ======================================= -->
+
+  <section class="payment-summary">
+
+
+    <div class="payment-summary-card">
+
+      <strong id="unpaidCount">
+        0
+      </strong>
+
+      <span>
+        Non payés
+      </span>
+
+    </div>
+
+
+    <div class="payment-summary-card">
+
+      <strong id="onlineCount">
+        0
+      </strong>
+
+      <span>
+        En ligne
+      </span>
+
+    </div>
+
+
+    <div class="payment-summary-card">
+
+      <strong id="cbCount">
+        0
+      </strong>
+
+      <span>
+        CB
+      </span>
+
+    </div>
+
+
+  </section>
+
+
+  <!-- ======================================
+       JOUEURS
+  ======================================= -->
+
+  <section
+    id="paymentList"
+    class="payment-list"
+  >
+  </section>
+
+
+  <div
+    id="paymentEmpty"
+    class="payment-empty"
+    hidden
+  >
+    Aucun joueur inscrit.
+  </div>
+
+
+</main>
+
+
+<script
+  type="module"
+  src="admin-header.js"
+></script>
+
+
+<script
+  type="module"
+  src="js/inscriptions.js"
+></script>
+
+
+</body>
+
+</html>
