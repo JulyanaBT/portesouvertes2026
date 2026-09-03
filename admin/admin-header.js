@@ -46,6 +46,48 @@ if (
 
 /*
  * ========================================
+ * PAGE ACTUELLE
+ * ========================================
+ */
+
+const currentPage =
+  document.body.dataset.page ||
+  "accueil";
+
+
+/*
+ * ========================================
+ * CORRESPONDANCE ADMIN → PUBLIC
+ * ========================================
+ */
+
+const publicPages = {
+
+  accueil:
+    "../index.html",
+
+  joueurs:
+    "../joueurs.html",
+
+  inscriptions:
+    "../inscriptions.html",
+
+  inscription:
+    "../inscriptions.html",
+
+  programmation:
+    "../programmation.html"
+
+};
+
+
+const publicTarget =
+  publicPages[currentPage] ||
+  "../index.html";
+
+
+/*
+ * ========================================
  * STYLES NAVIGATION ADMIN
  * ========================================
  */
@@ -165,6 +207,22 @@ navStyle.textContent = `
     display: block;
 
     white-space: nowrap;
+
+  }
+
+
+  /*
+   * LOGO JUL'YANA
+   */
+
+  #siteHeader
+  .admin-header
+  .admin-public-switch {
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color:
+      transparent;
 
   }
 
@@ -312,7 +370,7 @@ headerTarget.innerHTML = `
       <!-- RETOUR PUBLIC -->
 
       <a
-        href="../index.html"
+        href="${publicTarget}"
         class="
           header-logo
           header-logo-right
@@ -339,8 +397,6 @@ headerTarget.innerHTML = `
     <div class="main-nav-shell">
 
 
-      <!-- FLÈCHE GAUCHE -->
-
       <button
         type="button"
         class="
@@ -353,8 +409,6 @@ headerTarget.innerHTML = `
         ‹
       </button>
 
-
-      <!-- ONGLETS -->
 
       <nav class="main-nav">
 
@@ -423,26 +477,8 @@ headerTarget.innerHTML = `
         </a>
 
 
-        <a
-          href="classement.html"
-          data-nav="classement"
-        >
-
-          <span class="nav-icon">
-            🏆
-          </span>
-
-          <span class="nav-label">
-            Classement
-          </span>
-
-        </a>
-
-
       </nav>
 
-
-      <!-- FLÈCHE DROITE -->
 
       <button
         type="button"
@@ -470,10 +506,6 @@ headerTarget.innerHTML = `
  * ÉLÉMENTS NAVIGATION
  * ========================================
  */
-
-const currentPage =
-  document.body.dataset.page;
-
 
 const nav =
   headerTarget.querySelector(
