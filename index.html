@@ -25,6 +25,147 @@
     href="style.css"
   >
 
+
+  <style>
+
+    /* ========================================
+       ACCÈS ORGANISATEUR
+    ======================================== */
+
+    .admin-access {
+
+      margin-top: 8px;
+      margin-bottom: 6px;
+
+    }
+
+
+    .admin-access a {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+      min-height: 42px;
+
+      padding:
+        8px 12px;
+
+      border-radius: 14px;
+
+      background:
+        rgba(255, 255, 255, .58);
+
+      border:
+        1px solid rgba(0, 0, 0, .05);
+
+      color: #777;
+
+      text-decoration: none;
+
+      box-shadow:
+        0 4px 12px
+        rgba(0, 0, 0, .035);
+
+      -webkit-tap-highlight-color:
+        transparent;
+
+    }
+
+
+    .admin-access-left {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+    }
+
+
+    .admin-access-icon {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 28px;
+      height: 28px;
+
+      flex: 0 0 28px;
+
+      border-radius: 9px;
+
+      background:
+        rgba(0, 0, 0, .055);
+
+      font-size: 13px;
+
+    }
+
+
+    .admin-access-text {
+
+      display: grid;
+
+      gap: 1px;
+
+    }
+
+
+    .admin-access-text small {
+
+      color: #999;
+
+      font-size: 7px;
+
+      font-weight: 900;
+
+      letter-spacing: .9px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .admin-access-text strong {
+
+      color: #555;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+    }
+
+
+    .admin-access-arrow {
+
+      color: #aaa;
+
+      font-size: 17px;
+
+      font-weight: 900;
+
+    }
+
+
+    .admin-access a:active {
+
+      transform:
+        scale(.99);
+
+    }
+
+  </style>
+
 </head>
 
 
@@ -37,9 +178,12 @@
 <main class="container">
 
 
-  <!-- HERO COMPACT -->
+  <!-- ======================================
+       HERO
+  ======================================= -->
 
   <section class="home-hero">
+
 
     <div class="hero-pills">
 
@@ -64,18 +208,31 @@
 
 
     <h1>
+
       AMERICANO
-      <span>de la rentrée</span>
+
+      <span>
+        de la rentrée
+      </span>
+
     </h1>
 
 
     <div class="hero-message">
+
       Arrive et repars
-      <strong>quand tu veux !</strong>
+
+      <strong>
+        quand tu veux !
+      </strong>
+
     </div>
 
 
+    <!-- ACTIONS PRINCIPALES -->
+
     <div class="hero-actions">
+
 
       <a
         href="inscriptions.html"
@@ -84,6 +241,7 @@
         ✍️ S'inscrire
       </a>
 
+
       <a
         href="programmation.html"
         class="btn btn-black"
@@ -91,13 +249,17 @@
         🎾 Voir les matchs
       </a>
 
+
     </div>
+
 
   </section>
 
 
 
-  <!-- INFOS ESSENTIELLES -->
+  <!-- ======================================
+       INFOS ESSENTIELLES
+  ======================================= -->
 
   <section class="essential-grid">
 
@@ -109,8 +271,15 @@
       </span>
 
       <div>
-        <small>Lieu</small>
-        <strong>Arena TC Suzini</strong>
+
+        <small>
+          Lieu
+        </small>
+
+        <strong>
+          Arena TC Suzini
+        </strong>
+
       </div>
 
     </div>
@@ -123,8 +292,15 @@
       </span>
 
       <div>
-        <small>Inscription</small>
-        <strong>10 € / joueur</strong>
+
+        <small>
+          Inscription
+        </small>
+
+        <strong>
+          10 € / joueur
+        </strong>
+
       </div>
 
     </div>
@@ -134,9 +310,16 @@
 
 
 
-  <!-- ACCÈS RAPIDE -->
+  <!-- ======================================
+       ACCÈS RAPIDES
+       Inscription + matchs sont déjà
+       accessibles dans le hero.
+  ======================================= -->
 
   <section class="dashboard">
+
+
+    <!-- JOUEURS -->
 
     <a
       href="joueurs.html"
@@ -148,29 +331,21 @@
       </span>
 
       <div>
-        <small>Participants</small>
-        <strong>Joueurs</strong>
+
+        <small>
+          Participants
+        </small>
+
+        <strong>
+          Joueurs
+        </strong>
+
       </div>
 
     </a>
 
 
-    <a
-      href="programmation.html"
-      class="dashboard-card dashboard-live"
-    >
-
-      <span class="dashboard-icon">
-        🎾
-      </span>
-
-      <div>
-        <small>En direct</small>
-        <strong>Matchs</strong>
-      </div>
-
-    </a>
-
+    <!-- CLASSEMENT -->
 
     <a
       href="classement.html"
@@ -182,34 +357,27 @@
       </span>
 
       <div>
-        <small>Résultats</small>
-        <strong>Classement</strong>
+
+        <small>
+          Résultats
+        </small>
+
+        <strong>
+          Classement
+        </strong>
+
       </div>
 
     </a>
 
-
-    <a
-      href="inscriptions.html"
-      class="dashboard-card"
-    >
-
-      <span class="dashboard-icon">
-        ✍️
-      </span>
-
-      <div>
-        <small>Participer</small>
-        <strong>Inscription</strong>
-      </div>
-
-    </a>
 
   </section>
 
 
 
-  <!-- BAS DE PAGE COMPACT -->
+  <!-- ======================================
+       RESTAURATION
+  ======================================= -->
 
   <section class="food-strip">
 
@@ -234,12 +402,42 @@
 
 
 
-  <!-- ACCÈS ORGANISATEUR -->
+  <!-- ======================================
+       ACCÈS ORGANISATEUR
+  ======================================= -->
 
   <section class="admin-access">
 
     <a href="admin/index.html">
-      🔐 Accès organisateur
+
+
+      <div class="admin-access-left">
+
+        <span class="admin-access-icon">
+          🔐
+        </span>
+
+
+        <span class="admin-access-text">
+
+          <small>
+            Organisation
+          </small>
+
+          <strong>
+            Accès organisateur
+          </strong>
+
+        </span>
+
+      </div>
+
+
+      <span class="admin-access-arrow">
+        ›
+      </span>
+
+
     </a>
 
   </section>
