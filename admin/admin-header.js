@@ -135,6 +135,22 @@ headerTarget.innerHTML = `
 
 
       <a
+        href="inscriptions.html"
+        data-nav="inscriptions"
+      >
+
+        <span class="nav-icon">
+          💳
+        </span>
+
+        <span class="nav-label">
+          Inscriptions
+        </span>
+
+      </a>
+
+
+      <a
         href="programmation.html"
         data-nav="programmation"
       >
