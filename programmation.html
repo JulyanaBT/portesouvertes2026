@@ -347,12 +347,84 @@
       border:
         1px solid #e7e7e7;
 
+      transition:
+        background .15s ease,
+        border-color .15s ease;
+
     }
 
 
     .match-card:first-of-type {
 
       margin-top: 0;
+
+    }
+
+
+    /* ========================================
+       TERRAIN LISA DE LOS PIMENTOS
+       ROUGE LÉGER
+    ======================================== */
+
+    .match-card.court-lisa {
+
+      background:
+        #fff0ee;
+
+      border-color:
+        #f3c8c1;
+
+    }
+
+
+    .match-card.court-lisa
+    .court-name {
+
+      color:
+        #c83d2b;
+
+    }
+
+
+    .match-card.court-lisa
+    .team-name {
+
+      background:
+        rgba(255,255,255,.72);
+
+    }
+
+
+    /* ========================================
+       TERRAIN MANON QUEEN BEE
+       JAUNE LÉGER
+    ======================================== */
+
+    .match-card.court-manon {
+
+      background:
+        #fff8d9;
+
+      border-color:
+        #eadb94;
+
+    }
+
+
+    .match-card.court-manon
+    .court-name {
+
+      color:
+        #8a6800;
+
+    }
+
+
+    .match-card.court-manon
+    .team-name {
+
+      background:
+        rgba(255,255,255,.72);
 
     }
 
@@ -738,6 +810,154 @@
   type="module"
   src="js/programmation.js"
 ></script>
+
+
+<!-- ========================================
+     COULEUR AUTOMATIQUE DES TERRAINS
+======================================== -->
+
+<script>
+
+  function applyCourtColors() {
+
+    document
+      .querySelectorAll(
+        ".match-card"
+      )
+      .forEach(
+        card => {
+
+          const courtElement =
+            card.querySelector(
+              ".court-name"
+            );
+
+
+          if (
+            !courtElement
+          ) {
+
+            return;
+
+          }
+
+
+          const courtName =
+            courtElement
+              .textContent
+              .trim()
+              .toLowerCase();
+
+
+          card.classList.remove(
+            "court-lisa",
+            "court-manon"
+          );
+
+
+          /*
+           * LISA DE LOS PIMENTOS
+           */
+
+          if (
+            courtName.includes(
+              "lisa"
+            )
+          ) {
+
+            card.classList.add(
+              "court-lisa"
+            );
+
+          }
+
+
+          /*
+           * MANON QUEEN BEE
+           */
+
+          if (
+            courtName.includes(
+              "manon"
+            )
+          ) {
+
+            card.classList.add(
+              "court-manon"
+            );
+
+          }
+
+        }
+      );
+
+  }
+
+
+  /*
+   * Les matchs sont injectés dynamiquement
+   * par js/programmation.js.
+   *
+   * On surveille donc les deux listes
+   * pour appliquer automatiquement
+   * la couleur à chaque mise à jour Firestore.
+   */
+
+  const currentListObserver =
+    document.getElementById(
+      "currentList"
+    );
+
+
+  const doneListObserver =
+    document.getElementById(
+      "doneList"
+    );
+
+
+  const courtObserver =
+    new MutationObserver(
+      () => {
+
+        applyCourtColors();
+
+      }
+    );
+
+
+  if (
+    currentListObserver
+  ) {
+
+    courtObserver.observe(
+      currentListObserver,
+      {
+        childList: true,
+        subtree: true
+      }
+    );
+
+  }
+
+
+  if (
+    doneListObserver
+  ) {
+
+    courtObserver.observe(
+      doneListObserver,
+      {
+        childList: true,
+        subtree: true
+      }
+    );
+
+  }
+
+
+  applyCourtColors();
+
+</script>
 
 
 </body>
