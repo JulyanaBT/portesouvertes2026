@@ -50,6 +50,18 @@ if (headerTarget) {
 
   /*
    * ========================================
+   * CIBLE LOGO JUL'YANA
+   * ========================================
+   */
+
+  const julyanaTarget =
+    adminConnected
+      ? adminTarget
+      : "admin/index.html";
+
+
+  /*
+   * ========================================
    * STYLES NAVIGATION
    * ========================================
    *
@@ -165,6 +177,21 @@ if (headerTarget) {
       display: block;
 
       white-space: nowrap;
+
+    }
+
+
+    /*
+     * LOGO JUL'YANA CLIQUABLE
+     */
+
+    #siteHeader
+    .admin-switch {
+
+      cursor: pointer;
+
+      -webkit-tap-highlight-color:
+        transparent;
 
     }
 
@@ -307,51 +334,28 @@ if (headerTarget) {
         </div>
 
 
-        <!-- LOGO JUL'YANA -->
+        <!-- LOGO JUL'YANA / BASCULE ADMIN -->
 
-        ${
-          adminConnected
+        <a
+          href="${julyanaTarget}"
+          class="
+            header-logo
+            header-logo-right
+            admin-switch
+          "
+          aria-label="${
+            adminConnected
+              ? "Passer en administration"
+              : "Accéder à l'administration"
+          }"
+        >
 
-          ? `
+          <img
+            src="assets/logo-julyana.png"
+            alt="Jul'Yana Beach Tennis"
+          >
 
-            <a
-              href="${adminTarget}"
-              class="
-                header-logo
-                header-logo-right
-                admin-switch
-              "
-              aria-label="Passer en administration"
-            >
-
-              <img
-                src="assets/logo-julyana.png"
-                alt="Jul'Yana Beach Tennis"
-              >
-
-            </a>
-
-          `
-
-          : `
-
-            <div
-              class="
-                header-logo
-                header-logo-right
-              "
-              aria-hidden="true"
-            >
-
-              <img
-                src="assets/logo-julyana.png"
-                alt="Jul'Yana Beach Tennis"
-              >
-
-            </div>
-
-          `
-        }
+        </a>
 
 
       </div>
