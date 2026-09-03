@@ -19,17 +19,186 @@
     Administration | Americano TC Suzini
   </title>
 
+
   <!-- CSS public commun -->
+
   <link
     rel="stylesheet"
     href="../style.css"
   >
 
+
   <!-- CSS spécifique admin -->
+
   <link
     rel="stylesheet"
     href="admin.css"
   >
+
+
+  <style>
+
+    /* ========================================
+       ACCUEIL ADMIN
+    ======================================== */
+
+    .admin-home-bottom {
+
+      margin-top: 14px;
+
+      display: grid;
+
+      gap: 8px;
+
+    }
+
+
+    /* ========================================
+       MAINTENANCE
+    ======================================== */
+
+    .maintenance-access {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 11px;
+
+      padding: 12px 14px;
+
+      border-radius: 14px;
+
+      background: #171717;
+
+      border:
+        1px solid #3a3a3a;
+
+      color: white;
+
+      text-decoration: none;
+
+      transition:
+        background .15s ease,
+        border-color .15s ease;
+
+    }
+
+
+    .maintenance-access:active {
+
+      background: #202020;
+
+      border-color: #555;
+
+    }
+
+
+    .maintenance-icon {
+
+      flex: 0 0 auto;
+
+      width: 36px;
+
+      height: 36px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 11px;
+
+      background:
+        rgba(255,75,39,.12);
+
+      font-size: 18px;
+
+    }
+
+
+    .maintenance-content {
+
+      min-width: 0;
+
+      flex: 1;
+
+    }
+
+
+    .maintenance-content small {
+
+      display: block;
+
+      margin-bottom: 2px;
+
+      color: #ff7a59;
+
+      font-size: 8px;
+
+      font-weight: 950;
+
+      letter-spacing: .7px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .maintenance-content strong {
+
+      display: block;
+
+      color: white;
+
+      font-size: 13px;
+
+      font-weight: 950;
+
+    }
+
+
+    .maintenance-content p {
+
+      margin: 3px 0 0;
+
+      color: #888;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      line-height: 1.3;
+
+    }
+
+
+    .maintenance-arrow {
+
+      flex: 0 0 auto;
+
+      color: #666;
+
+      font-size: 22px;
+
+      font-weight: 900;
+
+    }
+
+
+    /* ========================================
+       DECONNEXION
+    ======================================== */
+
+    .admin-home-bottom
+    .logout-btn {
+
+      margin-top: 0;
+
+    }
+
+  </style>
 
 </head>
 
@@ -46,9 +215,9 @@
 <main class="container admin-page">
 
 
-  <!-- ==============================
+  <!-- ======================================
        CONNEXION
-  =============================== -->
+  ======================================= -->
 
   <section
     id="loginArea"
@@ -59,9 +228,11 @@
       Organisation
     </div>
 
+
     <h1>
       Accès admin
     </h1>
+
 
     <p>
       Une fois connecté, cet appareil restera
@@ -70,6 +241,7 @@
 
 
     <form id="adminLoginForm">
+
 
       <input
         id="adminPassword"
@@ -96,15 +268,15 @@
         Mot de passe incorrect.
       </div>
 
+
     </form>
 
   </section>
 
 
-
-  <!-- ==============================
+  <!-- ======================================
        TABLEAU DE BORD
-  =============================== -->
+  ======================================= -->
 
   <section
     id="dashboardArea"
@@ -118,9 +290,11 @@
         Mode organisateur
       </div>
 
+
       <h1>
         Americano
       </h1>
+
 
       <p>
         Gestion de la soirée en direct.
@@ -129,9 +303,14 @@
     </div>
 
 
+    <!-- ====================================
+         CARTES PRINCIPALES
+    ===================================== -->
 
     <div class="admin-grid">
 
+
+      <!-- JOUEURS -->
 
       <a
         href="joueurs.html"
@@ -142,15 +321,18 @@
           👥
         </span>
 
+
         <div>
 
           <small>
             Participants
           </small>
 
+
           <strong>
             Joueurs
           </strong>
+
 
           <p>
             Activer, désactiver ou ajouter un joueur.
@@ -161,9 +343,43 @@
       </a>
 
 
+      <!-- INSCRIPTIONS / PAIEMENTS -->
 
       <a
-        href="matchs.html"
+        href="inscriptions.html"
+        class="admin-card"
+      >
+
+        <span class="admin-card-icon">
+          💳
+        </span>
+
+
+        <div>
+
+          <small>
+            Paiements
+          </small>
+
+
+          <strong>
+            Inscriptions
+          </strong>
+
+
+          <p>
+            Suivre et modifier le paiement des joueurs.
+          </p>
+
+        </div>
+
+      </a>
+
+
+      <!-- MATCHS -->
+
+      <a
+        href="programmation.html"
         class="admin-card admin-card-primary"
       >
 
@@ -171,15 +387,18 @@
           🎾
         </span>
 
+
         <div>
 
           <small>
             Tournoi
           </small>
 
+
           <strong>
             Matchs
           </strong>
+
 
           <p>
             Générer les rotations et saisir les scores.
@@ -190,35 +409,7 @@
       </a>
 
 
-
-      <a
-        href="classement.html"
-        class="admin-card"
-      >
-
-        <span class="admin-card-icon">
-          🏆
-        </span>
-
-        <div>
-
-          <small>
-            Résultats
-          </small>
-
-          <strong>
-            Classement
-          </strong>
-
-          <p>
-            Suivre le classement individuel.
-          </p>
-
-        </div>
-
-      </a>
-
-
+      <!-- SITE PUBLIC -->
 
       <a
         href="../index.html"
@@ -229,15 +420,18 @@
           👁️
         </span>
 
+
         <div>
 
           <small>
             Interface
           </small>
 
+
           <strong>
             Site public
           </strong>
+
 
           <p>
             Voir exactement ce que voient les joueurs.
@@ -251,14 +445,59 @@
     </div>
 
 
+    <!-- ====================================
+         OUTILS / MAINTENANCE
+    ===================================== -->
 
-    <button
-      id="logoutBtn"
-      class="logout-btn"
-      type="button"
-    >
-      Déconnecter cet appareil
-    </button>
+    <div class="admin-home-bottom">
+
+
+      <a
+        href="maintenance.html"
+        class="maintenance-access"
+      >
+
+        <span class="maintenance-icon">
+          ⚙️
+        </span>
+
+
+        <div class="maintenance-content">
+
+          <small>
+            Outils sensibles
+          </small>
+
+
+          <strong>
+            Maintenance
+          </strong>
+
+
+          <p>
+            Réinitialisation et suppression des données.
+          </p>
+
+        </div>
+
+
+        <span class="maintenance-arrow">
+          ›
+        </span>
+
+      </a>
+
+
+      <button
+        id="logoutBtn"
+        class="logout-btn"
+        type="button"
+      >
+        Déconnecter cet appareil
+      </button>
+
+
+    </div>
 
 
   </section>
@@ -267,16 +506,20 @@
 </main>
 
 
+<!-- ======================================
+     HEADER ADMIN
+======================================= -->
 
-<!-- HEADER ADMIN -->
 <script
   type="module"
   src="admin-header.js"
 ></script>
 
 
+<!-- ======================================
+     SESSION ADMIN
+======================================= -->
 
-<!-- SESSION ADMIN -->
 <script type="module">
 
   import {
@@ -287,24 +530,46 @@
 
 
   const loginArea =
-    document.getElementById("loginArea");
+    document.getElementById(
+      "loginArea"
+    );
+
 
   const dashboardArea =
-    document.getElementById("dashboardArea");
+    document.getElementById(
+      "dashboardArea"
+    );
+
 
   const loginForm =
-    document.getElementById("adminLoginForm");
+    document.getElementById(
+      "adminLoginForm"
+    );
+
 
   const passwordInput =
-    document.getElementById("adminPassword");
+    document.getElementById(
+      "adminPassword"
+    );
+
 
   const errorBox =
-    document.getElementById("adminError");
+    document.getElementById(
+      "adminError"
+    );
+
 
   const logoutBtn =
-    document.getElementById("logoutBtn");
+    document.getElementById(
+      "logoutBtn"
+    );
 
 
+  /*
+   * ========================================
+   * ÉTAT DE LA PAGE
+   * ========================================
+   */
 
   function refreshPageState() {
 
@@ -317,6 +582,7 @@
       loginArea.style.display =
         "none";
 
+
       dashboardArea.classList.add(
         "visible"
       );
@@ -328,6 +594,7 @@
       loginArea.style.display =
         "block";
 
+
       dashboardArea.classList.remove(
         "visible"
       );
@@ -337,6 +604,11 @@
   }
 
 
+  /*
+   * ========================================
+   * CONNEXION
+   * ========================================
+   */
 
   loginForm.addEventListener(
     "submit",
@@ -357,10 +629,11 @@
           "visible"
         );
 
+
         /*
-         * Recharge pour que le header
-         * reconnaisse immédiatement
-         * la session administrateur.
+         * Recharge nécessaire pour que
+         * admin-header.js voie immédiatement
+         * la nouvelle session.
          */
 
         window.location.reload();
@@ -373,6 +646,7 @@
           "visible"
         );
 
+
         passwordInput.select();
 
       }
@@ -381,12 +655,18 @@
   );
 
 
+  /*
+   * ========================================
+   * DÉCONNEXION
+   * ========================================
+   */
 
   logoutBtn.addEventListener(
     "click",
     () => {
 
       logoutAdmin();
+
 
       window.location.href =
         "../index.html";
@@ -395,6 +675,11 @@
   );
 
 
+  /*
+   * ========================================
+   * INITIALISATION
+   * ========================================
+   */
 
   refreshPageState();
 
