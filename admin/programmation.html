@@ -409,6 +409,108 @@
       border:
         1px solid #303030;
 
+      transition:
+        background .15s ease,
+        border-color .15s ease;
+
+    }
+
+
+    /* ========================================
+       TERRAIN LISA DE LOS PIMENTOS
+       ROUGE LÉGER
+    ======================================== */
+
+    .match-admin-card.court-lisa {
+
+      background:
+        #351c1a;
+
+      border-color:
+        #78433d;
+
+    }
+
+
+    .match-admin-card.court-lisa
+    .court-name {
+
+      color:
+        #ff9a8c;
+
+    }
+
+
+    .match-admin-card.court-lisa
+    .team-name {
+
+      background:
+        #442421;
+
+      border:
+        1px solid #5b302b;
+
+    }
+
+
+    .match-admin-card.court-lisa
+    .score-input {
+
+      background:
+        #21100f;
+
+      border-color:
+        #704039;
+
+    }
+
+
+    /* ========================================
+       TERRAIN MANON QUEEN BEE
+       JAUNE LÉGER
+    ======================================== */
+
+    .match-admin-card.court-manon {
+
+      background:
+        #363019;
+
+      border-color:
+        #71652d;
+
+    }
+
+
+    .match-admin-card.court-manon
+    .court-name {
+
+      color:
+        #ffe27b;
+
+    }
+
+
+    .match-admin-card.court-manon
+    .team-name {
+
+      background:
+        #474020;
+
+      border:
+        1px solid #5f5629;
+
+    }
+
+
+    .match-admin-card.court-manon
+    .score-input {
+
+      background:
+        #211e0f;
+
+      border-color:
+        #6d622c;
+
     }
 
 
@@ -619,6 +721,7 @@
     .match-actions .admin-btn {
 
       width: 100%;
+
     }
 
 
@@ -1176,6 +1279,154 @@
   type="module"
   src="js/programmation.js"
 ></script>
+
+
+<!-- ========================================
+     COULEUR AUTOMATIQUE DES TERRAINS
+======================================== -->
+
+<script>
+
+  function applyCourtColors() {
+
+    document
+      .querySelectorAll(
+        ".match-admin-card"
+      )
+      .forEach(
+        card => {
+
+          const courtElement =
+            card.querySelector(
+              ".court-name"
+            );
+
+
+          if (
+            !courtElement
+          ) {
+
+            return;
+
+          }
+
+
+          const courtName =
+            courtElement
+              .textContent
+              .trim()
+              .toLowerCase();
+
+
+          card.classList.remove(
+            "court-lisa",
+            "court-manon"
+          );
+
+
+          /*
+           * LISA DE LOS PIMENTOS
+           */
+
+          if (
+            courtName.includes(
+              "lisa"
+            )
+          ) {
+
+            card.classList.add(
+              "court-lisa"
+            );
+
+          }
+
+
+          /*
+           * MANON QUEEN BEE
+           */
+
+          if (
+            courtName.includes(
+              "manon"
+            )
+          ) {
+
+            card.classList.add(
+              "court-manon"
+            );
+
+          }
+
+        }
+      );
+
+  }
+
+
+  /*
+   * Les matchs sont injectés dynamiquement
+   * par admin/js/programmation.js.
+   *
+   * MutationObserver permet de recolorer
+   * automatiquement les cartes après
+   * chaque mise à jour Firestore.
+   */
+
+  const currentListObserver =
+    document.getElementById(
+      "currentList"
+    );
+
+
+  const doneListObserver =
+    document.getElementById(
+      "doneList"
+    );
+
+
+  const courtObserver =
+    new MutationObserver(
+      () => {
+
+        applyCourtColors();
+
+      }
+    );
+
+
+  if (
+    currentListObserver
+  ) {
+
+    courtObserver.observe(
+      currentListObserver,
+      {
+        childList: true,
+        subtree: true
+      }
+    );
+
+  }
+
+
+  if (
+    doneListObserver
+  ) {
+
+    courtObserver.observe(
+      doneListObserver,
+      {
+        childList: true,
+        subtree: true
+      }
+    );
+
+  }
+
+
+  applyCourtColors();
+
+</script>
 
 
 </body>
