@@ -3,14 +3,12 @@ import { db } from "../../firebase.js";
 import {
   collection,
   doc,
-  getDoc,
   onSnapshot,
   query,
   orderBy,
   runTransaction,
   serverTimestamp,
-  updateDoc,
-  deleteDoc
+  updateDoc
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 
@@ -121,7 +119,17 @@ const playersQuery =
 
 let players = [];
 
-let isSavingPlayer = false;
+let isSavingPlayer =
+  false;
+
+
+/*
+ * Permet de savoir si l'admin
+ * a modifié lui-même le surnom.
+ */
+
+let nicknameManuallyEdited =
+  false;
 
 
 /* ========================================
@@ -206,21 +214,150 @@ function getFullName(player) {
 }
 
 
+/* ========================================
+   SURNOM PROPOSÉ
+======================================== */
+
+function getSuggestedNickname() {
+
+  const prenom =
+    clean(
+      addPrenom.value
+    );
+
+
+  const nom =
+    clean(
+      addNom.value
+    );
+
+
+  if (
+    !prenom
+  ) {
+
+    return "";
+
+  }
+
+
+  if (
+    !nom
+  ) {
+
+    return prenom;
+
+  }
+
+
+  /*
+   * Exemple :
+   *
+   * Jules Parisis
+   * → Jules P
+   */
+
+  const firstLetter =
+    nom
+      .charAt(0)
+      .toUpperCase();
+
+
+  return clean(
+    `${prenom} ${firstLetter}`
+  );
+
+}
+
+
+function updateSuggestedNickname() {
+
+  if (
+    nicknameManuallyEdited
+  ) {
+
+    return;
+
+  }
+
+
+  addSurnom.value =
+    getSuggestedNickname();
+
+}
+
+
+/* ========================================
+   PAIEMENT AJOUT
+======================================== */
+
+function getSelectedPaymentMethod() {
+
+  const selected =
+    document.querySelector(
+      'input[name="paymentMethod"]:checked'
+    );
+
+
+  if (
+    !selected
+  ) {
+
+    return "unpaid";
+
+  }
+
+
+  return selected.value;
+
+}
+
+
+function resetPaymentChoice() {
+
+  const unpaid =
+    document.getElementById(
+      "paymentUnpaid"
+    );
+
+
+  if (
+    unpaid
+  ) {
+
+    unpaid.checked =
+      true;
+
+  }
+
+}
+
+
+/* ========================================
+   TRI JOUEURS
+======================================== */
+
 function sortPlayers(a, b) {
 
   if (
     a.active === true &&
     b.active !== true
   ) {
+
     return -1;
+
   }
+
 
   if (
     a.active !== true &&
     b.active === true
   ) {
+
     return 1;
+
   }
+
 
   return getNickname(a)
     .localeCompare(
@@ -268,6 +405,28 @@ function clearAddMessage() {
 
 
 /* ========================================
+   RESET FORMULAIRE AJOUT
+======================================== */
+
+function resetAddPlayerForm() {
+
+  addPlayerForm.reset();
+
+
+  nicknameManuallyEdited =
+    false;
+
+
+  addSurnom.value =
+    "";
+
+
+  resetPaymentChoice();
+
+}
+
+
+/* ========================================
    RENDER
 ======================================== */
 
@@ -278,6 +437,7 @@ function render() {
       player =>
         player.active === true
     );
+
 
   const waitingPlayers =
     players.filter(
@@ -343,6 +503,10 @@ function render() {
 }
 
 
+/* ========================================
+   CARTE JOUEUR
+======================================== */
+
 function renderPlayerCard(
   player
 ) {
@@ -350,10 +514,12 @@ function renderPlayerCard(
   const active =
     player.active === true;
 
+
   const nickname =
     getNickname(
       player
     );
+
 
   const fullName =
     getFullName(
@@ -513,7 +679,7 @@ onSnapshot(
 
 
 /* ========================================
-   AJOUT PANEL
+   OUVRIR PANEL AJOUT
 ======================================== */
 
 addPlayerBtn.addEventListener(
@@ -522,18 +688,32 @@ addPlayerBtn.addEventListener(
 
     clearAddMessage();
 
+
+    const willOpen =
+      !addPlayerPanel.classList.contains(
+        "visible"
+      );
+
+
     addPlayerPanel.classList.toggle(
       "visible"
     );
 
 
     if (
-      addPlayerPanel.classList.contains(
-        "visible"
-      )
+      willOpen
     ) {
 
-      addPrenom.focus();
+      resetAddPlayerForm();
+
+
+      requestAnimationFrame(
+        () => {
+
+          addPrenom.focus();
+
+        }
+      );
 
     }
 
@@ -541,17 +721,105 @@ addPlayerBtn.addEventListener(
 );
 
 
+/* ========================================
+   ANNULER AJOUT
+======================================== */
+
 cancelAddPlayerBtn.addEventListener(
   "click",
   () => {
 
-    addPlayerForm.reset();
+    resetAddPlayerForm();
 
     clearAddMessage();
+
 
     addPlayerPanel.classList.remove(
       "visible"
     );
+
+  }
+);
+
+
+/* ========================================
+   SURNOM AUTOMATIQUE
+======================================== */
+
+addPrenom.addEventListener(
+  "input",
+  () => {
+
+    updateSuggestedNickname();
+
+  }
+);
+
+
+addNom.addEventListener(
+  "input",
+  () => {
+
+    updateSuggestedNickname();
+
+  }
+);
+
+
+/*
+ * Dès que l'utilisateur modifie
+ * réellement le surnom proposé,
+ * on considère qu'il veut garder
+ * sa propre version.
+ */
+
+addSurnom.addEventListener(
+  "input",
+  () => {
+
+    const currentValue =
+      clean(
+        addSurnom.value
+      );
+
+
+    const suggestedValue =
+      clean(
+        getSuggestedNickname()
+      );
+
+
+    nicknameManuallyEdited =
+      currentValue !==
+      suggestedValue;
+
+  }
+);
+
+
+/*
+ * Si le champ est vidé manuellement,
+ * on permet de reprendre la suggestion
+ * au prochain changement prénom / nom.
+ */
+
+addSurnom.addEventListener(
+  "blur",
+  () => {
+
+    if (
+      clean(
+        addSurnom.value
+      ) === ""
+    ) {
+
+      nicknameManuallyEdited =
+        false;
+
+
+      updateSuggestedNickname();
+
+    }
 
   }
 );
@@ -568,10 +836,13 @@ addPlayerForm.addEventListener(
 
     event.preventDefault();
 
+
     if (
       isSavingPlayer
     ) {
+
       return;
+
     }
 
 
@@ -583,15 +854,21 @@ addPlayerForm.addEventListener(
         addPrenom.value
       );
 
+
     const nom =
       clean(
         addNom.value
       );
 
+
     const surnom =
       clean(
         addSurnom.value
       );
+
+
+    const paymentMethod =
+      getSelectedPaymentMethod();
 
 
     if (
@@ -604,6 +881,7 @@ addPlayerForm.addEventListener(
         "error",
         "Prénom, nom et surnom sont obligatoires."
       );
+
 
       return;
 
@@ -625,6 +903,28 @@ addPlayerForm.addEventListener(
         "Le surnom n'est pas valide."
       );
 
+
+      return;
+
+    }
+
+
+    if (
+      ![
+        "unpaid",
+        "cb",
+        "cash"
+      ].includes(
+        paymentMethod
+      )
+    ) {
+
+      setAddMessage(
+        "error",
+        "Mode de paiement invalide."
+      );
+
+
       return;
 
     }
@@ -633,8 +933,10 @@ addPlayerForm.addEventListener(
     isSavingPlayer =
       true;
 
+
     savePlayerBtn.disabled =
       true;
+
 
     savePlayerBtn.textContent =
       "Ajout…";
@@ -647,12 +949,23 @@ addPlayerForm.addEventListener(
           playersRef
         );
 
+
       const nicknameRef =
         doc(
           nicknamesRef,
           nicknameKey
         );
 
+
+      /*
+       * ====================================
+       * CRÉATION JOUEUR + SURNOM
+       * ====================================
+       *
+       * On garde exactement la structure
+       * déjà utilisée pour ne pas casser
+       * les règles Firestore de création.
+       */
 
       await runTransaction(
         db,
@@ -730,12 +1043,108 @@ addPlayerForm.addEventListener(
       );
 
 
-      addPlayerForm.reset();
+      /*
+       * ====================================
+       * PAIEMENT
+       * ====================================
+       *
+       * Non payé :
+       * aucun champ nécessaire.
+       *
+       * CB :
+       * paymentMethod = "cb"
+       *
+       * Espèce :
+       * paymentMethod = "cash"
+       */
+
+      if (
+        paymentMethod !==
+        "unpaid"
+      ) {
+
+        try {
+
+          await updateDoc(
+            playerRef,
+            {
+
+              paymentMethod,
+
+              paymentUpdatedAt:
+                serverTimestamp(),
+
+              updatedAt:
+                serverTimestamp()
+
+            }
+          );
+
+        }
+
+        catch (paymentError) {
+
+          console.error(
+            "Joueur créé mais erreur paiement :",
+            paymentError
+          );
+
+
+          resetAddPlayerForm();
+
+
+          setAddMessage(
+            "error",
+            `${surnom} a été ajouté, mais le paiement n'a pas pu être enregistré.`
+          );
+
+
+          return;
+
+        }
+
+      }
+
+
+      /*
+       * ====================================
+       * SUCCÈS
+       * ====================================
+       */
+
+      const paymentText =
+        paymentMethod === "cb"
+
+          ? " — payé par CB"
+
+          : paymentMethod === "cash"
+
+            ? " — payé en espèce"
+
+            : " — non payé";
+
+
+      resetAddPlayerForm();
 
 
       setAddMessage(
         "ok",
-        `${surnom} a été ajouté.`
+        `${surnom} a été ajouté${paymentText}.`
+      );
+
+
+      /*
+       * On laisse le panneau ouvert :
+       * pratique pour inscrire plusieurs
+       * joueurs à la suite.
+       */
+
+      requestAnimationFrame(
+        () => {
+
+          addPrenom.focus();
+
+        }
       );
 
     }
@@ -761,8 +1170,10 @@ addPlayerForm.addEventListener(
       isSavingPlayer =
         false;
 
+
       savePlayerBtn.disabled =
         false;
+
 
       savePlayerBtn.textContent =
         "Ajouter";
@@ -849,7 +1260,9 @@ async function editPlayer(
   if (
     prenom === null
   ) {
+
     return;
+
   }
 
 
@@ -863,7 +1276,9 @@ async function editPlayer(
   if (
     nom === null
   ) {
+
     return;
+
   }
 
 
@@ -877,7 +1292,9 @@ async function editPlayer(
   if (
     surnom === null
   ) {
+
     return;
+
   }
 
 
@@ -886,10 +1303,12 @@ async function editPlayer(
       prenom
     );
 
+
   const newNom =
     clean(
       nom
     );
+
 
   const newNickname =
     clean(
@@ -906,6 +1325,7 @@ async function editPlayer(
     alert(
       "Prénom, nom et surnom sont obligatoires."
     );
+
 
     return;
 
@@ -932,6 +1352,7 @@ async function editPlayer(
     alert(
       "Le surnom n'est pas valide."
     );
+
 
     return;
 
@@ -973,6 +1394,7 @@ async function editPlayer(
 
       }
     );
+
 
     return;
 
@@ -1092,7 +1514,9 @@ async function deletePlayer(
   if (
     !confirmed
   ) {
+
     return;
+
   }
 
 
@@ -1127,6 +1551,7 @@ async function deletePlayer(
         playerRef
       );
 
+
       transaction.delete(
         nicknameRef
       );
@@ -1155,7 +1580,9 @@ playersList.addEventListener(
     if (
       !button
     ) {
+
       return;
+
     }
 
 
@@ -1177,7 +1604,9 @@ playersList.addEventListener(
     if (
       !player
     ) {
+
       return;
+
     }
 
 
